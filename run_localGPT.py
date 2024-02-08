@@ -140,6 +140,7 @@ def retrieval_qa_pipline(device_type, use_history, promptTemplate_type="llama"):
 
     # load the llm pipeline
     llm = load_model(device_type, model_id=MODEL_ID, model_basename=MODEL_BASENAME, LOGGING=logging)
+    llm.streaming = True
 
     if use_history:
         qa = RetrievalQA.from_chain_type(
@@ -255,15 +256,19 @@ def main(device_type, show_sources, use_history, model_type, save_qa):
         query = input("\nEnter a query: ")
         if query == "exit":
             break
+
+        print("\nEvaluating the prompt...\n")
+
         # Get the answer from the chain
         res = qa(query)
+   
         answer, docs = res["result"], res["source_documents"]
 
         # Print the result
-        print("\n\n> Question:")
-        print(query)
-        print("\n> Answer:")
-        print(answer)
+        # print("\n\n> Question:")
+        # print(query)
+        # print("\n> Answer:")
+        # print(answer)
 
         if show_sources:  # this is a flag that you can set to disable showing answers.
             # # Print the relevant sources used for the answer
