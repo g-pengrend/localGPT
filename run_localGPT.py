@@ -63,6 +63,7 @@ def load_model(device_type, model_id, model_basename=None, LOGGING=logging):
     if model_basename is not None:
         if ".gguf" in model_basename.lower():
             llm = load_quantized_model_gguf_ggml(model_id, model_basename, device_type, LOGGING)
+            llm.streaming = True
             return llm
         elif ".ggml" in model_basename.lower():
             model, tokenizer = load_quantized_model_gguf_ggml(model_id, model_basename, device_type, LOGGING)
@@ -140,7 +141,6 @@ def retrieval_qa_pipline(device_type, use_history, promptTemplate_type="llama"):
 
     # load the llm pipeline
     llm = load_model(device_type, model_id=MODEL_ID, model_basename=MODEL_BASENAME, LOGGING=logging)
-    llm.streaming = True
 
     if use_history:
         qa = RetrievalQA.from_chain_type(
@@ -265,10 +265,10 @@ def main(device_type, show_sources, use_history, model_type, save_qa):
         answer, docs = res["result"], res["source_documents"]
 
         # Print the result
-        # print("\n\n> Question:")
-        # print(query)
-        # print("\n> Answer:")
-        # print(answer)
+        print("\n\n> Question:")
+        print(query)
+        print("\n> Answer:")
+        print(answer)
 
         if show_sources:  # this is a flag that you can set to disable showing answers.
             # # Print the relevant sources used for the answer

@@ -24,6 +24,7 @@ bitsandbytes-windows ; sys_platform == 'win32'
 click
 flask
 requests
+# bitsandbytes --prefer-binary --extra-index-url=https://jllllll.github.io/bitsandbytes-windows-webui # issue of bitsandbytes solved with this for HF models
 
 # Streamlit related
 streamlit

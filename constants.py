@@ -113,6 +113,8 @@ MODEL_BASENAME = "llama-2-7b-chat.Q4_K_M.gguf"
 #### (FOR HF MODELS)
 ####
 
+# MODEL_ID = "TheBloke/guanaco-7B-HF"
+# MODEL_BASENAME = None
 # MODEL_ID = "NousResearch/Llama-2-7b-chat-hf"
 # MODEL_BASENAME = None
 # MODEL_ID = "TheBloke/vicuna-7B-1.1-HF"
