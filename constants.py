@@ -186,5 +186,6 @@ MODEL_BASENAME = "llama-2-7b-chat.Q4_K_M.gguf"
 ### (*** MODEL_BASENAME is not actually used but have to contain .awq so the correct model loading is used ***)
 ### (*** Compute capability 7.5 (sm75) and CUDA Toolkit 11.8+ are required ***)
 ####
+
 # MODEL_ID = "TheBloke/Llama-2-7B-Chat-AWQ"
 # MODEL_BASENAME = "model.safetensors.awq"
