@@ -7,10 +7,14 @@ if sys.platform != "darwin":
 
 from huggingface_hub import hf_hub_download
 from langchain.llms import LlamaCpp
-from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaForCausalLM, LlamaTokenizer, BitsAndBytesConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaForCausalLM, LlamaTokenizer
+from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
+from langchain.callbacks.manager import CallbackManager
+
 
 from constants import CONTEXT_WINDOW_SIZE, MAX_NEW_TOKENS, MODELS_PATH, N_BATCH, N_GPU_LAYERS
 
+callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
 def load_quantized_model_gguf_ggml(model_id, model_basename, device_type, logging):
     """
@@ -47,13 +51,14 @@ def load_quantized_model_gguf_ggml(model_id, model_basename, device_type, loggin
             "n_ctx": CONTEXT_WINDOW_SIZE,
             "max_tokens": MAX_NEW_TOKENS,
             "n_batch": N_BATCH,  # set this based on your GPU & CPU RAM
+            # "verbose": True
         }
         if device_type.lower() == "mps":
             kwargs["n_gpu_layers"] = 1
         if device_type.lower() == "cuda":
             kwargs["n_gpu_layers"] = N_GPU_LAYERS  # set this based on your GPU
 
-        return LlamaCpp(**kwargs)
+        return LlamaCpp(callback_manager=callback_manager, **kwargs)
     except TypeError:
         if "ggml" in model_basename:
             logging.INFO("If you were using GGML model, LLAMA-CPP Dropped Support, Use GGUF Instead")
@@ -143,12 +148,6 @@ def load_full_model(model_id, model_basename, device_type, logging):
         logging.info("Using AutoModelForCausalLM for full models")
         tokenizer = AutoTokenizer.from_pretrained(model_id, cache_dir="./models/")
         logging.info("Tokenizer loaded")
-        bnb_config = BitsAndBytesConfig(
-                load_in_4bit=True,
-                bnb_4bit_use_double_quant=True,
-                bnb_4bit_quant_type="nf4",
-                bnb_4bit_compute_dtype=torch.float16
-                )
         model = AutoModelForCausalLM.from_pretrained(
             model_id,
             device_map="auto",
@@ -156,13 +155,11 @@ def load_full_model(model_id, model_basename, device_type, logging):
             low_cpu_mem_usage=True,
             cache_dir=MODELS_PATH,
             trust_remote_code=True,  # set these if you are using NVIDIA GPU
-            quantization_config=bnb_config
-           # load_in_4bit=True,
-           # bnb_4bit_quant_type="nf4",
-           # bnb_4bit_compute_dtype=torch.float16,
-           # max_memory={0: "15GB"},  # Uncomment this line with you encounter CUDA out of memory errors
+            load_in_4bit=True,
+            bnb_4bit_quant_type="nf4",
+            bnb_4bit_compute_dtype=torch.float16,
+            max_memory={0: "15GB"},  # Uncomment this line with you encounter CUDA out of memory errors
         )
-
         model.tie_weights()
     return model, tokenizer
 

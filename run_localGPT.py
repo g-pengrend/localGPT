@@ -63,6 +63,7 @@ def load_model(device_type, model_id, model_basename=None, LOGGING=logging):
     if model_basename is not None:
         if ".gguf" in model_basename.lower():
             llm = load_quantized_model_gguf_ggml(model_id, model_basename, device_type, LOGGING)
+            llm.streaming = True
             return llm
         elif ".ggml" in model_basename.lower():
             model, tokenizer = load_quantized_model_gguf_ggml(model_id, model_basename, device_type, LOGGING)
@@ -255,8 +256,12 @@ def main(device_type, show_sources, use_history, model_type, save_qa):
         query = input("\nEnter a query: ")
         if query == "exit":
             break
+
+        print("\nEvaluating the prompt...\n")
+
         # Get the answer from the chain
         res = qa(query)
+   
         answer, docs = res["result"], res["source_documents"]
 
         # Print the result

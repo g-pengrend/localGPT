@@ -48,8 +48,8 @@ DOCUMENT_MAP = {
     ".txt": TextLoader,
     ".md": UnstructuredMarkdownLoader,
     ".py": TextLoader,
-    # ".pdf": PDFMinerLoader,
-    ".pdf": UnstructuredFileLoader,
+    ".pdf": PDFMinerLoader,
+    # ".pdf": UnstructuredFileLoader,
     ".csv": CSVLoader,
     ".xls": UnstructuredExcelLoader,
     ".xlsx": UnstructuredExcelLoader,
@@ -113,6 +113,8 @@ MODEL_BASENAME = "llama-2-7b-chat.Q4_K_M.gguf"
 #### (FOR HF MODELS)
 ####
 
+# MODEL_ID = "TheBloke/guanaco-7B-HF"
+# MODEL_BASENAME = None
 # MODEL_ID = "NousResearch/Llama-2-7b-chat-hf"
 # MODEL_BASENAME = None
 # MODEL_ID = "TheBloke/vicuna-7B-1.1-HF"
@@ -184,5 +186,6 @@ MODEL_BASENAME = "llama-2-7b-chat.Q4_K_M.gguf"
 ### (*** MODEL_BASENAME is not actually used but have to contain .awq so the correct model loading is used ***)
 ### (*** Compute capability 7.5 (sm75) and CUDA Toolkit 11.8+ are required ***)
 ####
+
 # MODEL_ID = "TheBloke/Llama-2-7B-Chat-AWQ"
 # MODEL_BASENAME = "model.safetensors.awq"
