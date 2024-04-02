@@ -74,15 +74,44 @@
   {% endif %}
   <style>
 
-    @import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
     body {
-      background-image: linear-gradient(90deg, #09203f, #0057ff);
+      background-image: linear-gradient(180deg, rgba(49,39,71,1), rgba(54,44,78,1), rgba(34,27,52,1));
       height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
+    header {
+      position: absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:auto;
+      z-index: 10;
+      background-image: linear-gradient(180deg, rgba(36,26,54,0.5), rgba(36,26,54,0));
+    }
+
+    header #logobox {
+      padding-left:5%;
+      width:200px;
+      height:80px;
+    }
+
+    header #logobox svg {
+      width:100%;
+      height:100%;
+      padding:0;
+    }
+
+    header #headingbox {
+      position: absolute;
+      right:5%;
+      top:0;
+    }
+
 
     .container{
       padding: 15px;
@@ -148,14 +177,14 @@
       top: 0px;
       border: none;
       height: 45px;
-      background-color: #ff0059;
+      background-color: #b42b36;
       color: #fff;
       width: 90px;
       border-radius: 4px;
     }
 
     .search-2 button:hover {
-      background: #ff0059;
+      background: #b42b36;
       color: #ffffff;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -167,7 +196,7 @@
       top: 0px;
       border: none;
       height: 45px;
-      background-color: #ff0059;
+      background-color: #b42b36;
       color: #fff;
       width: 90px;
       border-radius: 4px;
@@ -192,21 +221,21 @@
     .default_button {
       border: none;
       height: 45px;
-      background-color: #ff0059;
+      background-color: #b42b36;
       color: #fff;
       width: 90px;
       border-radius: 4px;
     }
 
     .default_button:hover {
-      background: #ff0059;
+      background: #b42b36;
       color: #ffffff;
       transition: all 0.2s ease;
       cursor: pointer;
     }
 
     .upload_button:hover {
-      background: #ff0059;
+      background: #b42b36;
       color: #ffffff;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -218,14 +247,14 @@
       top: 0px;
       border: none;
       height: 45px;
-      background-color: #ff0059;
+      background-color: #b42b36;
       color: #fff;
       width: 90px;
       border-radius: 4px;
     }
 
     .tutorial_button:hover {
-      background: #ff0059;
+      background: #b42b36;
       color: #ffffff;
       transition: all 0.2s ease;
       cursor: pointer;
@@ -281,19 +310,41 @@
 
     .accordion-button:focus {
       z-index: 3;
-      border-color: #ff0059;
+      border-color: #b42b36;
       box-shadow: 0 0 0 0.25rem rgba(153, 50, 168, 0.25);
     }
 
     .accordion-button:not(.collapsed) {
-      color:#ff0059;
+      color:#b42b36;
       background-color: #f5b3cb;
       box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.125);
     }
   </style>
   <body>
+    <header>
+      <div ></div>
+      <div id="logobox">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+           viewBox="0 0 80 76.2" style="enable-background:new 0 0 80 76.2;" xml:space="preserve">
+        <style type="text/css">
+          .st0{fill:#FFFFFF;}
+          .st1{fill:#C41130;}
+        </style>
+        <g transform="matrix(29.663 0 0 29.663 -1199.9 -8970.9)">
+          <rect x="40.4" y="302.4" class="st0" width="2.7" height="2.6"/>
+          <path class="st1" d="M40.4,302.4v1.7l0.3-0.4h0.5l-0.8,1v0.3h2.7v-2.6L40.4,302.4z M41.3,303.7h0.9L42,304h-0.2l-0.6,0.8v-0.6
+            l0.1-0.2h-0.3L41.3,303.7z M42.4,303.7h0.7l-0.2,0.3h-0.3l-0.1,0.1h0.3l-0.2,0.2h-0.3l-0.1,0.1h0.3l-0.2,0.3H42v-0.5L42.4,303.7z"
+            />
+        </g>
+        </svg>
+      </div>
+      <div id="headingbox"><h1>&nbsp;</h1></div>
+    </header>
+
     <div class="container">
-      <div class="titlegpt">LocalGPT</div>
+      <div class="titlegpt">E.L.I.T.E
+        <h1>Exclusive LLM for ITE</h1>
+      </div>
       <div class="search">
         <div class="row">
           <div class="col-md-12">
@@ -323,7 +374,7 @@
                 </button>
               </form>
               <form
-                id="uploadForm"
+                id="uploadForm" 
                 action="{{ url_for('home_page') }}"
                 method="POST"
                 enctype="multipart/form-data"
@@ -499,14 +550,14 @@
             <ul>
               <li>
                 Click
-                <span style="background-color: #ff0059; color: white">Add</span> if
+                <span style="background-color: #b42b36; color: white">Add</span> if
                 you want to add the documents selected to your pre-existing
                 knowledge base.
               </li>
               <br />
               <li>
                 Click
-                <span style="background-color: #ff0059; color: white">Reset</span>
+                <span style="background-color: #b42b36; color: white">Reset</span>
                 if you want to reset your knowledge base, and then use your new
                 documents as your new knowledge base.
               </li>
@@ -638,16 +689,16 @@
             >
               1. To upload documents for the app to ingest as its new knowledge
               base click the
-              <span style="background-color: #ff0059; color: white">Upload</span>
+              <span style="background-color: #b42b36; color: white">Upload</span>
               button.
               <br />
               2. Select the documents you want to serve as your new knowledge
               base to converse with.
               <br />
               3. Then you will be prompted with a confirmation to either
-              <span style="background-color: #ff0059; color: white">Add</span> the
+              <span style="background-color: #b42b36; color: white">Add</span> the
               documents to your knowledge base,
-              <span style="background-color: #ff0059; color: white">Reset</span>
+              <span style="background-color: #b42b36; color: white">Reset</span>
               your knowledge base with the documents you just selected, or
               <span style="background-color: gray; color: white">Cancel</span>
               the upload.
@@ -690,7 +741,7 @@
               >
               <br />
               3. Hit enter on your keyboard or click
-              <span style="background-color: #ff0059; color: white">Search</span>
+              <span style="background-color: #b42b36; color: white">Search</span>
               <br />
               4. Wait while the LLM model consumes the prompt and prepares the
               answer.
