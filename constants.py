@@ -15,7 +15,29 @@ ROOT_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 # Define the folder for storing database
 SOURCE_DIRECTORY = f"{ROOT_DIRECTORY}/SOURCE_DOCUMENTS"
 
+# Define the separated folders for different topics
+def check_folders(source_dir):
+    folders = [f for f in os.listdir(source_dir) if os.path.isdir(os.path.join(source_dir, f))]
+    if len(folders) == 0:
+        return [source_dir]
+    else:
+        sub_dirs = [os.path.join(source_dir, folder) for folder in folders]
+        return sub_dirs
+
+# Example usage
+SUB_DIRECTORIES = check_folders(SOURCE_DIRECTORY)
+
 PERSIST_DIRECTORY = f"{ROOT_DIRECTORY}/DB"
+
+# Create multiple PERSIST_DIRECTORY based on the number of sub-directories
+PERSIST_DIRECTORIES = []
+DATABASE_MAPPING = {}
+for index, sub_dir in enumerate(SUB_DIRECTORIES):
+    sub_dir_name = os.path.basename(sub_dir)
+    new_persist_dir = f"{PERSIST_DIRECTORY}/{sub_dir_name}"
+    os.makedirs(new_persist_dir, exist_ok=True)
+    PERSIST_DIRECTORIES.append(new_persist_dir)
+    DATABASE_MAPPING[sub_dir_name] = index
 
 MODELS_PATH = "./models"
 

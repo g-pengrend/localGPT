@@ -14,8 +14,10 @@ from constants import (
     DOCUMENT_MAP,
     EMBEDDING_MODEL_NAME,
     INGEST_THREADS,
-    PERSIST_DIRECTORY,
-    SOURCE_DIRECTORY,
+    # PERSIST_DIRECTORY,
+    # SOURCE_DIRECTORY,
+    SUB_DIRECTORIES,
+    PERSIST_DIRECTORIES,
 )
 
 
@@ -143,35 +145,38 @@ def split_documents(documents: list[Document]) -> tuple[list[Document], list[Doc
     help="Device to run on. (Default is cuda)",
 )
 def main(device_type):
-    # Load documents and split in chunks
-    logging.info(f"Loading documents from {SOURCE_DIRECTORY}")
-    documents = load_documents(SOURCE_DIRECTORY)
-    text_documents, python_documents = split_documents(documents)
-    text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-    python_splitter = RecursiveCharacterTextSplitter.from_language(
-        language=Language.PYTHON, chunk_size=880, chunk_overlap=200
-    )
-    texts = text_splitter.split_documents(text_documents)
-    texts.extend(python_splitter.split_documents(python_documents))
-    logging.info(f"Loaded {len(documents)} documents from {SOURCE_DIRECTORY}")
-    logging.info(f"Split into {len(texts)} chunks of text")
-
-    """
-    (1) Chooses an appropriate langchain library based on the enbedding model name.  Matching code is contained within fun_localGPT.py.
     
-    (2) Provides additional arguments for instructor and BGE models to improve results, pursuant to the instructions contained on
-    their respective huggingface repository, project page or github repository.
-    """
+    for _, directories in enumerate(SUB_DIRECTORIES):
 
-    embeddings = get_embeddings(device_type)
+        # Load documents and split in chunks
+        logging.info(f"Loading documents from {directories}")
+        documents = load_documents(directories)
+        text_documents, python_documents = split_documents(documents)
+        text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_overlap=100)
+        python_splitter = RecursiveCharacterTextSplitter.from_language(
+            language=Language.PYTHON, chunk_size=1450, chunk_overlap=100
+        )
+        texts = text_splitter.split_documents(text_documents)
+        texts.extend(python_splitter.split_documents(python_documents))
+        logging.info(f"Loaded {len(documents)} documents from {directories}")
+        logging.info(f"Split into {len(texts)} chunks of text")
 
-    logging.info(f"Loaded embeddings from {EMBEDDING_MODEL_NAME}")
+        """
+        (1) Chooses an appropriate langchain library based on the enbedding model name.  Matching code is contained within fun_localGPT.py.
+        
+        (2) Provides additional arguments for instructor and BGE models to improve results, pursuant to the instructions contained on
+        their respective huggingface repository, project page or github repository.
+        """
 
-    db = Chroma.from_documents(
-        texts,
-        embeddings,
-        persist_directory=PERSIST_DIRECTORY,
-        client_settings=CHROMA_SETTINGS,
+        embeddings = get_embeddings(device_type)
+
+        logging.info(f"Loaded embeddings from {EMBEDDING_MODEL_NAME}")
+
+        db = Chroma.from_documents(
+            texts,
+            embeddings,
+            persist_directory=PERSIST_DIRECTORIES[_],
+            client_settings=CHROMA_SETTINGS,
     )
 
 

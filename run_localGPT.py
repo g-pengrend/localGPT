@@ -3,6 +3,7 @@ import logging
 import click
 import torch
 import utils
+import sys
 from langchain.chains import RetrievalQA
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.llms import HuggingFacePipeline
@@ -30,12 +31,13 @@ from load_models import (
 
 from constants import (
     EMBEDDING_MODEL_NAME,
-    PERSIST_DIRECTORY,
+    PERSIST_DIRECTORIES,
     MODEL_ID,
     MODEL_BASENAME,
     MAX_NEW_TOKENS,
     MODELS_PATH,
     CHROMA_SETTINGS,
+    DATABASE_MAPPING,
 )
 
 
@@ -98,7 +100,7 @@ def load_model(device_type, model_id, model_basename=None, LOGGING=logging):
     return local_llm
 
 
-def retrieval_qa_pipline(device_type, use_history, promptTemplate_type="llama"):
+def retrieval_qa_pipline(device_type, use_history, database_choice, promptTemplate_type="llama"):
     """
     Initializes and returns a retrieval-based Question Answering (QA) pipeline.
 
@@ -128,13 +130,20 @@ def retrieval_qa_pipline(device_type, use_history, promptTemplate_type="llama"):
     their respective huggingface repository, project page or github repository.
     """
 
+
     embeddings = get_embeddings(device_type)
 
     logging.info(f"Loaded embeddings from {EMBEDDING_MODEL_NAME}")
 
-    # load the vectorstore
-    db = Chroma(persist_directory=PERSIST_DIRECTORY, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
-    retriever = db.as_retriever()
+    try:
+        persist_directory = PERSIST_DIRECTORIES[DATABASE_MAPPING[database_choice]]
+        # load the vectorstore
+        db = Chroma(persist_directory=persist_directory, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
+        retriever = db.as_retriever()
+    except KeyError:
+        print(f"Invalid database choice: {database_choice}. Available choices are: {', '.join(DATABASE_MAPPING.keys())}")
+        sys.exit(1)
+
 
     # get the prompt template and memory if set by the user.
     prompt, memory = get_prompt_template(promptTemplate_type=promptTemplate_type, history=use_history)
@@ -221,7 +230,13 @@ def retrieval_qa_pipline(device_type, use_history, promptTemplate_type="llama"):
     is_flag=True,
     help="whether to save Q&A pairs to a CSV file (Default is False)",
 )
-def main(device_type, show_sources, use_history, model_type, save_qa):
+@click.option(
+    "--database_choice",
+    "-d",
+    default="",
+    help="choose a db based on what you have ingested",
+)
+def main(device_type, show_sources, use_history, model_type, save_qa, database_choice):
     """
     Implements the main information retrieval task for a localGPT.
 
@@ -250,7 +265,9 @@ def main(device_type, show_sources, use_history, model_type, save_qa):
     if not os.path.exists(MODELS_PATH):
         os.mkdir(MODELS_PATH)
 
-    qa = retrieval_qa_pipline(device_type, use_history, promptTemplate_type=model_type)
+    qa = retrieval_qa_pipline(device_type, use_history, database_choice, promptTemplate_type=model_type)
+    
+    logging.info(f"Database Chosen: {PERSIST_DIRECTORIES[DATABASE_MAPPING[database_choice]]}")
     # Interactive questions and answers
     while True:
         query = input("\nEnter a query: ")
