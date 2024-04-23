@@ -141,7 +141,7 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, promptTempla
         db = Chroma(persist_directory=persist_directory, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
         retriever = db.as_retriever()
     except KeyError:
-        print(f"Invalid database choice: {database_choice}. Available choices are: {', '.join(DATABASE_MAPPING.keys())}")
+        print(f"Invalid database choice: {database_choice}.Please select with flag -d. Available choices are: {', '.join(DATABASE_MAPPING.keys())}")
         sys.exit(1)
 
 
