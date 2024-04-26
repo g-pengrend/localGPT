@@ -146,7 +146,7 @@ def split_documents(documents: list[Document]) -> tuple[list[Document], list[Doc
 )
 def main(device_type):
     
-    for _, directories in enumerate(SUB_DIRECTORIES):
+    for dir_index, directories in enumerate(SUB_DIRECTORIES):
 
         # Load documents and split in chunks
         logging.info(f"Loading documents from {directories}")
@@ -175,7 +175,7 @@ def main(device_type):
         db = Chroma.from_documents(
             texts,
             embeddings,
-            persist_directory=PERSIST_DIRECTORIES[_],
+            persist_directory=PERSIST_DIRECTORIES[dir_index],
             client_settings=CHROMA_SETTINGS,
     )
 
