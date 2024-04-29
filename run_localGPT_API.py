@@ -17,7 +17,15 @@ from prompt_template_utils import get_prompt_template
 from langchain.vectorstores import Chroma
 from werkzeug.utils import secure_filename
 
-from constants import CHROMA_SETTINGS, EMBEDDING_MODEL_NAME, PERSIST_DIRECTORY, MODEL_ID, MODEL_BASENAME
+from constants import (
+    CHROMA_SETTINGS, 
+    EMBEDDING_MODEL_NAME, 
+    SUB_DIRECTORIES, 
+    PERSIST_DIRECTORIES,
+    PERSIST_DIRECTORY, 
+    MODEL_ID, 
+    MODEL_BASENAME
+)
 
 # API queue addition
 from threading import Lock
@@ -59,30 +67,55 @@ EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, mode
 #         "No files were found inside SOURCE_DOCUMENTS, please put a starter file inside before starting the API!"
 #     )
 
-# load the vectorstore
-DB = Chroma(
-    persist_directory=PERSIST_DIRECTORY,
-    embedding_function=EMBEDDINGS,
-    client_settings=CHROMA_SETTINGS,
-)
-
-RETRIEVER = DB.as_retriever()
+DB_LIST = []
+RETRIEVER_LIST = []
+QA_LIST = []
 
 LLM = load_model(device_type=DEVICE_TYPE, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
 prompt, memory = get_prompt_template(promptTemplate_type="llama", history=False)
 
-QA = RetrievalQA.from_chain_type(
-    llm=LLM,
-    chain_type="stuff",
-    retriever=RETRIEVER,
-    return_source_documents=SHOW_SOURCES,
-    chain_type_kwargs={
-        "prompt": prompt,
-    },
-)
+for dir_index, directories in enumerate(SUB_DIRECTORIES):
+# load the vectorstore
+    DB = Chroma(
+        persist_directory=PERSIST_DIRECTORIES[dir_index],
+        embedding_function=EMBEDDINGS,
+        client_settings=CHROMA_SETTINGS,
+    )
+    DB_LIST.append(DB)
+
+    RETRIEVER = DB.as_retriever()
+    RETRIEVER_LIST.append(RETRIEVER)
+
+    QA = RetrievalQA.from_chain_type(
+        llm=LLM,
+        chain_type="stuff",
+        retriever=RETRIEVER,
+        return_source_documents=SHOW_SOURCES,
+        chain_type_kwargs={
+            "prompt": prompt,
+        },
+    )
+    QA_LIST.append(QA)
+
+def make_tree(path):
+    tree = dict(name=os.path.basename(path), children=[])
+    try:
+        lst = os.listdir(path)
+    except OSError:
+        pass  # Ignore errors
+    else:
+        for name in lst:
+            fn = os.path.join(path, name)
+            if os.path.isdir(fn):
+                tree['children'].append(dict(name=name))
+    return tree
 
 app = Flask(__name__)
 
+@app.route('/api/dirtree')
+def dirtree_api():
+    path = os.path.join(os.getcwd(), "DB")
+    return jsonify(make_tree(path))
 
 @app.route("/api/delete_source", methods=["GET"])
 def delete_source_route():
@@ -160,7 +193,7 @@ def run_ingest_route():
 
 @app.route("/api/prompt_route", methods=["GET", "POST"])
 def prompt_route():
-    global QA
+    global QA_LIST
     global request_lock  # Make sure to use the global lock instance
     user_prompt = request.form.get("user_prompt")
     if user_prompt:

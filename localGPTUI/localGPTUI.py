@@ -4,7 +4,7 @@ import sys
 import tempfile
 
 import requests
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
@@ -55,6 +55,13 @@ def home_page():
         show_response_modal=False,
         response_dict={"Prompt": "None", "Answer": "None", "Sources": [("ewf", "wef")]},
     )
+
+@app.route('/get_tree_from_api')
+def get_tree_from_api():
+    api_url = f"{API_HOST}/dirtree"
+    response = requests.get(api_url)
+    tree_data = response.json()
+    return jsonify(tree_data)
 
 
 if __name__ == "__main__":
