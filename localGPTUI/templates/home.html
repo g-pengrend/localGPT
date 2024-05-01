@@ -349,6 +349,25 @@
         background-color: #007bff;
         color: white;
     }
+
+    .search-2 .preview_button {
+      position: absolute;
+      left: 1px;
+      top: 0px;
+      border: 2px solid #007bff;
+      height: 45px;
+      background-color: #b42b36;
+      color: #fff;
+      width: 90px;
+      border-radius: 4px;
+    }
+
+    .preview_button:hover {
+      background: #b42b36;
+      color: #ffffff;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
 </style>
   <body>
     <header>
@@ -438,6 +457,22 @@
           <div id="selectedFolderDisplay" class="selected-folder" style="margin-left: 10px;">
             <span>Selected Directory:</span> <span id="selectedFolderName"></span>
           </div>
+          <select id="directoryDropdown">
+            <option value="" disabled selected>Select Output Type</option>
+            <option value="Option 1">Multiple Choice Questions</option>
+            <option value="Option 2">Short Answer Questions</option>
+            <option value="Option 3">Labsheet Creation</option>
+            <option value="Option 4">Question and Answer</option>
+            <!-- Add more options as needed -->
+          </select>
+          <button
+          type="button"
+          class="preview_button"
+          data-bs-toggle="modal"
+          data-bs-target="#preview_modal"
+        >
+          Preview
+        </button>
         </div>
     </div>
 
@@ -822,6 +857,60 @@
               without re-running the script, just wait for the prompt again.
             </p>
             <br />
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button
+              type="button"
+              class="default_button"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div
+      class="modal fade"
+      id="preview_modal"
+      tabindex="-1"
+      aria-labelledby="preview_modal"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h5
+              class="modal-title w-100"
+              id="preview_modal"
+              style="color: #292b2c"
+            >
+              Mobile Application Development - Multiple Choice Questions -
+            </h5>
+          </div>
+          <div class="modal-body" style="color: #292b2c">
+            <p><strong style="margin-left: 5%; text-align: left">Q1: Which of the following programming languages is commonly used for native Android app development?</strong>
+            <br /><p style="text-align: justify; margin-left: 5%; margin-right: 5%">
+              A) Java<br />B) Swift<br />C) Python<br />D) Ruby<br /> Answer: A (Java)
+            <br /><br /></p>
+            <p><strong style="margin-left: 5%; text-align: left">Q2: Which mobile platform uses Objective-C and Swift as the primary programming languages?</strong>
+            <br /><p style="text-align: justify; margin-left: 5%; margin-right: 5%">
+              A) Android<br />B) iOS<br />C) Windows Phone<br />D) Blackberry OS<br /> Answer: B (iOS)
+            <br /><br /></p>
+            <p><strong style="margin-left: 5%; text-align: left">Q3: What is the purpose of an APK file in Android app development?</strong>
+            <br /><p style="text-align: justify; margin-left: 5%; margin-right: 5%">
+              A) It contains the source code of the app<br />B) It is used for testing purposes only<br />C) It is the installation file for Android apps<br />D) It is used for debugging Android apps<br /> Answer: C (It is the installation file for Android apps)
+            <br /><br /></p>
+            <p><strong style="margin-left: 5%; text-align: left">Q4: Which of the following is NOT a commonly used mobile app development framework?</strong>
+            <br /><p style="text-align: justify; margin-left: 5%; margin-right: 5%">
+              A) React Native<br />B) Xamarin<br />C) Django<br />D) Flutter<br /> Answer: C (Django)
+            <br /><br /></p>
+            <p><strong style="margin-left: 5%; text-align: left">Q5: What is the purpose of Xcode in iOS app development?</strong>
+            <br /><p style="text-align: justify; margin-left: 5%; margin-right: 5%">
+              A) It is an iOS emulator for testing apps<br />B) It is a version control system for iOS projects<br />C) It is an integrated development environment (IDE) for iOS app development<br />D) It is a database management tool for iOS apps<br /> Answer: C (It is an integrated development environment (IDE) for iOS app development)
+            <br /><br /></p>
           </div>
           <div class="modal-footer justify-content-center">
             <button
