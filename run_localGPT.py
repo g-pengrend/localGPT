@@ -219,11 +219,11 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, promptTempla
 )
 @click.option(
     "--model_type",
-    default="llama",
+    default="llama3",
     type=click.Choice(
-        ["llama", "mistral", "non_llama"],
+        ["llama3", "llama", "mistral", "non_llama"],
     ),
-    help="model type, llama, mistral or non_llama",
+    help="model type, llama3, llama, mistral or non_llama",
 )
 @click.option(
     "--save_qa",
