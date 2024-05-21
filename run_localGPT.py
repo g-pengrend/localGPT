@@ -4,6 +4,7 @@ import click
 import torch
 import utils
 import sys
+import subprocess
 from langchain.chains import RetrievalQA
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 from langchain.llms import HuggingFacePipeline
@@ -39,7 +40,6 @@ from constants import (
     CHROMA_SETTINGS,
     DATABASE_MAPPING,
 )
-
 
 def load_model(device_type, model_id, model_basename=None, LOGGING=logging):
     """
@@ -219,7 +219,7 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, promptTempla
 )
 @click.option(
     "--model_type",
-    default="llama3",
+    default="llama",
     type=click.Choice(
         ["llama3", "llama", "mistral", "non_llama"],
     ),
@@ -299,6 +299,8 @@ def main(device_type, show_sources, use_history, model_type, save_qa, database_c
         if save_qa:
             utils.log_to_csv(query, answer)
 
+        os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
+        subprocess.run(["python", "./run_llm_to_xml.py", answer])
 
 if __name__ == "__main__":
     logging.basicConfig(

@@ -3,6 +3,7 @@ import os
 import shutil
 import subprocess
 import argparse
+import time
 
 import torch
 from flask import Flask, jsonify, request
@@ -96,6 +97,10 @@ for dir_index, directories in enumerate(SUB_DIRECTORIES):
         },
     )
     QA_LIST.append(QA)
+
+time.sleep(0.2)
+# Open localhost URL
+subprocess.run(['python', '-m', 'webbrowser', '-t', 'http://localhost:5111'])
 
 def make_tree(path):
     tree = dict(name=os.path.basename(path), children=[])
@@ -214,6 +219,10 @@ def prompt_route():
                 prompt_response_dict["Sources"].append(
                     (os.path.basename(str(document.metadata["source"])), str(document.page_content))
                 )
+
+            # Code to output XML document in ACTEP CED Lesson Plan format.
+            os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
+            subprocess.run(["python", "./run_llm_to_xml.py", answer])
 
         return jsonify(prompt_response_dict), 200
     else:
