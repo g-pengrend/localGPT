@@ -223,7 +223,7 @@
       height: 45px;
       background-color: #b42b36;
       color: #fff;
-      width: 90px;
+      min-width: 90px;
       border-radius: 4px;
     }
 
@@ -447,6 +447,7 @@
           </div>
         </div>
       </div>
+
       <div style="margin-top: 20px;"></div>
         <!-- Dropdown button for Directory Selection-->
         <div class="dropdown">
@@ -466,7 +467,7 @@
             <option value="Option 4">Question and Answer</option>
             <!-- Add more options as needed -->
           </select>
-          
+
           <button
           type="button"
           class="preview_button"
@@ -475,6 +476,11 @@
           >
           Preview
           </button>
+      </div>
+
+      <!-- Display selected directory -->
+      <div id="uploadDirectoryDisplay" style="margin-top: 20px; border: 2px solid #000; padding: 10px; border-radius: 5px;">
+        <span>File Upload Location:</span> <span id="uploadDirectoryName"></span>
       </div>
     </div>
 
@@ -495,13 +501,14 @@
     <script>
       $(document).ready(function() {
           // Function to fetch directory tree data and populate the dropdown
-          function fetchAndPopulateDropdown() {
+          function fetchAndPopulate() {
               $.ajax({
                   url: '/',
                   type: 'GET',
                   dataType: 'json',
                   success: function(data) {
                       populateDropdown(data);
+                      listDirectories(data);
                   },
                   error: function(err) {
                       console.error('Error fetching directory tree:', err);
@@ -524,9 +531,26 @@
               });
           }
 
+          // Function to display directories in a list format inside the modal
+          function listDirectories(treeData) {
+              var directoryList = $('#directoryList');
+              directoryList.empty(); // Clear existing items
+              treeData.children.forEach(function(child) {
+                  var button = $('<button>')
+                      .addClass('list-group-item list-group-item-action')
+                      .text(child.name)
+                      .val(child.name)
+                      .on('click', function() {
+                          $('.list-group-item').removeClass('active');
+                          $(this).addClass('active');
+                      });
+                  directoryList.append(button);
+              });
+          }
+
           // Event listener for the dropdown click event
           $('#directoryDropdown').on('click', function() {
-              fetchAndPopulateDropdown(); // Fetch and update the dropdown options
+              fetchAndPopulate(); // Fetch and update the dropdown options
           });
 
           // Event listener for dropdown change event
@@ -534,6 +558,18 @@
               var selectedFolder = $(this).val();
               $('#selectedFolderName').text(selectedFolder);
               $('#selectedFolderDisplay').show(); // Show the selected folder display
+          });
+
+          // Event listener for the OK button click event inside the modal
+          $('#okButton').on('click', function() {
+              var selectedDirectoryName = $('.list-group-item.active').text(); // Get the text of the active item
+              $('#uploadDirectoryName').text(selectedDirectoryName); // Update the display with the selected directory name
+              $('#directoryModal').modal('hide'); // Close the modal
+          });
+
+          // Event listener for modal show event
+          $('#directoryModal').on('show.bs.modal', function() {
+              fetchAndPopulate(); // Fetch and update the directory list in the modal
           });
       });
     </script>
@@ -654,6 +690,51 @@
       </div>
     </div>
 
+
+    <!-- Directory Listing Modal -->
+    <div
+      class="modal fade"
+      id="directoryModal"
+      tabindex="-1"
+      aria-labelledby="directoryModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header justify-content-center">
+            <h5 class="modal-title justify-content-center" id="directoryModalLabel">
+              Directory List
+            </h5>
+          </div>
+          <div class="modal-body">
+            <div id="directoryList" class="list-group">
+              <!-- Directories will be listed here as buttons -->
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button 
+              type="submit" 
+              name="button_clicked"
+              value="add_document"
+              class="default_button" 
+              id="okButton" 
+              onclick="submitForm('add')"
+              >
+              Upload to Folder
+            </button>
+            <button 
+              type="button" 
+              class="cancel_button" 
+              data-bs-toggle="modal" 
+              data-bs-target="#uploadModal"
+              >
+              Back
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- Upload Confirmation Modal -->
     <div
       class="modal fade"
@@ -676,6 +757,12 @@
             <ul>
               <li>
                 Click
+                <span style="background-color: #b42b36; color: white">Upload to Existing Folder</span> if
+                Placeholder Text
+              </li>
+              <br />
+              <li>
+                Click
                 <span style="background-color: #b42b36; color: white">Add</span> if
                 you want to add the documents selected to your pre-existing
                 knowledge base.
@@ -696,6 +783,14 @@
             </ul>
           </div>
           <div class="modal-footer justify-content-center">
+            <button
+            type="button"
+            class="default_button"
+            data-bs-toggle="modal"
+            data-bs-target="#directoryModal"
+            >
+            Upload to Existing Folder
+            </button>
             <button
               type="submit"
               name="button_clicked"
