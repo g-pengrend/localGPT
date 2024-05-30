@@ -18,6 +18,13 @@ API_HOST = "http://localhost:5110/api"
 # PAGES #
 @app.route("/", methods=["GET", "POST"])
 def home_page():
+    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+        # Handle AJAX request for directory tree data
+        api_url = f"{API_HOST}/dirtree"
+        response = requests.get(api_url)
+        tree_data = response.json()
+        return jsonify(tree_data)
+    
     if request.method == "POST":
         if "user_prompt" in request.form:
             user_prompt = request.form["user_prompt"]
@@ -55,14 +62,6 @@ def home_page():
         show_response_modal=False,
         response_dict={"Prompt": "None", "Answer": "None", "Sources": [("ewf", "wef")]},
     )
-
-@app.route('/get_tree_from_api')
-def get_tree_from_api():
-    api_url = f"{API_HOST}/dirtree"
-    response = requests.get(api_url)
-    tree_data = response.json()
-    return jsonify(tree_data)
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

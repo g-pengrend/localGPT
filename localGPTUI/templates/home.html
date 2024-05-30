@@ -419,7 +419,7 @@
                   placeholder="Tell a summary of what you want to know?"
                 />
                 <button type="button" onclick="submitPromptForm()">
-                  Search
+                  Generate
                 </button>
               </form>
               <form
@@ -448,16 +448,17 @@
         </div>
       </div>
       <div style="margin-top: 20px;"></div>
-        <!-- Dropdown button -->
+        <!-- Dropdown button for Directory Selection-->
         <div class="dropdown">
           <select id="directoryDropdown">
           <option value="" disabled selected>Select a directory</option>
           </select>
-          <!-- Selected Folder display -->
+          <!-- Selected Directory display -->
           <div id="selectedFolderDisplay" class="selected-folder" style="margin-left: 10px;">
             <span>Selected Directory:</span> <span id="selectedFolderName"></span>
           </div>
-          <select id="directoryDropdown">
+          
+          <select id="directoryDropdown_static">
             <option value="" disabled selected>Select Output Type</option>
             <option value="Option 1">Multiple Choice Questions</option>
             <option value="Option 2">Short Answer Questions</option>
@@ -465,15 +466,16 @@
             <option value="Option 4">Question and Answer</option>
             <!-- Add more options as needed -->
           </select>
+          
           <button
           type="button"
           class="preview_button"
           data-bs-toggle="modal"
           data-bs-target="#preview_modal"
-        >
+          >
           Preview
-        </button>
-        </div>
+          </button>
+      </div>
     </div>
 
 </html>
@@ -488,28 +490,46 @@
           }
         });
     </script>
+
+    <!-- Script that populates the database selections -->
     <script>
       $(document).ready(function() {
-          $.ajax({
-              url: '/get_tree_from_api',
-              type: 'GET',
-              dataType: 'json',
-              success: function(data) {
-                  populateDropdown(data);
-              },
-              error: function(err) {
-                  console.error('Error fetching directory tree:', err);
-              }
-          });
+          // Function to fetch directory tree data and populate the dropdown
+          function fetchAndPopulateDropdown() {
+              $.ajax({
+                  url: '/',
+                  type: 'GET',
+                  dataType: 'json',
+                  success: function(data) {
+                      populateDropdown(data);
+                  },
+                  error: function(err) {
+                      console.error('Error fetching directory tree:', err);
+                  },
+                  headers: {
+                  'X-Requested-With': 'XMLHttpRequest'  // Indicate AJAX request
+                  }
+              });
+          }
 
+          // Function to populate the dropdown with fetched data
           function populateDropdown(treeData) {
               var dropdown = $('#directoryDropdown');
+              dropdown.empty(); // Clear existing options
+              var defaultOption = $('<option value="" disabled selected>Select a directory</option>');
+              dropdown.append(defaultOption);
               treeData.children.forEach(function(child) {
-                  var option = $('<option>').text(child.name);
+                  var option = $('<option>').text(child.name).val(child.name); // Ensure the value is set
                   dropdown.append(option);
               });
           }
 
+          // Event listener for the dropdown click event
+          $('#directoryDropdown').on('click', function() {
+              fetchAndPopulateDropdown(); // Fetch and update the dropdown options
+          });
+
+          // Event listener for dropdown change event
           $('#directoryDropdown').change(function() {
               var selectedFolder = $(this).val();
               $('#selectedFolderName').text(selectedFolder);
