@@ -43,28 +43,76 @@
       }, 5);
     }
 
-    function submitForm(action) {
+    function submitForm(params) {
       var form = document.getElementById("uploadForm");
 
-      var input = document.createElement("input");
-      input.type = "hidden";
-      input.name = "action";
-      input.value = action;
+      // Remove any existing hidden inputs to avoid duplicates
+      var existingInputs = form.querySelectorAll("input[type='hidden']");
+      existingInputs.forEach(input => input.remove());
+      
+      if (params.action) {
+        var input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "action";
+        input.value = params.action;
+        form.appendChild(input);
+      }
 
-      form.appendChild(input);
-
+      if (params.uploadPath) {
+        var uploadPathInput = document.createElement("input");
+        uploadPathInput.type = "hidden";
+        uploadPathInput.name = "uploadPath";
+        uploadPathInput.value = params.uploadPath;
+        form.appendChild(uploadPathInput);
+      }
+      
       // After the form is submitted, close the current modal and open the new one.
       $("#uploadModal").on("hidden.bs.modal", function () {
         $("#ingesting-modal").modal("show");
       });
 
-      if (action == "add" || action == "reset") {
+      $("#directoryModal").on("hidden.bs.modal", function () {
+        $("#ingesting-modal").modal("show");
+      });
+
+      if (params.action === "add" || params.action === "reset") {
         $("#uploadModal").modal("hide");
+        $("#directoryModal").modal("hide");
       }
 
       form.submit();
     }
   </script>
+  <script>
+    function submitFolderForm(params) {
+      var form = document.getElementById("uploadForm");
+      if (params.newFolder) {
+          var newFolderInput = document.createElement("input");
+          newFolderInput.type = "hidden";
+          newFolderInput.name = "newFolder";
+          newFolderInput.value = params.newFolder;
+          form.appendChild(newFolderInput);
+
+          // Use AJAX only when newFolder is present
+          $.ajax({
+              type: 'POST',
+              url: '/',
+              data: $(form).serialize(), // Serialize the form data
+              success: function (response) {
+                // Close the create folder modal
+                $('#createFolderModal').modal('hide');
+
+                // Handle success response
+                $('#directoryModal').modal('show');
+              },
+              error: function (error) {
+                  // Handle error response
+                  console.error('Form submission error:', error);
+              }
+          });
+        }
+    }
+    </script>
   {% if show_response_modal %}
   <script>
     $(document).ready(function () {
@@ -461,10 +509,11 @@
           
           <select id="directoryDropdown_static">
             <option value="" disabled selected>Select Output Type</option>
-            <option value="Option 1">Multiple Choice Questions</option>
-            <option value="Option 2">Short Answer Questions</option>
-            <option value="Option 3">Labsheet Creation</option>
-            <option value="Option 4">Question and Answer</option>
+            <option value="Option 1">Lesson Plan Creation</option>
+            <option value="Option 2">Multiple Choice Questions</option>
+            <option value="Option 3">Short Answer Questions</option>
+            <option value="Option 4">Labsheet Creation</option>
+            <option value="Option 5">Question and Answer</option>
             <!-- Add more options as needed -->
           </select>
 
@@ -543,6 +592,9 @@
                       .on('click', function() {
                           $('.list-group-item').removeClass('active');
                           $(this).addClass('active');
+
+                          // TESTING ONLY: Update the uploadDirectoryName span with the clicked directory
+                          $('#uploadDirectoryName').text(child.name);
                       });
                   directoryList.append(button);
               });
@@ -560,18 +612,23 @@
               $('#selectedFolderDisplay').show(); // Show the selected folder display
           });
 
-          // Event listener for the OK button click event inside the modal
-          $('#okButton').on('click', function() {
-              var selectedDirectoryName = $('.list-group-item.active').text(); // Get the text of the active item
-              $('#uploadDirectoryName').text(selectedDirectoryName); // Update the display with the selected directory name
-              $('#directoryModal').modal('hide'); // Close the modal
-          });
-
           // Event listener for modal show event
           $('#directoryModal').on('show.bs.modal', function() {
               fetchAndPopulate(); // Fetch and update the directory list in the modal
           });
       });
+    </script>
+
+    <script>
+      function createFolder() {
+        var newfolderName = document.getElementById('newFolderName').value.trim();
+        if (!newfolderName) {
+          alert("Please enter a folder name.");
+          return;  // Prevent form submission if folder name is empty
+        }
+
+        submitFolderForm({newFolder: newfolderName});
+      }
     </script>
 
     <!-- Chat Response Modal -->
@@ -690,8 +747,7 @@
       </div>
     </div>
 
-
-    <!-- Directory Listing Modal -->
+    <!-- Directory Listing & Upload Modal -->
     <div
       class="modal fade"
       id="directoryModal"
@@ -703,7 +759,7 @@
         <div class="modal-content">
           <div class="modal-header justify-content-center">
             <h5 class="modal-title justify-content-center" id="directoryModalLabel">
-              Directory List
+              Select a Folder to upload your document to
             </h5>
           </div>
           <div class="modal-body">
@@ -716,11 +772,18 @@
               type="submit" 
               name="button_clicked"
               value="add_document"
-              class="default_button" 
-              id="okButton" 
-              onclick="submitForm('add')"
+              class="default_button"
+              onclick="submitForm({ action: 'add', uploadPath: $('.list-group-item.active').text()})"
               >
               Upload to Folder
+            </button>
+            <button 
+            type="button" 
+            class="default_button"
+            data-bs-toggle="modal"
+            data-bs-target="#createFolderModal"
+              >
+            Create Folder
             </button>
             <button 
               type="button" 
@@ -757,15 +820,9 @@
             <ul>
               <li>
                 Click
-                <span style="background-color: #b42b36; color: white">Upload to Existing Folder</span> if
-                Placeholder Text
-              </li>
-              <br />
-              <li>
-                Click
                 <span style="background-color: #b42b36; color: white">Add</span> if
                 you want to add the documents selected to your pre-existing
-                knowledge base.
+                folders OR create a new folder to add to.
               </li>
               <br />
               <li>
@@ -789,28 +846,64 @@
             data-bs-toggle="modal"
             data-bs-target="#directoryModal"
             >
-            Upload to Existing Folder
+            Add
             </button>
-            <button
-              type="submit"
-              name="button_clicked"
-              value="add_document"
-              class="default_button"
-              onclick="submitForm('add')"
-            >
-              Add
-            </button>
+
             <button
               type="submit"
               name="button_clicked"
               value="reset_document"
               class="default_button"
-              onclick="submitForm('reset')"
+              onclick="submitForm({action: 'reset'})"
             >
               Reset
             </button>
+
             <button type="button" class="cancel_button" data-bs-dismiss="modal">
               Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create Folder Modal -->
+    <div
+      class="modal fade"
+      id="createFolderModal"
+      tabindex="-1"
+      aria-labelledby="createFolderModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createFolderModalLabel">Create New Folder</h5>
+            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="newFolderName">Folder Name</label>
+              <input type="text" class="form-control" id="newFolderName" placeholder="Enter folder name">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button 
+              type="button" 
+              class="default_button" 
+              onclick="createFolder()"
+              >
+              Create
+            </button>
+            <button 
+              type="button" 
+              class="cancel_button" 
+              data-bs-toggle="modal" 
+              data-bs-target="#directoryModal"
+              >
+              Back
             </button>
           </div>
         </div>

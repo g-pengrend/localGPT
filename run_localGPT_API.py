@@ -25,7 +25,8 @@ from constants import (
     PERSIST_DIRECTORIES,
     PERSIST_DIRECTORY, 
     MODEL_ID, 
-    MODEL_BASENAME
+    MODEL_BASENAME,
+    SOURCE_DIRECTORY
 )
 
 # API queue addition
@@ -119,7 +120,7 @@ app = Flask(__name__)
 
 @app.route('/api/dirtree')
 def dirtree_api():
-    path = os.path.join(os.getcwd(), "DB")
+    path = os.path.join(os.getcwd(), "SOURCE_DOCUMENTS")
     return jsonify(make_tree(path))
 
 @app.route("/api/delete_source", methods=["GET"])
@@ -134,8 +135,8 @@ def delete_source_route():
     return jsonify({"message": f"Folder '{folder_name}' successfully deleted and recreated."})
 
 
-@app.route("/api/save_document", methods=["GET", "POST"])
-def save_document_route():
+@app.route("/api/save_document/<directory_name>", methods=["GET", "POST"])
+def save_document_route(directory_name):
     if "document" not in request.files:
         return "No document part", 400
     file = request.files["document"]
@@ -143,7 +144,7 @@ def save_document_route():
         return "No selected file", 400
     if file:
         filename = secure_filename(file.filename)
-        folder_path = "SOURCE_DOCUMENTS"
+        folder_path = os.path.join("SOURCE_DOCUMENTS", directory_name)
         if not os.path.exists(folder_path):
             os.makedirs(folder_path)
         file_path = os.path.join(folder_path, filename)
@@ -151,15 +152,16 @@ def save_document_route():
         return "File saved successfully", 200
 
 
-@app.route("/api/run_ingest", methods=["GET"])
-def run_ingest_route():
+@app.route("/api/run_ingest/<directory_name>", methods=["GET"])
+def run_ingest_route(directory_name):
     global DB
     global RETRIEVER
     global QA
     try:
-        if os.path.exists(PERSIST_DIRECTORY):
+        persist_directory_path = os.path.join(PERSIST_DIRECTORY, directory_name)
+        if os.path.exists(persist_directory_path):
             try:
-                shutil.rmtree(PERSIST_DIRECTORY)
+                shutil.rmtree(persist_directory_path)
             except OSError as e:
                 print(f"Error: {e.filename} - {e.strerror}.")
         else:
@@ -169,13 +171,18 @@ def run_ingest_route():
         if DEVICE_TYPE == "cpu":
             run_langest_commands.append("--device_type")
             run_langest_commands.append(DEVICE_TYPE)
+        if directory_name is not None:
+            run_langest_commands.append("--select_directory")
+            run_langest_commands.append(os.path.join(SOURCE_DIRECTORY, directory_name))
+            run_langest_commands.append("--db_directory")
+            run_langest_commands.append(persist_directory_path)
 
         result = subprocess.run(run_langest_commands, capture_output=True)
         if result.returncode != 0:
             return "Script execution failed: {}".format(result.stderr.decode("utf-8")), 500
         # load the vectorstore
         DB = Chroma(
-            persist_directory=PERSIST_DIRECTORY,
+            persist_directory=persist_directory_path,
             embedding_function=EMBEDDINGS,
             client_settings=CHROMA_SETTINGS,
         )

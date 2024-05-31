@@ -41,20 +41,26 @@ def home_page():
             if request.form.get("action") == "reset":
                 response = requests.get(delete_source_url)
 
-            save_document_url = f"{API_HOST}/save_document"
-            run_ingest_url = f"{API_HOST}/run_ingest"  # URL of the /api/run_ingest endpoint
-            files = request.files.getlist("documents")
-            for file in files:
-                print(file.filename)
-                filename = secure_filename(file.filename)
-                with tempfile.SpooledTemporaryFile() as f:
-                    f.write(file.read())
-                    f.seek(0)
-                    response = requests.post(save_document_url, files={"document": (filename, f)})
-                    print(response.status_code)  # print HTTP response status code for debugging
-            # Make a GET request to the /api/run_ingest endpoint
-            response = requests.get(run_ingest_url)
-            print(response.status_code)  # print HTTP response status code for debugging
+            # Access the action and uploadPath values from the form data
+            action = request.form.get("action")
+            upload_path = request.form.get("uploadPath")
+
+            if action == "add" and upload_path is not None:
+                # Perform actions specific to 'add'
+                save_document_url = f"{API_HOST}/save_document/{upload_path}"
+                run_ingest_url = f"{API_HOST}/run_ingest/{upload_path}"  # URL of the /api/run_ingest endpoint
+                files = request.files.getlist("documents")
+                for file in files:
+                    print(file.filename)
+                    filename = secure_filename(file.filename)
+                    with tempfile.SpooledTemporaryFile() as f:
+                        f.write(file.read())
+                        f.seek(0)
+                        response = requests.post(save_document_url, files={"document": (filename, f)})
+                        print(response.status_code)  # print HTTP response status code for debugging
+                # Make a GET request to the /api/run_ingest endpoint
+                response = requests.get(run_ingest_url)
+                print(response.status_code)  # print HTTP response status code for debugging
 
     # Display the form for GET request
     return render_template(
