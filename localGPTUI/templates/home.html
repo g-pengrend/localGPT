@@ -636,6 +636,16 @@
           return;  // Prevent form submission if folder name is empty
         }
 
+        // Get the existing folder names from the dropdown options
+        var existingFolderNames = $('#directoryDropdown').find('option').map(function() {
+            return $(this).val();
+        }).get();
+
+        // Check if the input folder name already exists
+        if (existingFolderNames.includes(newfolderName)) {
+            alert("Folder name already exists. Please enter a different name.");
+            return;  // Prevent form submission if folder name already exists
+        }
         submitFolderForm({newFolder: newfolderName});
       }
     </script>
