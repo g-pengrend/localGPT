@@ -83,36 +83,45 @@
       form.submit();
     }
   </script>
+
   <script>
     function submitFolderForm(params) {
-      var form = document.getElementById("uploadForm");
-      if (params.newFolder) {
-          var newFolderInput = document.createElement("input");
-          newFolderInput.type = "hidden";
-          newFolderInput.name = "newFolder";
-          newFolderInput.value = params.newFolder;
-          form.appendChild(newFolderInput);
+      var formData = new FormData();
+      formData.append('newFolder', params.newFolder);
 
-          // Use AJAX only when newFolder is present
-          $.ajax({
-              type: 'POST',
-              url: '/',
-              data: $(form).serialize(), // Serialize the form data
-              success: function (response) {
-                // Close the create folder modal
-                $('#createFolderModal').modal('hide');
+      // Use AJAX to send the FormData object
+      $.ajax({
+        type: 'POST',
+        url: '/',
+        data: formData,
+        processData: false,  // Prevent jQuery from automatically processing the data
+        contentType: false,  // Set content type to false to prevent jQuery from setting it incorrectly
+        beforeSend: function() {
+          console.log("Sending AJAX request with data:", formData);
+        },
+        success: function(response) {
+          console.log("Form submission successful:", response);
+          // Close the create folder modal
+          $('#createFolderModal').modal('hide');
 
-                // Handle success response
-                $('#directoryModal').modal('show');
-              },
-              error: function (error) {
-                  // Handle error response
-                  console.error('Form submission error:', error);
-              }
-          });
+          // Handle success response
+          $('#directoryModal').modal('show');
+        },
+        error: function(error) {
+          // Handle error response
+          console.error('Form submission error:', error);
+        },
+        complete: function(xhr, status) {
+          console.log("AJAX request completed with status:", status);
+        },
+        headers: {
+          'X-Requested-With': 'createNewFolderRequest'
         }
+        
+      });
     }
-    </script>
+  </script>
+
   {% if show_response_modal %}
   <script>
     $(document).ready(function () {

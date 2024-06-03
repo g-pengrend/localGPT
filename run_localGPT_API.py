@@ -151,6 +151,15 @@ def save_document_route(directory_name):
         file.save(file_path)
         return "File saved successfully", 200
 
+@app.route("/api/create_folder/<folder_name>", methods=["POST"])
+def create_folder(folder_name):
+    folder_path = os.path.join("SOURCE_DOCUMENTS", folder_name)
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)
+        return {"message": f"Folder '{folder_name}' created successfully."}, 200
+    else:
+        return {"message": f"Folder '{folder_name}' already exists."}, 400
+
 
 @app.route("/api/run_ingest/<directory_name>", methods=["GET"])
 def run_ingest_route(directory_name):

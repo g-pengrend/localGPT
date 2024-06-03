@@ -25,7 +25,24 @@ def home_page():
         tree_data = response.json()
         return jsonify(tree_data)
     
+    if request.headers.get('X-Requested-With') == 'createNewFolderRequest':
+        new_folder = request.form.get("newFolder")
+        print(f"Request form data: {new_folder}")
+        if new_folder is not None:
+            print(f"New folder to be created: {new_folder}")
+            create_folder_url = f"{API_HOST}/create_folder/{new_folder}"
+            response = requests.post(create_folder_url)
+            print(response.status_code)  # Print HTTP response status code for debugging
+            if response.status_code == 200:
+                return jsonify({"message": f"Folder '{new_folder}' created successfully."})
+            else:
+                return jsonify({"message": f"Folder '{new_folder}' already exists."}), 400
+        else:
+            print("newFolder parameter is missing in the request.")
+    
     if request.method == "POST":
+        print("POST correct")
+        
         if "user_prompt" in request.form:
             user_prompt = request.form["user_prompt"]
             print(f"User Prompt: {user_prompt}")
@@ -81,4 +98,4 @@ if __name__ == "__main__":
         "accessible from other devices.",
     )
     args = parser.parse_args()
-    app.run(debug=False, host=args.host, port=args.port)
+    app.run(debug=True, host=args.host, port=args.port)
