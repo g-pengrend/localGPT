@@ -165,7 +165,7 @@ def create_folder(folder_name):
 def run_ingest_route(directory_name):
     global DB
     global RETRIEVER
-    global QA
+    global QA_LIST
     try:
         persist_directory_path = os.path.join(PERSIST_DIRECTORY, directory_name)
         if os.path.exists(persist_directory_path):
@@ -207,6 +207,8 @@ def run_ingest_route(directory_name):
                 "prompt": prompt,
             },
         )
+        QA_LIST.append(QA)
+
         return "Script executed successfully: {}".format(result.stdout.decode("utf-8")), 200
     except Exception as e:
         return f"Error occurred: {str(e)}", 500
@@ -217,6 +219,16 @@ def prompt_route():
     global QA_LIST
     global request_lock  # Make sure to use the global lock instance
     user_prompt = request.form.get("user_prompt")
+    selected_folder = request.form.get("selected_folder")
+
+    ##################################################################
+    ######### PLACEHOLDER TO DO FOLDER SELECTION #####################
+    if selected_folder:
+        print(f"Selected Folder: {selected_folder}")
+        return jsonify({"message": f"Folder '{selected_folder}' selected successfully."}), 200
+    ######### TO DO: CODE SELECTION FOLDER INTO THE QA ###############
+    ##################################################################
+
     if user_prompt:
         # Acquire the lock before processing the prompt
         with request_lock:

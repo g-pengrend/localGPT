@@ -40,6 +40,19 @@ def home_page():
         else:
             print("newFolder parameter is missing in the request.")
     
+    if request.headers.get('X-Requested-With') == 'selectFolderRequest':
+        selected_folder = request.form.get("selectedFolder")
+        print(f"Selected folder: {selected_folder}")
+        if selected_folder is not None:
+            # Process the selected folder as needed
+            prompt_route_url = f"{API_HOST}/prompt_route"
+            response = requests.post(prompt_route_url, data={"selected_folder": selected_folder})
+            return jsonify({"message": f"Folder '{selected_folder}' selected successfully."})
+        else:
+            print("selectedFolder parameter is missing in the request.")
+            return jsonify({"message": "No folder selected."}), 400
+
+    
     if request.method == "POST":
         print("POST correct")
         
@@ -53,14 +66,15 @@ def home_page():
             if response.status_code == 200:
                 # print(response.json())  # Print the JSON data from the response
                 return render_template("home.html", show_response_modal=True, response_dict=response.json())
+        
         elif "documents" in request.files:
             delete_source_url = f"{API_HOST}/delete_source"  # URL of the /api/delete_source endpoint
-            if request.form.get("action") == "reset":
-                response = requests.get(delete_source_url)
-
             # Access the action and uploadPath values from the form data
             action = request.form.get("action")
-            upload_path = request.form.get("uploadPath")
+            upload_path = request.form.get("uploadPath")            
+            
+            if request.form.get("action") == "reset":
+                response = requests.get(delete_source_url)
 
             if action == "add" and upload_path is not None:
                 # Perform actions specific to 'add'
