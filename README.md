@@ -74,18 +74,24 @@ For `NVIDIA` GPUs support, use `cuBLAS`
 set CMAKE_ARGS="-DLLAMA_CUBLAS=on" 
 set FORCE_CMAKE=1 
 set LLAMA_CUBLAS=1
-
-pip install llama-cpp-python==0.1.83 --no-cache-dir
-
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
 For Apple Metal (`M1/M2`) support, use
 
 ```shell
 # Example: METAL
-CMAKE_ARGS="-DLLAMA_METAL=on"  FORCE_CMAKE=1 pip install llama-cpp-python --no-cache-dir
+export CMAKE_ARGS="-DLLAMA_METAL=on"
+export FORCE_CMAKE=1
 ```
+
+For both `NVIDIA` and `M1/M2`, install the following packages:
+
+```shell
+pip install llama-cpp-python==0.1.83 --no-cache-dir
+
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+```
+
 For more details, please refer to [llama-cpp](https://github.com/abetlen/llama-cpp-python#installation-with-openblas--cublas--clblast--metal)
 
 ## Docker 🐳
