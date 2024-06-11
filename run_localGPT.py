@@ -179,7 +179,7 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, promptTempla
 @click.command()
 @click.option(
     "--device_type",
-    default="cuda" if torch.cuda.is_available() else "cpu",
+    default="cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu",
     type=click.Choice(
         [
             "cpu",
@@ -203,7 +203,7 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, promptTempla
             "mtia",
         ],
     ),
-    help="Device to run on. (Default is cuda)",
+    help="Device to run on. (Default is cuda / mps)",
 )
 @click.option(
     "--show_sources",
@@ -223,7 +223,7 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, promptTempla
     type=click.Choice(
         ["llama3", "llama", "mistral", "non_llama"],
     ),
-    help="model type, llama3, llama, mistral or non_llama",
+    help="model type, llama3, llama, mistral or non_llama (Default is llama)",
 )
 @click.option(
     "--save_qa",
@@ -299,7 +299,7 @@ def main(device_type, show_sources, use_history, model_type, save_qa, database_c
         if save_qa:
             utils.log_to_csv(query, answer)
 
-        os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
+        # os.chdir("./output/ELITE_lessonPlans")
         subprocess.run(["python", "./run_llm_to_xml.py", answer])
 
 if __name__ == "__main__":
