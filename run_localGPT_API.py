@@ -12,7 +12,11 @@ from langchain.embeddings import HuggingFaceInstructEmbeddings
 
 # from langchain.embeddings import HuggingFaceEmbeddings
 from run_localGPT import load_model
-from prompt_template_utils import get_prompt_template
+from prompt_template_utils import (
+    get_prompt_template,
+    DEFAULT_PROMPT,
+    LESSON_PLAN_PROMPT,
+)
 
 # from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.vectorstores import Chroma
@@ -26,8 +30,10 @@ from constants import (
     PERSIST_DIRECTORY, 
     MODEL_ID, 
     MODEL_BASENAME,
-    SOURCE_DIRECTORY
+    SOURCE_DIRECTORY,
 )
+
+
 
 # API queue addition
 from threading import Lock
@@ -72,9 +78,10 @@ EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, mode
 DB_LIST = []
 RETRIEVER_LIST = []
 QA_LIST = []
+DB_SELECTED = "QnA" # Plaaceholder
 
 LLM = load_model(device_type=DEVICE_TYPE, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
-prompt, memory = get_prompt_template(promptTemplate_type="llama", history=False)
+prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
 
 for dir_index, directories in enumerate(SUB_DIRECTORIES):
 # load the vectorstore
@@ -160,6 +167,15 @@ def create_folder(folder_name):
     else:
         return {"message": f"Folder '{folder_name}' already exists."}, 400
 
+@app.route("/api/choose_folder/<selected_folder>", methods=["POST"])
+def chosen_folder(selected_folder):
+    global DB_SELECTED
+    if selected_folder:
+        DB_SELECTED = selected_folder
+    else:
+        DB_SELECTED = "QnA"
+    return DB_SELECTED
+
 
 @app.route("/api/run_ingest/<directory_name>", methods=["GET"])
 def run_ingest_route(directory_name):
@@ -196,7 +212,7 @@ def run_ingest_route(directory_name):
             client_settings=CHROMA_SETTINGS,
         )
         RETRIEVER = DB.as_retriever()
-        prompt, memory = get_prompt_template(promptTemplate_type="llama", history=False)
+        prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
 
         QA = RetrievalQA.from_chain_type(
             llm=LLM,
@@ -213,24 +229,39 @@ def run_ingest_route(directory_name):
     except Exception as e:
         return f"Error occurred: {str(e)}", 500
 
-
 @app.route("/api/prompt_route", methods=["GET", "POST"])
 def prompt_route():
     global QA_LIST
     global request_lock  # Make sure to use the global lock instance
-    user_prompt = request.form.get("user_prompt")
-    selected_folder = request.form.get("selected_folder")
 
+    user_prompt = request.form.get("user_prompt")
     ##################################################################
     ######### PLACEHOLDER TO DO FOLDER SELECTION #####################
-    if selected_folder:
-        print(f"Selected Folder: {selected_folder}")
-        return jsonify({"message": f"Folder '{selected_folder}' selected successfully."}), 200
+    print("THIS PRINTS SELECTED FOLDER: ", DB_SELECTED)
     ######### TO DO: CODE SELECTION FOLDER INTO THE QA ###############
     ##################################################################
 
-    if user_prompt:
+
+
+    if user_prompt and DB_SELECTED == "QnA":
         # Acquire the lock before processing the prompt
+        print("*****************Using base LLM without RAG*****************")
+        print("The selected folder is", DB_SELECTED)
+        with request_lock:
+
+            answer = LLM(user_prompt)
+
+            prompt_response_dict = {
+                "Prompt": user_prompt,
+                "Answer": answer,
+            }
+
+            return jsonify(prompt_response_dict), 200
+
+    elif user_prompt and DB_SELECTED:
+        # Acquire the lock before processing the prompt
+        print("*****************Using LLM with RAG*****************")
+        print("The selected folder is", DB_SELECTED)   
         with request_lock:
             # print(f'User Prompt: {user_prompt}')              
             # Get the answer from the chain

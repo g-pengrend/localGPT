@@ -13,7 +13,7 @@ from langchain.prompts import PromptTemplate
 Read the given context before answering questions and think step by step. If you can not answer a user question based on 
 the provided context, inform the user. Do not use any other information for answering user. Provide a detailed answer to the question."""
 
-system_prompt = """You are a bot for Institute of Technical Education (ITE, Singapore).
+DEFAULT_PROMPT = """You are a bot for Institute of Technical Education (ITE, Singapore).
 The Institute of Technical Education (ITE) is a post-secondary education institution and statutory board under the purview of the Ministry of Education in Singapore.
 Your job is to answer queries from the user based on the context provided. Explain the answer as well.
 
@@ -23,7 +23,7 @@ While answering the question, it is critical that you:
 - Answer using ONLY the context. Context is your ground truth.
 """
 
-lesson_plan_prompt = """You are a bot to assist lecturers create lesson plans. Read the given context before answering questions.
+LESSON_PLAN_PROMPT = """You are a bot to assist lecturers create lesson plans. Read the given context before answering questions.
 
 An example of the format is provided below, match the keys and subkeys exactly:
 {{
@@ -103,7 +103,7 @@ While answering the question, it is critical that you:
 """
 
 
-def get_prompt_template(system_prompt=lesson_plan_prompt, promptTemplate_type=None, history=False):
+def get_prompt_template(system_prompt=LESSON_PLAN_PROMPT, promptTemplate_type=None, history=False):
     if promptTemplate_type == "llama":
         B_INST, E_INST = "[INST]", "[/INST]"
         B_SYS, E_SYS = "<<SYS>>\n", "\n<</SYS>>\n\n"

@@ -39,18 +39,21 @@ def home_page():
                 return jsonify({"message": f"Folder '{new_folder}' already exists."}), 400
         else:
             print("newFolder parameter is missing in the request.")
-    
+
     if request.headers.get('X-Requested-With') == 'selectFolderRequest':
         selected_folder = request.form.get("selectedFolder")
-        print(f"Selected folder: {selected_folder}")
+        print(f"Selected folder received from UI: {selected_folder}")  # Debug print
         if selected_folder is not None:
             # Process the selected folder as needed
-            prompt_route_url = f"{API_HOST}/prompt_route"
-            response = requests.post(prompt_route_url, data={"selected_folder": selected_folder})
-            return jsonify({"message": f"Folder '{selected_folder}' selected successfully."})
+            selected_folder_url = f"{API_HOST}/choose_folder/{selected_folder}"
+            response = requests.post(selected_folder_url)
+            print(response.status_code)  # Print HTTP response status code for debugging
+            if response.status_code == 200:
+                return jsonify({"message": f"Folder '{selected_folder}' selected successfully."})
+            else:
+                return jsonify({"message": f"Folder '{selected_folder}' facing some issue."}), 400
         else:
-            print("selectedFolder parameter is missing in the request.")
-            return jsonify({"message": "No folder selected."}), 400
+            print("selected_folder parameter is missing in the request.")
 
     
     if request.method == "POST":
