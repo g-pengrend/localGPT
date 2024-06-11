@@ -84,12 +84,18 @@ export CMAKE_ARGS="-DLLAMA_METAL=on"
 export FORCE_CMAKE=1
 ```
 
+> **NOTE:** You can verify that the environment variables have been set correctly by using the following commands:
+> 
+> echo $CMAKE_ARGS
+> 
+> echo $FORCE_CMAKE
+
 For both `NVIDIA` and `M1/M2`, install the following packages:
 
 ```shell
-pip install llama-cpp-python==0.1.83 --no-cache-dir
+python -m pip install llama-cpp-python==0.1.83 --no-cache-dir
 
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
 ```
 
 For more details, please refer to [llama-cpp](https://github.com/abetlen/llama-cpp-python#installation-with-openblas--cublas--clblast--metal)
@@ -134,7 +140,7 @@ Run the following command to ingest all the data.
 If you have `cuda` setup on your system.
 
 ```shell
-python ingest.py
+python ingest_all.py
 ```
 You will see an output like this:
 <img width="1110" alt="Screenshot 2023-09-14 at 3 36 27 PM" src="https://github.com/PromtEngineer/localGPT/assets/134474669/c9274e9a-842c-49b9-8d95-606c3d80011f">
