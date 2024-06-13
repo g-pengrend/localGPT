@@ -78,7 +78,7 @@ EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, mode
 DB_LIST = []
 RETRIEVER_LIST = []
 QA_LIST = []
-DB_SELECTED = "QnA" # Plaaceholder
+DB_SELECTED = "" # Plaaceholder
 
 LLM = load_model(device_type=DEVICE_TYPE, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
 prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
@@ -173,7 +173,7 @@ def chosen_folder(selected_folder):
     if selected_folder:
         DB_SELECTED = selected_folder
     else:
-        DB_SELECTED = "QnA"
+        DB_SELECTED = ""
     return DB_SELECTED
 
 
@@ -243,7 +243,7 @@ def prompt_route():
 
 
 
-    if user_prompt and DB_SELECTED == "QnA":
+    if user_prompt and DB_SELECTED == "":
         # Acquire the lock before processing the prompt
         print("*****************Using base LLM without RAG*****************")
         print("The selected folder is", DB_SELECTED)

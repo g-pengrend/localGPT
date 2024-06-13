@@ -65,6 +65,17 @@
         uploadPathInput.value = params.uploadPath;
         form.appendChild(uploadPathInput);
       }
+
+      if (params.selectPrompt) {
+        var selectPromptInput = document.createElement("input");
+        selectPromptInput.type = "hidden";
+        selectPromptInput.name = "select_prompt";
+        selectPromptInput.value = params.selectPrompt;
+        form.appendChild(selectPromptInput);
+      }
+      
+      // Update the selectedPromptName span with the selected value
+      document.getElementById("selectedPromptName").textContent = params.selectPrompt;
       
       // After the form is submitted, close the current modal and open the new one.
       $("#uploadModal").on("hidden.bs.modal", function () {
@@ -407,6 +418,21 @@
         color: white;
     }
 
+    /* Styles for the dropdown menu */
+    #promptDropdown {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        width: 250px;
+    }
+
+    /* Hover effect for dropdown options */
+    #promptDropdown option:hover {
+        background-color: #007bff;
+        color: white;
+    }
+
     .search-2 .preview_button {
       position: absolute;
       left: 1px;
@@ -507,7 +533,7 @@
 
       <div style="margin-top: 20px;"></div>
         <!-- Dropdown for Directory Selection-->
-        <div class="dropdown">
+        <div class="dropdown" style="display: flex; align-items: center;">
           <select id="directoryDropdown">
           <option value="" disabled selected>Select a directory</option>
           </select>
@@ -515,17 +541,25 @@
           <div id="selectedFolderDisplay" class="selected-folder" style="margin-left: 10px;">
             <span>Selected Directory:</span> <span id="selectedFolderName"></span>
           </div>
-          
-          <select id="directoryDropdown_static">
-            <option value="" disabled selected>Select Output Type</option>
-            <option value="Option 1">Lesson Plan Creation</option>
-            <option value="Option 2">Multiple Choice Questions (Coming soon...)</option>
-            <option value="Option 3">Short Answer Questions (Coming soon...)</option>
-            <option value="Option 4">Labsheet Creation (Coming soon...)</option>
-            <option value="Option 5">Question and Answer (Coming soon...)</option>
-            <!-- Add more options as needed -->
-          </select>
-
+        </div>
+      
+      <div style="margin-top: 20px;"></div>
+        <div class="dropdown" style="display: flex; align-items: center;">
+          <form id="uploadForm" method="post" action="{{ url_for('home_page') }}">
+            <select id="promptDropdown" name="select_prompt" onchange="submitForm({selectPrompt: this.value})">
+              <option value="" disabled selected>Select Output Type</option>
+              <option value="QA">Question & Answer (Default)</option>
+              <option value="LP">Lesson Plan Creation</option>
+              <option value="MCQ">Multiple Choice Questions (Coming soon...)</option>
+              <option value="SAQ">Short Answer Questions (Coming soon...)</option>
+              <option value="LS">Labsheet Creation (Coming soon...)</option>
+              <!-- Add more options as needed -->
+            </select>
+          </form>
+          <!-- Selected Directory display -->
+          <div id="selectedPromptDisplay" class="selected-folder" style="margin-left: 10px;">
+            <span>Selected Prompt:</span> <span id="selectedPromptName"></span>
+          </div>
           <button
           type="button"
           class="preview_button"
@@ -534,7 +568,8 @@
           >
           Preview
           </button>
-      </div>
+
+        </div>
 
       <!-- Display selected directory -->
       <div id="uploadDirectoryDisplay" style="margin-top: 20px; border: 2px solid #000; padding: 10px; border-radius: 5px;">
@@ -659,7 +694,16 @@
           });
       });
     </script>
-
+    
+    <script>
+      $(document).ready(function() {
+          // Function to handle dropdown change event
+          $('#promptDropdown').change(function() {
+              var selectedValue = $(this).val();
+              $('#selectedPromptName').text(selectedValue);
+          });
+      });
+    </script>
     <script>
       function createFolder() {
         var newfolderName = document.getElementById('newFolderName').value.trim();

@@ -59,6 +59,26 @@ def home_page():
     if request.method == "POST":
         print("POST correct")
         
+        select_prompt = request.form["select_prompt"]
+        print(f"Prompt Template Selected: {select_prompt}")
+        if select_prompt == "QA":
+        # Handle Question & Answer (Default)
+            pass
+        elif select_prompt == "LP":
+            # Handle Lesson Plan Creation
+            pass
+        elif select_prompt == "MCQ":
+            # Handle Multiple Choice Questions
+            pass
+        elif select_prompt == "SAQ":
+            # Handle Short Answer Questions
+            pass
+        elif select_prompt == "LS":
+            # Handle Labsheet Creation
+            pass
+        else:
+            select_prompt = "QA"
+
         if "user_prompt" in request.form:
             user_prompt = request.form["user_prompt"]
             print(f"User Prompt: {user_prompt}")
@@ -76,7 +96,7 @@ def home_page():
             action = request.form.get("action")
             upload_path = request.form.get("uploadPath")            
             
-            if request.form.get("action") == "reset":
+            if action == "reset":
                 response = requests.get(delete_source_url)
 
             if action == "add" and upload_path is not None:
