@@ -12,7 +12,7 @@ from langchain.embeddings import HuggingFaceInstructEmbeddings
 
 # from langchain.embeddings import HuggingFaceEmbeddings
 from run_localGPT import load_model
-from prompt_template_utils import (
+from prompt_templates.prompt_template_utils import (
     get_prompt_template,
     DEFAULT_PROMPT,
     LESSON_PLAN_PROMPT,

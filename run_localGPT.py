@@ -13,7 +13,7 @@ from langchain.callbacks.manager import CallbackManager
 
 callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
-from prompt_templates.lesson_plan import get_prompt_template as lesson_plan_template
+from prompt_templates.prompt_template_utils import get_prompt_template as lesson_plan_template
 from prompt_templates.chat import get_prompt_template as chat_template
 from utils import get_embeddings
 
