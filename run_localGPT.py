@@ -13,8 +13,7 @@ from langchain.callbacks.manager import CallbackManager
 
 callback_manager = CallbackManager([StreamingStdOutCallbackHandler()])
 
-from prompt_templates.prompt_template_utils import get_prompt_template as lesson_plan_template
-from prompt_templates.chat import get_prompt_template as chat_template
+from prompt_templates.prompt_template_utils import get_prompt_template
 from utils import get_embeddings
 
 # from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
@@ -101,7 +100,7 @@ def load_model(device_type, model_id, model_basename=None, LOGGING=logging):
     return local_llm
 
 
-def retrieval_qa_pipline(device_type, use_history, database_choice, query_type, promptTemplate_type="llama"):
+def retrieval_qa_pipline(device_type, use_history, database_choice, query_type, promptTemplate_type="mistral"):
     """
     Initializes and returns a retrieval-based Question Answering (QA) pipeline.
 
@@ -145,13 +144,9 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, query_type, 
         print(f"Invalid database choice: {database_choice}. Please select with flag -d. Available choices are: {', '.join(DATABASE_MAPPING.keys())}")
         sys.exit(1)
 
-    if query_type == "lesson_plan":
-        print('using lesson_plan template')
-        # get the prompt template and memory if set by the user.
-        prompt, memory = lesson_plan_template(promptTemplate_type=promptTemplate_type, history=use_history)
-    else:
-        print('using chat template')
-        prompt, memory = chat_template(promptTemplate_type=promptTemplate_type, history=use_history)
+    prompt, memory = get_prompt_template(query_type = query_type,
+                                         promptTemplate_type = promptTemplate_type,
+                                         history=use_history)
 
     # load the llm pipeline
     llm = load_model(device_type, model_id=MODEL_ID, model_basename=MODEL_BASENAME, LOGGING=logging)
@@ -293,30 +288,6 @@ def main(device_type, query_type, show_sources, use_history, model_type, save_qa
             break
 
         print("\nEvaluating the prompt...\n")
-
-        if query_type == "mcq_1":
-            query = f"""Create a multiple choice question suitable for Bloom's Taxonomy Level 1 (Remembering) based on the following: {query}. Give 4 options, around 10 words, and ending with a full-stop. Each option should not be related to each other. There is only 1 correct answer. Give detailed feedback with examples for each option. Display the correct answer. Do not use all of the above as an option. 
-
-Example formatting:
-QUESTION:
-<Question suitable for a Bloom's Taxonomy Level 1 (Remembering)>
-
-OPTIONS:
-a. <Option 1: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-b. <Option 2: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-c. <Option 3: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-d. <Option 4: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-
-FEEDBACK:
-a. <Detailed feedback for Option 1 with examples ending with a full-stop>
-b. <Detailed feedback for Option 2 with examples ending with a full-stop>
-c. <Detailed feedback for Option 3 with examples ending with a full-stop>
-d. <Detailed feedback for Option 4 with examples ending with a full-stop>
-
-While answering the question, it is critical that you:
-- Strictly provide only 4 options.
-- Strictly only have 1 correct answer.
-- Strictly follow the formatting provided."""
 
         # Get the answer from the chain
         res = qa(query)
