@@ -78,7 +78,8 @@ EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, mode
 DB_LIST = []
 RETRIEVER_LIST = []
 QA_LIST = []
-DB_SELECTED = "" # Plaaceholder
+DB_SELECTED = "" # Placeholder
+PROMPT_TEMPLATE_SELECTED = "" # Placeholder
 
 LLM = load_model(device_type=DEVICE_TYPE, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
 prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
@@ -141,7 +142,6 @@ def delete_source_route():
 
     return jsonify({"message": f"Folder '{folder_name}' successfully deleted and recreated."})
 
-
 @app.route("/api/save_document/<directory_name>", methods=["GET", "POST"])
 def save_document_route(directory_name):
     if "document" not in request.files:
@@ -157,7 +157,7 @@ def save_document_route(directory_name):
         file_path = os.path.join(folder_path, filename)
         file.save(file_path)
         return "File saved successfully", 200
-
+    
 @app.route("/api/create_folder/<folder_name>", methods=["POST"])
 def create_folder(folder_name):
     folder_path = os.path.join("SOURCE_DOCUMENTS", folder_name)
@@ -167,15 +167,38 @@ def create_folder(folder_name):
     else:
         return {"message": f"Folder '{folder_name}' already exists."}, 400
 
+@app.route("/api/choose_prompt_template/<selected_prompt_template>", methods=["POST"])
+def chosen_prompt_template(selected_prompt_template):
+    print(f"Received selected_prompt_template: {selected_prompt_template}")  # Debug print
+    global PROMPT_TEMPLATE_SELECTED
+    if selected_prompt_template:
+        PROMPT_TEMPLATE_SELECTED = selected_prompt_template
+        print(f"PROMPT_TEMPLATE_SELECTED updated to: {PROMPT_TEMPLATE_SELECTED}")  # Debug print
+    else:
+        PROMPT_TEMPLATE_SELECTED = ""
+        print(f"PROMPT_TEMPLATE_SELECTED set to None")
+    return PROMPT_TEMPLATE_SELECTED
+
 @app.route("/api/choose_folder/<selected_folder>", methods=["POST"])
 def chosen_folder(selected_folder):
     global DB_SELECTED
     if selected_folder:
         DB_SELECTED = selected_folder
+        print(f"Selected Database: {DB_SELECTED}")
     else:
         DB_SELECTED = ""
+        print(f"Selected Database: None")
     return DB_SELECTED
 
+@app.route("/api/get_current_state", methods=["GET"])
+def get_current_state():
+    global DB_SELECTED, PROMPT_TEMPLATE_SELECTED
+    current_state = {
+        "DEBUGGING: DB_SELECTED": DB_SELECTED,
+        "DEBUGGING: PROMPT_TEMPLATE_SELECTED": PROMPT_TEMPLATE_SELECTED
+    }
+    print(f"Current state: {current_state}")  # Debug print
+    return jsonify(current_state)
 
 @app.route("/api/run_ingest/<directory_name>", methods=["GET"])
 def run_ingest_route(directory_name):

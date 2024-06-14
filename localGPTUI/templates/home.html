@@ -66,14 +66,6 @@
         form.appendChild(uploadPathInput);
       }
 
-      if (params.selectPrompt) {
-        var selectPromptInput = document.createElement("input");
-        selectPromptInput.type = "hidden";
-        selectPromptInput.name = "select_prompt";
-        selectPromptInput.value = params.selectPrompt;
-        form.appendChild(selectPromptInput);
-      }
-      
       // Update the selectedPromptName span with the selected value
       document.getElementById("selectedPromptName").textContent = params.selectPrompt;
       
@@ -92,6 +84,179 @@
       }
 
       form.submit();
+    }
+  </script>
+
+  <!-- Script that populates the database selections -->
+  <script>
+    $(document).ready(function() {
+        // Function to fetch directory tree data and populate the dropdown
+        function fetchAndPopulate() {
+            $.ajax({
+                url: '/',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    populateDropdown(data);
+                    listDirectories(data);
+                },
+                error: function(err) {
+                    console.error('Error fetching directory tree:', err);
+                },
+                headers: {
+                'X-Requested-With': 'fetchDirectoryTree'  // Indicate AJAX request
+                }
+            });
+        }
+
+        // Function to populate the dropdown with fetched data
+        function populateDropdown(treeData) {
+            var dropdown = $('#directoryDropdown');
+            dropdown.empty(); // Clear existing options
+            var defaultOption = $('<option value="" disabled selected>Select a directory</option>');
+            dropdown.append(defaultOption);
+            treeData.children.forEach(function(child) {
+                var option = $('<option>').text(child.name).val(child.name); // Ensure the value is set
+                dropdown.append(option);
+            });
+        }
+
+        // Function to display directories in a list format inside the modal
+        function listDirectories(treeData) {
+            var directoryList = $('#directoryList');
+            directoryList.empty(); // Clear existing items
+            treeData.children.forEach(function(child) {
+                var button = $('<button>')
+                    .addClass('list-group-item list-group-item-action')
+                    .text(child.name)
+                    .val(child.name)
+                    .on('click', function() {
+                        $('.list-group-item').removeClass('active');
+                        $(this).addClass('active');
+
+                        // TESTING ONLY: Update the uploadDirectoryName span with the clicked directory
+                        $('#uploadDirectoryName').text(child.name);
+                    });
+                directoryList.append(button);
+            });
+        }
+
+        // Function to submit the selected folder form
+        function submitSelectedFolderForm(params) {
+          var formData = new FormData();
+          formData.append('selectedFolder', params.selectedFolderName);
+
+          // Use AJAX to send the FormData object
+          $.ajax({
+            type: 'POST',
+            url: '/',
+            data: formData,
+            processData: false,  // Prevent jQuery from automatically processing the data
+            contentType: false,  // Set content type to false to prevent jQuery from setting it incorrectly
+            beforeSend: function() {
+              console.log("Sending AJAX request with data:", formData);
+            },
+            success: function(response) {
+              console.log("Form submission successful:", response);
+            },
+            error: function(error) {
+              // Handle error response
+              console.error('Form submission error:', error);
+            },
+            complete: function(xhr, status) {
+              console.log("AJAX request completed with status:", status);
+            },
+            headers: {
+              'X-Requested-With': 'selectFolderRequest'
+            }
+          });
+        }
+
+        // Event listener for the dropdown click event
+        $('#directoryDropdown').on('click', function() {
+            fetchAndPopulate(); // Fetch and update the dropdown options
+        });
+
+        // Event listener for dropdown change event
+        $('#directoryDropdown').change(function() {
+            var selectedFolder = $(this).val();
+            $('#selectedFolderName').text(selectedFolder);
+            submitSelectedFolderForm({selectedFolderName: selectedFolder});
+            $('#selectedFolderDisplay').show(); // Show the selected folder display
+        });
+
+        // Event listener for modal show event
+        $('#directoryModal').on('show.bs.modal', function() {
+            fetchAndPopulate(); // Fetch and update the directory list in the modal
+        });
+    });
+  </script>
+
+  <!-- Script that selects and shows the prompt template request -->
+  <script>
+    $(document).ready(function() {
+      // Function to submit the selected prompt form
+      function submitPromptTemplateForm(params) {
+        var formData = new FormData();
+        formData.append('selectedPrompt', params.selectedPromptTemplateName);
+
+        // Use AJAX to send the FormData object
+        $.ajax({
+          type: 'POST',
+          url: '/',
+          data: formData,
+          processData: false, // Prevent jQuery from automatically processing the data
+          contentType: false, // Set content type to false to prevent jQuery from setting it incorrectly
+          beforeSend: function() {
+            console.log("Sending AJAX request with data:", formData);
+          },
+          success: function(response) {
+            console.log("Form submission successful:", response);
+          },
+          error: function(error) {
+            // Handle error response
+            console.error('Form submission error:', error);
+          },
+          complete: function(xhr, status) {
+            console.log("AJAX request completed with status:", status);
+          },
+          headers: {
+            'X-Requested-With': 'promptTemplateRequest'
+          }
+        });
+      }
+
+      // Event listener for dropdown change event
+      $('#promptDropdown').change(function() {
+        var selectedPromptTemplate = $(this).val();
+        $('#selectedPromptTemplateName').text(selectedPromptTemplate);
+        submitPromptTemplateForm({ selectedPromptTemplateName: selectedPromptTemplate });
+        $('#selectedPromptTemplateDisplay').show(); // Show the selected prompt display
+        // Reset the dropdown to the default value
+        $(this).val('');
+      });
+    });
+  </script>
+
+  <script>
+    function createFolder() {
+      var newfolderName = document.getElementById('newFolderName').value.trim();
+      if (!newfolderName) {
+        alert("Please enter a folder name.");
+        return;  // Prevent form submission if folder name is empty
+      }
+
+      // Get the existing folder names from the dropdown options
+      var existingFolderNames = $('#directoryDropdown').find('option').map(function() {
+          return $(this).val();
+      }).get();
+
+      // Check if the input folder name already exists
+      if (existingFolderNames.includes(newfolderName)) {
+          alert("Folder name already exists. Please enter a different name.");
+          return;  // Prevent form submission if folder name already exists
+      }
+      submitFolderForm({newFolder: newfolderName});
     }
   </script>
 
@@ -544,21 +709,20 @@
         </div>
       
       <div style="margin-top: 20px;"></div>
+        <!-- Dropdown for Prompt Template Selection-->
         <div class="dropdown" style="display: flex; align-items: center;">
-          <form id="uploadForm" method="post" action="{{ url_for('home_page') }}">
-            <select id="promptDropdown" name="select_prompt" onchange="submitForm({selectPrompt: this.value})">
-              <option value="" disabled selected>Select Output Type</option>
-              <option value="QA">Question & Answer (Default)</option>
-              <option value="LP">Lesson Plan Creation</option>
-              <option value="MCQ">Multiple Choice Questions (Coming soon...)</option>
-              <option value="SAQ">Short Answer Questions (Coming soon...)</option>
-              <option value="LS">Labsheet Creation (Coming soon...)</option>
-              <!-- Add more options as needed -->
-            </select>
-          </form>
-          <!-- Selected Directory display -->
-          <div id="selectedPromptDisplay" class="selected-folder" style="margin-left: 10px;">
-            <span>Selected Prompt:</span> <span id="selectedPromptName"></span>
+          <select id="promptDropdown">
+            <option value="" disabled selected>Select Output Type</option>
+            <option value="Question Answer">Question & Answer (Default)</option>
+            <option value="Lesson Plan">Lesson Plan Creation</option>
+            <option value="MCQ">Multiple Choice Questions (Coming soon...)</option>
+            <option value="SAQ">Short Answer Questions (Coming soon...)</option>
+            <option value="Lab Sheet">Labsheet Creation (Coming soon...)</option>
+            <!-- Add more options as needed -->
+          </select>
+          <!-- Selected Prompt Template display -->
+          <div id="selectedPromptTemplateDisplay" class="selected-folder" style="margin-left: 10px;">
+            <span>Selected Output:</span> <span id="selectedPromptTemplateName"></span>
           </div>
           <button
           type="button"
@@ -588,142 +752,6 @@
             submitPromptForm(); // Call the function to show the modal
           }
         });
-    </script>
-
-    <!-- Script that populates the database selections -->
-    <script>
-      $(document).ready(function() {
-          // Function to fetch directory tree data and populate the dropdown
-          function fetchAndPopulate() {
-              $.ajax({
-                  url: '/',
-                  type: 'GET',
-                  dataType: 'json',
-                  success: function(data) {
-                      populateDropdown(data);
-                      listDirectories(data);
-                  },
-                  error: function(err) {
-                      console.error('Error fetching directory tree:', err);
-                  },
-                  headers: {
-                  'X-Requested-With': 'XMLHttpRequest'  // Indicate AJAX request
-                  }
-              });
-          }
-
-          // Function to populate the dropdown with fetched data
-          function populateDropdown(treeData) {
-              var dropdown = $('#directoryDropdown');
-              dropdown.empty(); // Clear existing options
-              var defaultOption = $('<option value="" disabled selected>Select a directory</option>');
-              dropdown.append(defaultOption);
-              treeData.children.forEach(function(child) {
-                  var option = $('<option>').text(child.name).val(child.name); // Ensure the value is set
-                  dropdown.append(option);
-              });
-          }
-
-          // Function to display directories in a list format inside the modal
-          function listDirectories(treeData) {
-              var directoryList = $('#directoryList');
-              directoryList.empty(); // Clear existing items
-              treeData.children.forEach(function(child) {
-                  var button = $('<button>')
-                      .addClass('list-group-item list-group-item-action')
-                      .text(child.name)
-                      .val(child.name)
-                      .on('click', function() {
-                          $('.list-group-item').removeClass('active');
-                          $(this).addClass('active');
-
-                          // TESTING ONLY: Update the uploadDirectoryName span with the clicked directory
-                          $('#uploadDirectoryName').text(child.name);
-                      });
-                  directoryList.append(button);
-              });
-          }
-
-          // Function to submit the selected folder form
-          function submitSelectedFolderForm(params) {
-            var formData = new FormData();
-            formData.append('selectedFolder', params.selectedFolderName);
-
-            // Use AJAX to send the FormData object
-            $.ajax({
-              type: 'POST',
-              url: '/',
-              data: formData,
-              processData: false,  // Prevent jQuery from automatically processing the data
-              contentType: false,  // Set content type to false to prevent jQuery from setting it incorrectly
-              beforeSend: function() {
-                console.log("Sending AJAX request with data:", formData);
-              },
-              success: function(response) {
-                console.log("Form submission successful:", response);
-              },
-              error: function(error) {
-                // Handle error response
-                console.error('Form submission error:', error);
-              },
-              complete: function(xhr, status) {
-                console.log("AJAX request completed with status:", status);
-              },
-              headers: {
-                'X-Requested-With': 'selectFolderRequest'
-              }
-            });
-          }
-
-          // Event listener for the dropdown click event
-          $('#directoryDropdown').on('click', function() {
-              fetchAndPopulate(); // Fetch and update the dropdown options
-          });
-
-          // Event listener for dropdown change event
-          $('#directoryDropdown').change(function() {
-              var selectedFolder = $(this).val();
-              $('#selectedFolderName').text(selectedFolder);
-              submitSelectedFolderForm({selectedFolderName: selectedFolder});
-              $('#selectedFolderDisplay').show(); // Show the selected folder display
-          });
-
-          // Event listener for modal show event
-          $('#directoryModal').on('show.bs.modal', function() {
-              fetchAndPopulate(); // Fetch and update the directory list in the modal
-          });
-      });
-    </script>
-    
-    <script>
-      $(document).ready(function() {
-          // Function to handle dropdown change event
-          $('#promptDropdown').change(function() {
-              var selectedValue = $(this).val();
-              $('#selectedPromptName').text(selectedValue);
-          });
-      });
-    </script>
-    <script>
-      function createFolder() {
-        var newfolderName = document.getElementById('newFolderName').value.trim();
-        if (!newfolderName) {
-          alert("Please enter a folder name.");
-          return;  // Prevent form submission if folder name is empty
-        }
-
-        // Get the existing folder names from the dropdown options
-        var existingFolderNames = $('#directoryDropdown').find('option').map(function() {
-            return $(this).val();
-        }).get();
-
-        // Check if the input folder name already exists
-        if (existingFolderNames.includes(newfolderName)) {
-            alert("Folder name already exists. Please enter a different name.");
-            return;  // Prevent form submission if folder name already exists
-        }
-        submitFolderForm({newFolder: newfolderName});
-      }
     </script>
 
     <!-- Chat Response Modal -->

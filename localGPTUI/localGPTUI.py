@@ -18,66 +18,63 @@ API_HOST = "http://localhost:5110/api"
 # PAGES #
 @app.route("/", methods=["GET", "POST"])
 def home_page():
-    if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-        # Handle AJAX request for directory tree data
-        api_url = f"{API_HOST}/dirtree"
-        response = requests.get(api_url)
-        tree_data = response.json()
-        return jsonify(tree_data)
-    
-    if request.headers.get('X-Requested-With') == 'createNewFolderRequest':
-        new_folder = request.form.get("newFolder")
-        print(f"Request form data: {new_folder}")
-        if new_folder is not None:
-            print(f"New folder to be created: {new_folder}")
-            create_folder_url = f"{API_HOST}/create_folder/{new_folder}"
-            response = requests.post(create_folder_url)
-            print(response.status_code)  # Print HTTP response status code for debugging
-            if response.status_code == 200:
-                return jsonify({"message": f"Folder '{new_folder}' created successfully."})
-            else:
-                return jsonify({"message": f"Folder '{new_folder}' already exists."}), 400
-        else:
-            print("newFolder parameter is missing in the request.")
-
-    if request.headers.get('X-Requested-With') == 'selectFolderRequest':
-        selected_folder = request.form.get("selectedFolder")
-        print(f"Selected folder received from UI: {selected_folder}")  # Debug print
-        if selected_folder is not None:
-            # Process the selected folder as needed
-            selected_folder_url = f"{API_HOST}/choose_folder/{selected_folder}"
-            response = requests.post(selected_folder_url)
-            print(response.status_code)  # Print HTTP response status code for debugging
-            if response.status_code == 200:
-                return jsonify({"message": f"Folder '{selected_folder}' selected successfully."})
-            else:
-                return jsonify({"message": f"Folder '{selected_folder}' facing some issue."}), 400
-        else:
-            print("selected_folder parameter is missing in the request.")
-
+    if request.method == "GET":
+        print("GET correct")
+        if request.headers.get('X-Requested-With') == 'fetchDirectoryTree':
+            # Handle AJAX request for directory tree data
+            api_url = f"{API_HOST}/dirtree"
+            response = requests.get(api_url)
+            tree_data = response.json()
+            return jsonify(tree_data)
     
     if request.method == "POST":
         print("POST correct")
         
-        select_prompt = request.form["select_prompt"]
-        print(f"Prompt Template Selected: {select_prompt}")
-        if select_prompt == "QA":
-        # Handle Question & Answer (Default)
-            pass
-        elif select_prompt == "LP":
-            # Handle Lesson Plan Creation
-            pass
-        elif select_prompt == "MCQ":
-            # Handle Multiple Choice Questions
-            pass
-        elif select_prompt == "SAQ":
-            # Handle Short Answer Questions
-            pass
-        elif select_prompt == "LS":
-            # Handle Labsheet Creation
-            pass
-        else:
-            select_prompt = "QA"
+        if request.headers.get('X-Requested-With') == 'promptTemplateRequest':
+            selected_prompt_template = request.form.get("selectedPrompt")
+            print(f"Selected Prompt Template received from UI: {selected_prompt_template}")  # Debug print
+            if selected_prompt_template is not None:
+                # Process the selected folder as needed
+                selected_prompt_template_url = f"{API_HOST}/choose_prompt_template/{selected_prompt_template}"
+                response = requests.post(selected_prompt_template_url)
+                print(response.status_code)  # Print HTTP response status code for debugging
+                if response.status_code == 200:
+                    return jsonify({"message": f"Prompt Template '{selected_prompt_template}' selected successfully."})
+                else:
+                    return jsonify({"message": f"Prompt Template '{selected_prompt_template}' facing some issue."}), 400
+            else:
+                selected_prompt_template = "Question Answer"
+                print("Empty selection found for selected_prompt_template - Using default.")
+
+        if request.headers.get('X-Requested-With') == 'createNewFolderRequest':
+            new_folder = request.form.get("newFolder")
+            print(f"Request form data: {new_folder}")
+            if new_folder is not None:
+                print(f"New folder to be created: {new_folder}")
+                create_folder_url = f"{API_HOST}/create_folder/{new_folder}"
+                response = requests.post(create_folder_url)
+                print(response.status_code)  # Print HTTP response status code for debugging
+                if response.status_code == 200:
+                    return jsonify({"message": f"Folder '{new_folder}' created successfully."})
+                else:
+                    return jsonify({"message": f"Folder '{new_folder}' already exists."}), 400
+            else:
+                print("newFolder parameter is missing in the request.")
+
+        if request.headers.get('X-Requested-With') == 'selectFolderRequest':
+            selected_folder = request.form.get("selectedFolder")
+            print(f"Selected database received from UI: {selected_folder}")  # Debug print
+            if selected_folder is not None:
+                # Process the selected folder as needed
+                selected_folder_url = f"{API_HOST}/choose_folder/{selected_folder}"
+                response = requests.post(selected_folder_url)
+                print(response.status_code)  # Print HTTP response status code for debugging
+                if response.status_code == 200:
+                    return jsonify({"message": f"Folder '{selected_folder}' selected successfully."})
+                else:
+                    return jsonify({"message": f"Folder '{selected_folder}' facing some issue."}), 400
+            else:
+                print("selected_folder parameter is missing in the request.")
 
         if "user_prompt" in request.form:
             user_prompt = request.form["user_prompt"]
