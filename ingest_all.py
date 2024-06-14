@@ -1,3 +1,25 @@
+"""
+This script processes and ingests documents from multiple subdirectories into separate databases. It supports concurrent 
+processing using multiprocessing and multithreading to efficiently handle large volumes of documents.
+
+Functions:
+- file_log(logentry): Logs ingestion details to a file.
+- load_single_document(file_path: str) -> Document: Loads a single document based on its file path and type.
+- load_document_batch(filepaths): Loads a batch of documents concurrently using a thread pool.
+- load_documents(source_dir: str) -> list[Document]: Recursively loads all documents from a specified source directory.
+- split_documents(documents: list[Document]) -> tuple[list[Document], list[Document]]: Splits documents into text and 
+  Python documents for appropriate processing.
+
+Command-line Options:
+- --device_type: Specifies the device to use for processing (default is 'cuda' if available).
+
+Workflow:
+1. Loads documents from each subdirectory listed in SUB_DIRECTORIES.
+2. Splits documents into chunks using appropriate text splitters.
+3. Generates embeddings for the document chunks.
+4. Stores the document chunks and embeddings in separate databases for each subdirectory.
+"""
+
 import logging
 import os
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor, as_completed
