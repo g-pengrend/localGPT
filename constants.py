@@ -25,15 +25,11 @@ SUB_DIRECTORIES = get_subdirectories(SOURCE_DIRECTORY)
 
 PERSIST_DIRECTORY = os.path.join(ROOT_DIRECTORY, "DB")
 
-# Create multiple PERSIST_DIRECTORY based on the number of sub-directories
-PERSIST_DIRECTORIES = []
-DATABASE_MAPPING = {}
-for index, sub_dir in enumerate(SUB_DIRECTORIES):
-    sub_dir_name = os.path.basename(sub_dir)
-    new_persist_dir = os.path.join(PERSIST_DIRECTORY, sub_dir_name)
-    os.makedirs(new_persist_dir, exist_ok=True)
-    PERSIST_DIRECTORIES.append(new_persist_dir)
-    DATABASE_MAPPING[sub_dir_name] = index
+# Get a list of all child directories in PERSIST_DIRECTORY
+PERSIST_DIRECTORIES = [os.path.join(PERSIST_DIRECTORY, d) for d in os.listdir(PERSIST_DIRECTORY) if os.path.isdir(os.path.join(PERSIST_DIRECTORY, d))]
+
+# Create a dictionary to map directory names to their full paths
+DATABASE_MAPPING = {os.path.basename(d): d for d in PERSIST_DIRECTORIES}
 
 MODELS_PATH = "./models"
 

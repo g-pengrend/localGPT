@@ -7,15 +7,15 @@ import time
 
 import torch
 from flask import Flask, jsonify, request
-from langchain.chains import RetrievalQA
+from langchain.chains import RetrievalQA, LLMChain
 from langchain.embeddings import HuggingFaceInstructEmbeddings
 
 # from langchain.embeddings import HuggingFaceEmbeddings
 from run_localGPT import load_model
 from prompt_templates.prompt_template_utils import (
     get_prompt_template,
-    DEFAULT_PROMPT,
-    LESSON_PLAN_PROMPT,
+    PROMPT_TEMPLATE_MAPPING,
+    LESSON_PLAN_PROMPT
 )
 
 # from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
@@ -24,10 +24,10 @@ from werkzeug.utils import secure_filename
 
 from constants import (
     CHROMA_SETTINGS, 
-    EMBEDDING_MODEL_NAME, 
-    SUB_DIRECTORIES, 
-    PERSIST_DIRECTORIES,
-    PERSIST_DIRECTORY, 
+    EMBEDDING_MODEL_NAME,  
+    DATABASE_MAPPING,
+    PERSIST_DIRECTORY,
+    PERSIST_DIRECTORIES, 
     MODEL_ID, 
     MODEL_BASENAME,
     SOURCE_DIRECTORY,
@@ -75,37 +75,27 @@ EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, mode
 #         "No files were found inside SOURCE_DOCUMENTS, please put a starter file inside before starting the API!"
 #     )
 
-DB_LIST = []
-RETRIEVER_LIST = []
-QA_LIST = []
-DB_SELECTED = "" # Placeholder
-PROMPT_TEMPLATE_SELECTED = "" # Placeholder
+RETRIEVER_DICT = {}
+DB_SELECTED = "" # For debugging
+PROMPT_TEMPLATE_SELECTED = "" # For debugging
 
 LLM = load_model(device_type=DEVICE_TYPE, model_id=MODEL_ID, model_basename=MODEL_BASENAME)
 prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
 
-for dir_index, directories in enumerate(SUB_DIRECTORIES):
-# load the vectorstore
-    DB = Chroma(
-        persist_directory=PERSIST_DIRECTORIES[dir_index],
-        embedding_function=EMBEDDINGS,
-        client_settings=CHROMA_SETTINGS,
-    )
-    DB_LIST.append(DB)
+for dir_name, dir_path in DATABASE_MAPPING.items():
+    DB = Chroma(persist_directory=dir_path, embedding_function=EMBEDDINGS, client_settings=CHROMA_SETTINGS)
+    retriever = DB.as_retriever()
+    RETRIEVER_DICT[dir_name] = retriever
 
-    RETRIEVER = DB.as_retriever()
-    RETRIEVER_LIST.append(RETRIEVER)
-
-    QA = RetrievalQA.from_chain_type(
-        llm=LLM,
-        chain_type="stuff",
-        retriever=RETRIEVER,
-        return_source_documents=SHOW_SOURCES,
-        chain_type_kwargs={
-            "prompt": prompt,
-        },
-    )
-    QA_LIST.append(QA)
+    # QA = RetrievalQA.from_chain_type(
+    #     llm=LLM,
+    #     chain_type="stuff",
+    #     retriever=RETRIEVER,
+    #     return_source_documents=SHOW_SOURCES,
+    #     chain_type_kwargs={
+    #         "prompt": prompt,
+    #     },
+    # )
 
 time.sleep(0.2)
 # Open localhost URL
@@ -202,9 +192,7 @@ def get_current_state():
 
 @app.route("/api/run_ingest/<directory_name>", methods=["GET"])
 def run_ingest_route(directory_name):
-    global DB
-    global RETRIEVER
-    global QA_LIST
+    global RETRIEVER_DICT
     try:
         persist_directory_path = os.path.join(PERSIST_DIRECTORY, directory_name)
         if os.path.exists(persist_directory_path):
@@ -223,7 +211,7 @@ def run_ingest_route(directory_name):
             run_langest_commands.append("--select_directory")
             run_langest_commands.append(os.path.join(SOURCE_DIRECTORY, directory_name))
             run_langest_commands.append("--db_directory")
-            run_langest_commands.append(persist_directory_path)
+            run_langest_commands.append(os.path.join(PERSIST_DIRECTORY, directory_name))
 
         result = subprocess.run(run_langest_commands, capture_output=True)
         if result.returncode != 0:
@@ -234,19 +222,21 @@ def run_ingest_route(directory_name):
             embedding_function=EMBEDDINGS,
             client_settings=CHROMA_SETTINGS,
         )
-        RETRIEVER = DB.as_retriever()
-        prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
+        retriever = DB.as_retriever()
 
-        QA = RetrievalQA.from_chain_type(
-            llm=LLM,
-            chain_type="stuff",
-            retriever=RETRIEVER,
-            return_source_documents=SHOW_SOURCES,
-            chain_type_kwargs={
-                "prompt": prompt,
-            },
-        )
-        QA_LIST.append(QA)
+        RETRIEVER_DICT[persist_directory_path] = retriever
+
+        # prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
+
+        # QA = RetrievalQA.from_chain_type(
+        #     llm=LLM,
+        #     chain_type="stuff",
+        #     retriever=RETRIEVER,
+        #     return_source_documents=SHOW_SOURCES,
+        #     chain_type_kwargs={
+        #         "prompt": prompt,
+        #     },
+        # )
 
         return "Script executed successfully: {}".format(result.stdout.decode("utf-8")), 200
     except Exception as e:
@@ -254,26 +244,20 @@ def run_ingest_route(directory_name):
 
 @app.route("/api/prompt_route", methods=["GET", "POST"])
 def prompt_route():
-    global QA_LIST
     global request_lock  # Make sure to use the global lock instance
 
     user_prompt = request.form.get("user_prompt")
-    ##################################################################
-    ######### PLACEHOLDER TO DO FOLDER SELECTION #####################
-    print("THIS PRINTS SELECTED FOLDER: ", DB_SELECTED)
-    ######### TO DO: CODE SELECTION FOLDER INTO THE QA ###############
-    ##################################################################
 
+    if user_prompt and DB_SELECTED == "" and PROMPT_TEMPLATE_SELECTED == "":
+        ### History is not coded in this case ###
 
-
-    if user_prompt and DB_SELECTED == "":
         # Acquire the lock before processing the prompt
-        print("*****************Using base LLM without RAG*****************")
+        print("*****************Using base LLM without both RAG/OutputType*****************")
         print("The selected folder is", DB_SELECTED)
+        print("The selected output is", PROMPT_TEMPLATE_SELECTED)
         with request_lock:
 
             answer = LLM(user_prompt)
-
             prompt_response_dict = {
                 "Prompt": user_prompt,
                 "Answer": answer,
@@ -281,12 +265,23 @@ def prompt_route():
 
             return jsonify(prompt_response_dict), 200
 
-    elif user_prompt and DB_SELECTED:
+    elif user_prompt and DB_SELECTED and PROMPT_TEMPLATE_SELECTED == "":
         # Acquire the lock before processing the prompt
-        print("*****************Using LLM with RAG*****************")
-        print("The selected folder is", DB_SELECTED)   
+        print("*****************Using LLM with RAG without OutputType*****************")
+        print("The selected folder is", DB_SELECTED)
+        print("The selected output is", PROMPT_TEMPLATE_SELECTED)   
         with request_lock:
-            # print(f'User Prompt: {user_prompt}')              
+
+            prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)    
+            QA = RetrievalQA.from_chain_type(
+                llm=LLM,
+                chain_type="stuff",
+                retriever=RETRIEVER_DICT[DB_SELECTED],
+                return_source_documents=SHOW_SOURCES,
+                chain_type_kwargs={
+                    "prompt": prompt,
+                },
+            )           
             # Get the answer from the chain
             res = QA(user_prompt)
             answer, docs = res["result"], res["source_documents"]
@@ -302,9 +297,60 @@ def prompt_route():
                     (os.path.basename(str(document.metadata["source"])), str(document.page_content))
                 )
 
+    elif user_prompt and DB_SELECTED == "" and PROMPT_TEMPLATE_SELECTED:
+        ### History is not coded in this case ###
+
+        # Acquire the lock before processing the prompt
+        print("*****************Using LLM with OutputType without RAG*****************")
+        print("The selected folder is", DB_SELECTED)
+        print("The selected output is", PROMPT_TEMPLATE_SELECTED)   
+        with request_lock:
+
+            prompt = PROMPT_TEMPLATE_MAPPING[PROMPT_TEMPLATE_SELECTED]
+            # Get the answer from the chain
+            answer = LLM(prompt + user_prompt)
+
+            prompt_response_dict = {
+                "Prompt": user_prompt,
+                "Answer": answer,
+            }
+            
             # Code to output XML document in ACTEP CED Lesson Plan format.
-            os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
-            subprocess.run(["python", "./run_llm_to_xml.py", answer])
+            if PROMPT_TEMPLATE_SELECTED == "Lesson Plan": 
+                os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
+                subprocess.run(["python", "./run_llm_to_xml.py", answer])
+
+        return jsonify(prompt_response_dict), 200
+
+    elif user_prompt and DB_SELECTED and PROMPT_TEMPLATE_SELECTED:
+        # Acquire the lock before processing the prompt
+        print("*****************Using LLM with both RAG/OutputType*****************")
+        print("The selected folder is", DB_SELECTED)
+        print("The selected output is", PROMPT_TEMPLATE_SELECTED)   
+        with request_lock:
+
+            prompt, memory = get_prompt_template(system_prompt=PROMPT_TEMPLATE_MAPPING[PROMPT_TEMPLATE_SELECTED] ,promptTemplate_type="mistral", history=False)    
+            QA = RetrievalQA.from_chain_type(
+                llm=LLM,
+                chain_type="stuff",
+                retriever=RETRIEVER_DICT[DB_SELECTED],
+                return_source_documents=SHOW_SOURCES,
+                chain_type_kwargs={
+                    "prompt": prompt,
+                },
+            )           
+            # Get the answer from the chain
+            res = QA(user_prompt)
+            answer, docs = res["result"], res["source_documents"]
+
+            prompt_response_dict = {
+                "Prompt": user_prompt,
+                "Answer": answer,
+            }
+            # Code to output XML document in ACTEP CED Lesson Plan format.
+            if PROMPT_TEMPLATE_SELECTED == "Lesson Plan": 
+                os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
+                subprocess.run(["python", "./run_llm_to_xml.py", answer])
 
         return jsonify(prompt_response_dict), 200
     else:

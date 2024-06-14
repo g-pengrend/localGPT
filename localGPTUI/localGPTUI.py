@@ -132,4 +132,4 @@ if __name__ == "__main__":
         "accessible from other devices.",
     )
     args = parser.parse_args()
-    app.run(debug=True, host=args.host, port=args.port)
+    app.run(debug=False, host=args.host, port=args.port)

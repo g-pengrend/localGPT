@@ -65,9 +65,6 @@
         uploadPathInput.value = params.uploadPath;
         form.appendChild(uploadPathInput);
       }
-
-      // Update the selectedPromptName span with the selected value
-      document.getElementById("selectedPromptName").textContent = params.selectPrompt;
       
       // After the form is submitted, close the current modal and open the new one.
       $("#uploadModal").on("hidden.bs.modal", function () {

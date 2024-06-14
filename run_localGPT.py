@@ -137,7 +137,7 @@ def retrieval_qa_pipline(device_type, use_history, database_choice, query_type, 
     logging.info(f"Loaded embeddings from {EMBEDDING_MODEL_NAME}")
 
     try:
-        persist_directory = PERSIST_DIRECTORIES[DATABASE_MAPPING[database_choice]]
+        persist_directory = DATABASE_MAPPING[database_choice]
         # load the vectorstore
         db = Chroma(persist_directory=persist_directory, embedding_function=embeddings, client_settings=CHROMA_SETTINGS)
         retriever = db.as_retriever()
@@ -285,7 +285,7 @@ def main(device_type, query_type, show_sources, use_history, model_type, save_qa
 
     qa = retrieval_qa_pipline(device_type, use_history, database_choice, query_type=query_type, promptTemplate_type=model_type)
     
-    logging.info(f"Database Chosen: {PERSIST_DIRECTORIES[DATABASE_MAPPING[database_choice]]}")
+    logging.info(f"Database Chosen: {DATABASE_MAPPING[database_choice]}")
     # Interactive questions and answers
     while True:
         query = input("\nEnter a query: ")

@@ -102,8 +102,12 @@ While answering the question, it is critical that you:
 - Ensure that the "activity" has a minimum of 100 words with detailed examples of what the lecturer should do.
 """
 
+PROMPT_TEMPLATE_MAPPING = {
+    "Question Answer": DEFAULT_PROMPT,
+    "Lesson Plan": LESSON_PLAN_PROMPT,
+}
 
-def get_prompt_template(system_prompt=LESSON_PLAN_PROMPT, promptTemplate_type=None, history=False):
+def get_prompt_template(system_prompt=DEFAULT_PROMPT, promptTemplate_type=None, history=False):
     if promptTemplate_type == "llama":
         B_INST, E_INST = "[INST]", "[/INST]"
         B_SYS, E_SYS = "<<SYS>>\n", "\n<</SYS>>\n\n"
