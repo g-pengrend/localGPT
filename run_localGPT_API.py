@@ -118,7 +118,7 @@ app = Flask(__name__)
 
 @app.route('/api/dirtree')
 def dirtree_api():
-    path = os.path.join(os.getcwd(), "SOURCE_DOCUMENTS")
+    path = os.path.join(os.getcwd(), "DB")
     return jsonify(make_tree(path))
 
 @app.route("/api/delete_source", methods=["GET"])
@@ -161,12 +161,12 @@ def create_folder(folder_name):
 def chosen_prompt_template(selected_prompt_template):
     print(f"Received selected_prompt_template: {selected_prompt_template}")  # Debug print
     global PROMPT_TEMPLATE_SELECTED
-    if selected_prompt_template:
+    if selected_prompt_template in PROMPT_TEMPLATE_MAPPING:
         PROMPT_TEMPLATE_SELECTED = selected_prompt_template
         print(f"PROMPT_TEMPLATE_SELECTED updated to: {PROMPT_TEMPLATE_SELECTED}")  # Debug print
     else:
-        PROMPT_TEMPLATE_SELECTED = ""
-        print(f"PROMPT_TEMPLATE_SELECTED set to None")
+        PROMPT_TEMPLATE_SELECTED = "No Prompt"
+        print(f"Prompt template '{selected_prompt_template}' does not exist. PROMPT_TEMPLATE_SELECTED set to No Prompt.")  # Debug print
     return PROMPT_TEMPLATE_SELECTED
 
 @app.route("/api/choose_folder/<selected_folder>", methods=["POST"])
@@ -319,6 +319,8 @@ def prompt_route():
             if PROMPT_TEMPLATE_SELECTED == "Lesson Plan": 
                 os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
                 subprocess.run(["python", "./run_llm_to_xml.py", answer])
+            else:
+                pass
 
         return jsonify(prompt_response_dict), 200
 
@@ -351,6 +353,8 @@ def prompt_route():
             if PROMPT_TEMPLATE_SELECTED == "Lesson Plan": 
                 os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
                 subprocess.run(["python", "./run_llm_to_xml.py", answer])
+            else:
+                pass
 
         return jsonify(prompt_response_dict), 200
     else:

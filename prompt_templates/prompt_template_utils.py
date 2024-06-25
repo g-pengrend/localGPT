@@ -9,11 +9,11 @@ from langchain.prompts import PromptTemplate
 
 # this is specific to Llama-2.
 
-"""You are a helpful assistant, you will use the provided context to answer user questions.
+DEFAULT_PROMPT = """You are a helpful assistant, you will use the provided context to answer user questions.
 Read the given context before answering questions and think step by step. If you can not answer a user question based on 
 the provided context, inform the user. Do not use any other information for answering user. Provide a detailed answer to the question."""
 
-DEFAULT_PROMPT = """You are a bot for Institute of Technical Education (ITE, Singapore).
+BASIC_PROMPT = """You are a bot for Institute of Technical Education (ITE, Singapore).
 The Institute of Technical Education (ITE) is a post-secondary education institution and statutory board under the purview of the Ministry of Education in Singapore.
 Your job is to answer queries from the user based on the context provided. Explain the answer as well.
 
@@ -103,7 +103,8 @@ While answering the question, it is critical that you:
 """
 
 PROMPT_TEMPLATE_MAPPING = {
-    "Question Answer": DEFAULT_PROMPT,
+    "No Prompt": DEFAULT_PROMPT,
+    "Question Answer": BASIC_PROMPT,
     "Lesson Plan": LESSON_PLAN_PROMPT,
 }
 

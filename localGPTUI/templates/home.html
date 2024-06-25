@@ -84,9 +84,27 @@
     }
   </script>
 
+  <script>
+    // On page load, check if there's a selected folder and show it
+    $(document).ready(function() {
+        var selectedDB = "{{ selected_folder }}";
+        if (selectedDB) {
+            $('#selectedFolderName').text(selectedDB);
+            $('#selectedFolderDisplay').show();
+        }
+        var selectedOutputType = "{{ selected_prompt_template }}";
+        if (selectedOutputType) {
+          $('#selectedPromptTemplateName').text(selectedOutputType);
+          $('#selectedPromptTemplateDisplay').show();          
+        }
+
+    });
+  </script>
+
   <!-- Script that populates the database selections -->
   <script>
     $(document).ready(function() {
+
         // Function to fetch directory tree data and populate the dropdown
         function fetchAndPopulate() {
             $.ajax({
@@ -164,7 +182,7 @@
               console.log("AJAX request completed with status:", status);
             },
             headers: {
-              'X-Requested-With': 'selectFolderRequest'
+              'X-Requested-With': 'selectDBRequest'
             }
           });
         }
@@ -701,7 +719,7 @@
           </select>
           <!-- Selected Directory display -->
           <div id="selectedFolderDisplay" class="selected-folder" style="margin-left: 10px;">
-            <span>Selected Directory:</span> <span id="selectedFolderName"></span>
+            <span>Selected Directory:</span> <span id="selectedFolderName">{{ selected_folder }}</span>
           </div>
         </div>
       
@@ -719,7 +737,7 @@
           </select>
           <!-- Selected Prompt Template display -->
           <div id="selectedPromptTemplateDisplay" class="selected-folder" style="margin-left: 10px;">
-            <span>Selected Output:</span> <span id="selectedPromptTemplateName"></span>
+            <span>Selected Output:</span> <span id="selectedPromptTemplateName">{{ selected_prompt_template }}</span>
           </div>
           <button
           type="button"
