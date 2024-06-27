@@ -116,9 +116,10 @@ def make_tree(path):
 
 app = Flask(__name__)
 
-@app.route('/api/dirtree')
+@app.route('/api/dirtree', methods=["GET"])
 def dirtree_api():
     path = os.path.join(os.getcwd(), "DB")
+    print(path)
     return jsonify(make_tree(path))
 
 @app.route("/api/delete_source", methods=["GET"])
@@ -317,8 +318,7 @@ def prompt_route():
             
             # Code to output XML document in ACTEP CED Lesson Plan format.
             if PROMPT_TEMPLATE_SELECTED == "Lesson Plan": 
-                os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
-                subprocess.run(["python", "./run_llm_to_xml.py", answer])
+                subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer])
             else:
                 pass
 
@@ -351,8 +351,7 @@ def prompt_route():
             }
             # Code to output XML document in ACTEP CED Lesson Plan format.
             if PROMPT_TEMPLATE_SELECTED == "Lesson Plan": 
-                os.chdir("C:/Users/Brandon/Desktop/Projects/ELITE_lessonPlans")
-                subprocess.run(["python", "./run_llm_to_xml.py", answer])
+                subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer])
             else:
                 pass
 

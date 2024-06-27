@@ -1,0 +1,1709 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<w:document xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:cx="http://schemas.microsoft.com/office/drawing/2014/chartex" xmlns:cx1="http://schemas.microsoft.com/office/drawing/2015/9/8/chartex" xmlns:cx2="http://schemas.microsoft.com/office/drawing/2015/10/21/chartex" xmlns:cx3="http://schemas.microsoft.com/office/drawing/2016/5/9/chartex" xmlns:cx4="http://schemas.microsoft.com/office/drawing/2016/5/10/chartex" xmlns:cx5="http://schemas.microsoft.com/office/drawing/2016/5/11/chartex" xmlns:cx6="http://schemas.microsoft.com/office/drawing/2016/5/12/chartex" xmlns:cx7="http://schemas.microsoft.com/office/drawing/2016/5/13/chartex" xmlns:cx8="http://schemas.microsoft.com/office/drawing/2016/5/14/chartex" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:aink="http://schemas.microsoft.com/office/drawing/2016/ink" xmlns:am3d="http://schemas.microsoft.com/office/drawing/2017/model3d" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:oel="http://schemas.microsoft.com/office/2019/extlst" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:w16cex="http://schemas.microsoft.com/office/word/2018/wordml/cex" xmlns:w16cid="http://schemas.microsoft.com/office/word/2016/wordml/cid" xmlns:w16="http://schemas.microsoft.com/office/word/2018/wordml" xmlns:w16sdtdh="http://schemas.microsoft.com/office/word/2020/wordml/sdtdatahash" xmlns:w16se="http://schemas.microsoft.com/office/word/2015/wordml/symex" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape" mc:Ignorable="w14 w15 w16se w16cid w16 w16cex w16sdtdh wp14">
+    <w:body>
+        <w:p w14:paraId="7AE93AF4" w14:textId="77777777" w:rsidR="00377EF1" w:rsidRDefault="00377EF1"/>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblpPr w:leftFromText="180" w:rightFromText="180" w:vertAnchor="page" w:horzAnchor="margin" w:tblpXSpec="center" w:tblpY="1786"/>
+                <w:tblW w:w="10212" w:type="dxa"/>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                </w:tblBorders>
+                <w:tblLayout w:type="fixed"/>
+                <w:tblLook w:val="01E0" w:firstRow="1" w:lastRow="1" w:firstColumn="1" w:lastColumn="1" w:noHBand="0" w:noVBand="0"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="1555"/>
+                <w:gridCol w:w="2835"/>
+                <w:gridCol w:w="2268"/>
+                <w:gridCol w:w="1433"/>
+                <w:gridCol w:w="2121"/>
+            </w:tblGrid>
+            <w:tr w:rsidR="006D1BFA" w:rsidRPr="00B62852" w14:paraId="633C2BA0" w14:textId="77777777" w:rsidTr="00B72328">
+                <w:trPr>
+                    <w:trHeight w:val="288"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1555" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                    </w:tcPr>
+                    <w:p w14:paraId="608799B3" w14:textId="77777777" w:rsidR="006D1BFA" w:rsidRPr="00B62852" w:rsidRDefault="006D1BFA" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:spacing w:before="60" w:after="60"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Lesson No.</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2835" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="4D2059FE" w14:textId="54BD3CB0" w:rsidR="006D1BFA" w:rsidRPr="00B62852" w:rsidRDefault="006D1BFA" w:rsidP="00B72328">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2268" w:type="dxa"/>
+                        <w:vMerge w:val="restart"/>
+                        <w:tcBorders>
+                            <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="6D2949AD" w14:textId="77777777" w:rsidR="006D1BFA" w:rsidRPr="00B62852" w:rsidRDefault="006D1BFA" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:color w:val="FFFFFF" w:themeColor="background1"/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:color w:val="A6A6A6" w:themeColor="background1" w:themeShade="A6"/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>&lt; leave blank &gt;</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1433" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                    </w:tcPr>
+                    <w:p w14:paraId="63FC5AF8" w14:textId="77777777" w:rsidR="006D1BFA" w:rsidRPr="00B62852" w:rsidRDefault="006D1BFA" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:spacing w:before="60" w:after="60"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Duration</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2121" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="633AD64D" w14:textId="03BC8BEB" w:rsidR="006D1BFA" w:rsidRPr="00B62852" w:rsidRDefault="006D1BFA" w:rsidP="00377EF1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr w:rsidR="00B72328" w:rsidRPr="00B62852" w14:paraId="04D9A9CC" w14:textId="77777777" w:rsidTr="00B72328">
+                <w:trPr>
+                    <w:trHeight w:val="288"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1555" w:type="dxa"/>
+                        <w:vMerge w:val="restart"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="1662894C" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:spacing w:before="60" w:after="60"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Sub-task</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2835" w:type="dxa"/>
+                        <w:vMerge w:val="restart"/>
+                        <w:tcBorders>
+                            <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="5D39D8DD" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="00B72328">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2268" w:type="dxa"/>
+                        <w:vMerge/>
+                        <w:tcBorders>
+                            <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:bottom w:val="dotted" w:sz="2" w:space="0" w:color="FFFFFF" w:themeColor="background1"/>
+                            <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="0F416F3A" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:color w:val="FFFFFF" w:themeColor="background1"/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1433" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                    </w:tcPr>
+                    <w:p w14:paraId="5C54CED9" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Class</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2121" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="3C903F50" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr w:rsidR="00B72328" w:rsidRPr="00B62852" w14:paraId="44FDE87D" w14:textId="77777777" w:rsidTr="00B72328">
+                <w:trPr>
+                    <w:trHeight w:val="288"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1555" w:type="dxa"/>
+                        <w:vMerge/>
+                        <w:tcBorders>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                    </w:tcPr>
+                    <w:p w14:paraId="2D53A065" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:spacing w:before="60" w:after="60"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2835" w:type="dxa"/>
+                        <w:vMerge/>
+                        <w:tcBorders>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="7C3D1FC0" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2268" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:bottom w:val="dotted" w:sz="2" w:space="0" w:color="FFFFFF" w:themeColor="background1"/>
+                            <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="4FF7F984" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:color w:val="FFFFFF" w:themeColor="background1"/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1433" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                    </w:tcPr>
+                    <w:p w14:paraId="772C2507" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Date/Time</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="2121" w:type="dxa"/>
+                        <w:tcBorders>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="739562D8" w14:textId="77777777" w:rsidR="00B72328" w:rsidRPr="00B62852" w:rsidRDefault="00B72328" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr w:rsidR="009F2407" w:rsidRPr="00B62852" w14:paraId="5AC14F68" w14:textId="77777777" w:rsidTr="005811C1">
+                <w:trPr>
+                    <w:trHeight w:val="288"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="10212" w:type="dxa"/>
+                        <w:gridSpan w:val="5"/>
+                        <w:tcBorders>
+                            <w:bottom w:val="nil"/>
+                        </w:tcBorders>
+                    </w:tcPr>
+                    <w:p w14:paraId="5BCCCC2A" w14:textId="77777777" w:rsidR="009F2407" w:rsidRPr="00B62852" w:rsidRDefault="00A5483E" w:rsidP="003A6883">
+                        <w:pPr>
+                            <w:spacing w:before="60" w:after="60"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Learning Outcomes</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr w:rsidR="009F2407" w:rsidRPr="00B62852" w14:paraId="531065BC" w14:textId="77777777" w:rsidTr="00A06E5D">
+                <w:trPr>
+                    <w:trHeight w:val="2011"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="10212" w:type="dxa"/>
+                        <w:gridSpan w:val="5"/>
+                        <w:tcBorders>
+                            <w:top w:val="nil"/>
+                            <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                        </w:tcBorders>
+                    </w:tcPr>
+                    <w:p w14:paraId="4510350D" w14:textId="77777777" w:rsidR="008F4868" w:rsidRPr="00934F2A" w:rsidRDefault="009F2407" w:rsidP="00934F2A">
+                        <w:pPr>
+                            <w:spacing w:before="60" w:after="60"/>
+                            <w:rPr>
+                                <w:color w:val="006666"/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                            <w:t>At the end of this</w:t>
+                        </w:r>
+                        <w:r w:rsidR="001F0F8C" w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> lesson</w:t>
+                        </w:r>
+                        <w:r w:rsidR="008830CD" w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                            <w:t>, learners</w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> should be able to</w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:color w:val="A6A6A6" w:themeColor="background1" w:themeShade="A6"/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">: </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00931283" w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:color w:val="006666"/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                    </w:p>
+                    <!--Placeholder for start of LO-->
+                    <w:p w14:paraId="1A8A9F5D" w14:textId="3B9FFF3A" w:rsidR="00292B85" w:rsidRPr="00292B85" w:rsidRDefault="00292B85" w:rsidP="00A004CF">
+                        <w:pPr>
+                            <w:pStyle w:val="ListParagraph"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                                <w:u w:val="single"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                <w:p w14:paraId="4acb0afa-6f8a-458d-8fd2-d314d78b9884" w14:textId="15735dfd-3947-41e4-8124-7d4012713d25" w:rsidR="00292B85" w:rsidRPr="00292B85" w:rsidRDefault="00292B85" w:rsidP="00292B85"><w:pPr><w:pStyle w:val="ListParagraph"/><w:numPr><w:ilvl w:val="0"/><w:numId w:val="5"/></w:numPr><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/><w:u w:val="single"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>LO1: Students will be able to identify and explain at least three different types of user interface elements found on a mobile device.</w:t></w:r></w:p><w:p w14:paraId="b6f81deb-9552-4a26-bf25-dd2d0a2da9a9" w14:textId="6809552a-beca-4d34-a74b-90f4257626f2" w:rsidR="00292B85" w:rsidRPr="00292B85" w:rsidRDefault="00292B85" w:rsidP="00292B85"><w:pPr><w:pStyle w:val="ListParagraph"/><w:numPr><w:ilvl w:val="0"/><w:numId w:val="5"/></w:numPr><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/><w:u w:val="single"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>LO2: Students will be able to provide examples of specific widgets for each type of user interface element.</w:t></w:r></w:p><w:p w14:paraId="4FE64598" w14:textId="7022EF89" w:rsidR="00AD0810" w:rsidRPr="00B62852" w:rsidRDefault="00A71EB0" w:rsidP="003A6883">
+        <w:pPr>
+            <w:rPr>
+                <w:sz w:val="22"/>
+                <w:szCs w:val="22"/>
+                <w:u w:val="single"/>
+            </w:rPr>
+        </w:pPr>
+        <w:r w:rsidRPr="00B62852">
+            <w:rPr>
+                <w:sz w:val="22"/>
+                <w:szCs w:val="22"/>
+                <w:u w:val="single"/>
+            </w:rPr>
+            <w:t xml:space="preserve">Related </w:t>
+        </w:r>
+        <w:r w:rsidR="00547371" w:rsidRPr="00B62852">
+            <w:rPr>
+                <w:sz w:val="22"/>
+                <w:szCs w:val="22"/>
+                <w:u w:val="single"/>
+            </w:rPr>
+            <w:t>Professional Attributes</w:t>
+        </w:r>
+        <w:r w:rsidR="00AD0810" w:rsidRPr="00B62852">
+            <w:rPr>
+                <w:sz w:val="22"/>
+                <w:szCs w:val="22"/>
+                <w:u w:val="single"/>
+            </w:rPr>
+            <w:t>:</w:t>
+        </w:r>
+    </w:p><w:p w14:paraId="cdc070b2-26eb-4ea1-b153-87afdcac5c83" w14:textId="8e7e3187-eed3-41e8-b959-1b2c483e3d98" w:rsidR="00292B85" w:rsidRPr="00292B85" w:rsidRDefault="00292B85" w:rsidP="00292B85"><w:pPr><w:pStyle w:val="ListParagraph"/><w:numPr><w:ilvl w:val="0"/><w:numId w:val="5"/></w:numPr><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/><w:u w:val="single"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>PA1: Students will practice communication skills by explaining and discussing user interface elements with classmates.</w:t></w:r></w:p><w:p w14:paraId="92eaf518-a62f-42e7-b20b-c3bb4841cc29" w14:textId="617125ed-02a3-4582-b5f8-96e1a34b897d" w:rsidR="00292B85" w:rsidRPr="00292B85" w:rsidRDefault="00292B85" w:rsidP="00292B85"><w:pPr><w:pStyle w:val="ListParagraph"/><w:numPr><w:ilvl w:val="0"/><w:numId w:val="5"/></w:numPr><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/><w:u w:val="single"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>PA2: Students will demonstrate critical thinking skills by analyzing the functionality and purpose of different widgets in a mobile device's user interface.</w:t></w:r></w:p></w:tc>
+            </w:tr>
+        </w:tbl>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblW w:w="0" w:type="auto"/>
+                <w:tblInd w:w="137" w:type="dxa"/>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                </w:tblBorders>
+                <w:tblLayout w:type="fixed"/>
+                <w:tblLook w:val="0000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="0" w:noVBand="0"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="567"/>
+                <w:gridCol w:w="5528"/>
+                <w:gridCol w:w="1134"/>
+                <w:gridCol w:w="1560"/>
+                <w:gridCol w:w="1417"/>
+            </w:tblGrid>
+            <w:tr w:rsidR="009D02BE" w:rsidRPr="00C424E9" w14:paraId="42C133B5" w14:textId="77777777" w:rsidTr="00D91210">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="EDEDED" w:themeFill="accent3" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="371BCAEB" w14:textId="77777777" w:rsidR="009D02BE" w:rsidRPr="00C424E9" w:rsidRDefault="009D02BE" w:rsidP="00D93D77">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00C424E9">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                            <w:t>SN</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="5528" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="EDEDED" w:themeFill="accent3" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="4044693F" w14:textId="77777777" w:rsidR="009D02BE" w:rsidRPr="00C424E9" w:rsidRDefault="009D02BE" w:rsidP="00C424E9">
+                        <w:pPr>
+                            <w:spacing w:before="120" w:after="120"/>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="16"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00C424E9">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                            <w:t>Teaching &amp; Learning Activities</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1134" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="EDEDED" w:themeFill="accent3" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="1B86617E" w14:textId="77777777" w:rsidR="009D02BE" w:rsidRPr="00C424E9" w:rsidRDefault="009D02BE" w:rsidP="001716C6">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00C424E9">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                            <w:t>Duration</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00F872E6" w:rsidRPr="00C424E9">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> (mins)</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1560" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="EDEDED" w:themeFill="accent3" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="0D56DCD1" w14:textId="77777777" w:rsidR="009D02BE" w:rsidRPr="00C424E9" w:rsidRDefault="00C424E9" w:rsidP="00C424E9">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                            <w:t>Instructional</w:t>
+                        </w:r>
+                        <w:r w:rsidR="009D02BE" w:rsidRPr="00C424E9">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> Methods</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1417" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="EDEDED" w:themeFill="accent3" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="586200B0" w14:textId="77777777" w:rsidR="009D02BE" w:rsidRPr="00C424E9" w:rsidRDefault="009D02BE" w:rsidP="00A37A77">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00C424E9">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                            </w:rPr>
+                            <w:t>Resources</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:tr w:rsidR="00317AB1" w:rsidRPr="00B62852" w14:paraId="00F67411" w14:textId="77777777" w:rsidTr="00D91210">
+                <w:trPr>
+                    <w:trHeight w:val="340"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="08E98372" w14:textId="77777777" w:rsidR="00317AB1" w:rsidRPr="00B62852" w:rsidRDefault="00377EF1" w:rsidP="00E803B5">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>1.0</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="9639" w:type="dxa"/>
+                        <w:gridSpan w:val="4"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="016453FB" w14:textId="77777777" w:rsidR="00317AB1" w:rsidRPr="00B62852" w:rsidRDefault="00E82662" w:rsidP="00A32F03">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Gain Attention</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00317AB1" w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">; </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00864E32" w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">Inform Learning Outcomes; </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00317AB1" w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Activate Prior Knowledge</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <!--Placeholder for start of Event 1-->
+            <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="6C2185CC" w14:textId="77777777" w:rsidTr="00D91210">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="09CF6647" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00A004CF" w:rsidRDefault="005A6BFF" w:rsidP="00A004CF">
+                        <w:pPr>
+                            <w:jc w:val="both"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:bookmarkStart w:id="0" w:name="_Hlk166832003"/>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="5528" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="7493764F" w14:textId="00F8DE4E" w:rsidR="00CF45F8" w:rsidRPr="00A004CF" w:rsidRDefault="00CF45F8" w:rsidP="00A004CF">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1134" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="582EB552" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00A004CF" w:rsidRDefault="005A6BFF" w:rsidP="00A004CF">
+                        <w:pPr>
+                            <w:jc w:val="both"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1560" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="12EEFF02" w14:textId="77777777" w:rsidR="002134A2" w:rsidRPr="00A004CF" w:rsidRDefault="002134A2" w:rsidP="00A004CF">
+                        <w:pPr>
+                            <w:jc w:val="both"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1417" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="auto"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="75B998A2" w14:textId="77777777" w:rsidR="00CB61A9" w:rsidRPr="00A004CF" w:rsidRDefault="00CB61A9" w:rsidP="00A004CF">
+                        <w:pPr>
+                            <w:jc w:val="both"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <w:bookmarkEnd w:id="0"/>
+        <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="22971e1a-406d-4d30-9a5a-8638beb9d921" w14:textId="b5f4da53-ceb7-4628-9c03-41100f9d1c0e" w:rsidTr="00A06E5D"><w:trPr><w:trHeight w:val="558"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="567" w:type="dxa"/></w:tcPr><w:p w14:paraId="73504fdc-8d48-4912-8486-320fed38dcd6" w14:textId="83839746-88fa-4960-977b-951d127deb91" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>1.1</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="5528" w:type="dxa"/></w:tcPr><w:p w14:paraId="59233215-c808-482b-a967-39055a6b089e" w14:textId="e256eec4-64b3-460a-89cc-45f0e87a1178" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="left"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Start the lesson by reviewing the concept of mobile devices and their interfaces. Ask students if they are familiar with any types of user interface elements found on a mobile device. Write common examples on the board.</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1134" w:type="dxa"/></w:tcPr><w:p w14:paraId="6a8896ee-ad93-41db-9ae4-89f777ec07fd" w14:textId="2d40b379-31aa-4ce4-847d-8da9277dd552" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>10</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1560" w:type="dxa"/></w:tcPr><w:p w14:paraId="c5a6c2a6-bd7b-45f5-9414-a39de4621841" w14:textId="f01ca4c5-240c-4f3a-ab58-e4ae9ba64d8a" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Discussion</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/></w:tcPr><w:p w14:paraId="fc53de36-80de-4858-96b3-080f3828fa08" w14:textId="77188e65-e0e7-46cb-925f-d55d53d96360" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p></w:tc></w:tr></w:tbl>
+        <w:p w14:paraId="5636A1EF" w14:textId="77777777" w:rsidR="008F4868" w:rsidRDefault="008F4868" w:rsidP="000214C9">
+            <w:pPr>
+                <w:spacing w:line="14" w:lineRule="auto"/>
+            </w:pPr>
+        </w:p>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblW w:w="0" w:type="auto"/>
+                <w:tblInd w:w="137" w:type="dxa"/>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                </w:tblBorders>
+                <w:tblLayout w:type="fixed"/>
+                <w:tblLook w:val="0000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="0" w:noVBand="0"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="567"/>
+                <w:gridCol w:w="5528"/>
+                <w:gridCol w:w="1134"/>
+                <w:gridCol w:w="1560"/>
+                <w:gridCol w:w="1417"/>
+            </w:tblGrid>
+            <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="10A0A30B" w14:textId="77777777" w:rsidTr="00E803B5">
+                <w:trPr>
+                    <w:trHeight w:val="555"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="08EF2D5D" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="001120F3" w:rsidP="00E803B5">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>2.</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00377EF1">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>0</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="9639" w:type="dxa"/>
+                        <w:gridSpan w:val="4"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="5AABEC99" w14:textId="77777777" w:rsidR="001120F3" w:rsidRPr="00A06E5D" w:rsidRDefault="005A6BFF" w:rsidP="0073551B">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">Present </w:t>
+                        </w:r>
+                        <w:r w:rsidR="000D630A">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>the Content</w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> &amp; Provide Learning Guidance</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00377EF1">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00975115">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:br/>
+                        </w:r>
+                        <w:r w:rsidR="00377EF1">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>(Events 4 &amp; 5:</w:t>
+                        </w:r>
+                        <w:r w:rsidR="0073551B">
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00377EF1">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>repeat for each learning outcome</w:t>
+                        </w:r>
+                        <w:r w:rsidR="0073551B">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>. Where relevant,</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00887C47">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00DA46D2">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">indicate </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00887C47" w:rsidRPr="00737B0C">
+                            <w:rPr>
+                                <w:color w:val="FF0000"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>HOT</w:t>
+                        </w:r>
+                        <w:r w:rsidR="0073551B">
+                            <w:rPr>
+                                <w:color w:val="FF0000"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidR="0073551B" w:rsidRPr="0073551B">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>questions</w:t>
+                        </w:r>
+                        <w:r w:rsidR="0073551B">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> &amp; </w:t>
+                        </w:r>
+                        <w:proofErr w:type="spellStart"/>
+                        <w:r w:rsidR="0073551B" w:rsidRPr="0073551B">
+                            <w:rPr>
+                                <w:color w:val="0000CC"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>AfL</w:t>
+                        </w:r>
+                        <w:proofErr w:type="spellEnd"/>
+                        <w:r w:rsidR="00DA46D2">
+                            <w:rPr>
+                                <w:color w:val="0000CC"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>.</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00377EF1">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>)</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <!--Placeholder for start of Event 2-->
+            <w:tr w:rsidR="005811C1" w:rsidRPr="00B62852" w14:paraId="04240E0F" w14:textId="77777777" w:rsidTr="00A004CF">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="7D9BA154" w14:textId="17A8FD09" w:rsidR="005811C1" w:rsidRPr="00A004CF" w:rsidRDefault="005811C1" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="5528" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="61CC625A" w14:textId="77777777" w:rsidR="00292B85" w:rsidRPr="00A004CF" w:rsidRDefault="00292B85" w:rsidP="00292B85">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1134" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="78E5F374" w14:textId="6C2662CB" w:rsidR="005811C1" w:rsidRPr="00A004CF" w:rsidRDefault="005811C1" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1560" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="28B9A466" w14:textId="175D2A24" w:rsidR="0066738B" w:rsidRPr="00A004CF" w:rsidRDefault="0066738B" w:rsidP="0066738B">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1417" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="74E4AF40" w14:textId="77777777" w:rsidR="005811C1" w:rsidRPr="00A004CF" w:rsidRDefault="005811C1" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+        <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="7d7dea9d-0285-47b2-8509-453e9dffe969" w14:textId="01e5fe21-1054-4b0d-87ec-83bc25a3866f" w:rsidTr="00A06E5D"><w:trPr><w:trHeight w:val="558"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="567" w:type="dxa"/></w:tcPr><w:p w14:paraId="7e047cff-12e5-413d-a405-26429d53a794" w14:textId="761e58a5-9e60-4129-afb5-33c93034431f" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>2.1</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="5528" w:type="dxa"/></w:tcPr><w:p w14:paraId="41649c66-086d-4717-835c-3857e9b967bc" w14:textId="6440069a-6b9c-4b42-91ba-c5747f5c9825" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="left"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Introduce the three main types of user interface elements found on a mobile device: widgets, controls, and containers. Provide definitions and explain their purposes in the context of mobile application design.</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1134" w:type="dxa"/></w:tcPr><w:p w14:paraId="deea8def-e8d3-47ec-a996-f46ec54e6bd6" w14:textId="d20329cc-e6fe-4261-9a4c-e40fb9ae0811" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>15</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1560" w:type="dxa"/></w:tcPr><w:p w14:paraId="114b1d12-3ad2-462a-8d73-cabd22c3976d" w14:textId="443c46f1-84d3-448f-a3d3-38a4d7469f8b" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Lecture</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/></w:tcPr><w:p w14:paraId="1aaf2e16-5508-4780-9244-fdd26d4ffa4a" w14:textId="cbc6b069-6f8a-4877-a4b6-359298976df1" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p></w:tc></w:tr><w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="940b84d7-d0c7-49f2-87e3-c6e67416e5e0" w14:textId="6b8db97a-d32a-4bcc-84ab-b3fd52598c8f" w:rsidTr="00A06E5D"><w:trPr><w:trHeight w:val="558"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="567" w:type="dxa"/></w:tcPr><w:p w14:paraId="53a4b881-273b-443e-b29d-35a330767dd2" w14:textId="4d44a389-4718-4ea7-af11-c206789a615d" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>2.2</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="5528" w:type="dxa"/></w:tcPr><w:p w14:paraId="1c7fedd6-2a27-4309-9e00-5b1c0e4bba5b" w14:textId="38d38112-40e2-4c5b-ad1a-8c7fb228506a" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="left"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>For each type of user interface element, provide examples of specific widgets or controls. Discuss how these elements interact with each other and contribute to the overall functionality of a mobile application.</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1134" w:type="dxa"/></w:tcPr><w:p w14:paraId="c913c868-15c1-4e9d-ae55-6b2ad6109858" w14:textId="df35107e-cd4a-4baa-a2a0-13d56d48f08f" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>20</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1560" w:type="dxa"/></w:tcPr><w:p w14:paraId="9a23937d-1cb0-47f3-8d0f-99ba721faa03" w14:textId="33d09f5c-76b0-4972-aa1e-f29bcfc8cc76" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Presentation</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/></w:tcPr><w:p w14:paraId="3e7761f6-ecd4-4e26-8f54-f9ff2681826b" w14:textId="49b30410-0bb7-4c6a-af9f-294e7fbeb7b0" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p></w:tc></w:tr></w:tbl>
+        <w:p w14:paraId="48FFFC57" w14:textId="77777777" w:rsidR="00A004CF" w:rsidRDefault="00A004CF" w:rsidP="00A004CF">
+            <w:pPr>
+                <w:spacing w:line="14" w:lineRule="auto"/>
+            </w:pPr>
+        </w:p>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblW w:w="0" w:type="auto"/>
+                <w:tblInd w:w="137" w:type="dxa"/>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                </w:tblBorders>
+                <w:tblLayout w:type="fixed"/>
+                <w:tblLook w:val="0000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="0" w:noVBand="0"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="567"/>
+                <w:gridCol w:w="5528"/>
+                <w:gridCol w:w="1134"/>
+                <w:gridCol w:w="1560"/>
+                <w:gridCol w:w="1417"/>
+            </w:tblGrid>
+            <w:tr w:rsidR="00377EF1" w:rsidRPr="00B62852" w14:paraId="37ADF32B" w14:textId="77777777" w:rsidTr="00A004CF">
+                <w:trPr>
+                    <w:trHeight w:val="347"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="763C06D3" w14:textId="77777777" w:rsidR="00377EF1" w:rsidRPr="00F57551" w:rsidRDefault="00BC7A76" w:rsidP="00E803B5">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>3.0</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="9639" w:type="dxa"/>
+                        <w:gridSpan w:val="4"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="77DEC163" w14:textId="77777777" w:rsidR="00377EF1" w:rsidRPr="00377EF1" w:rsidRDefault="00377EF1" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Elicit Performance &amp; Provide Feedback</w:t>
+                        </w:r>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00975115">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:br/>
+                        </w:r>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>(Events 6 &amp; 7:</w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00377EF1">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> r</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00ED3FC6">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>epeat for each learning outcome.</w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00377EF1">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00ED3FC6">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve">Where relevant, indicate </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00ED3FC6" w:rsidRPr="00737B0C">
+                            <w:rPr>
+                                <w:color w:val="FF0000"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>HOT</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00ED3FC6">
+                            <w:rPr>
+                                <w:color w:val="FF0000"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> </w:t>
+                        </w:r>
+                        <w:r w:rsidR="00ED3FC6" w:rsidRPr="0073551B">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>questions</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00ED3FC6">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t xml:space="preserve"> &amp; </w:t>
+                        </w:r>
+                        <w:proofErr w:type="spellStart"/>
+                        <w:r w:rsidR="00ED3FC6" w:rsidRPr="0073551B">
+                            <w:rPr>
+                                <w:color w:val="0000CC"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>AfL</w:t>
+                        </w:r>
+                        <w:proofErr w:type="spellEnd"/>
+                        <w:r w:rsidR="00ED3FC6">
+                            <w:rPr>
+                                <w:color w:val="0000CC"/>
+                                <w:sz w:val="18"/>
+                            </w:rPr>
+                            <w:t>.</w:t>
+                        </w:r>
+                        <w:r w:rsidRPr="00377EF1">
+                            <w:rPr>
+                                <w:sz w:val="18"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>)</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <!--Placeholder for start of Event 3-->
+            <w:tr w:rsidR="005811C1" w:rsidRPr="00B62852" w14:paraId="0CD42517" w14:textId="77777777" w:rsidTr="00A004CF">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="27568A5F" w14:textId="77777777" w:rsidR="005811C1" w:rsidRPr="00A004CF" w:rsidRDefault="005811C1" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="5528" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="3143FD55" w14:textId="77777777" w:rsidR="00292B85" w:rsidRPr="00A004CF" w:rsidRDefault="00292B85" w:rsidP="00292B85">
+                        <w:pPr>
+                            <w:ind w:left="360"/>
+                            <w:rPr>
+                                <w:bCs/>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1134" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="185A7202" w14:textId="0BE6E7BD" w:rsidR="005811C1" w:rsidRPr="00A004CF" w:rsidRDefault="005811C1" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1560" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="60D47F2E" w14:textId="30C836B1" w:rsidR="006E4F3D" w:rsidRPr="00A004CF" w:rsidRDefault="006E4F3D" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1417" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="531FFA5A" w14:textId="77777777" w:rsidR="005811C1" w:rsidRPr="00A004CF" w:rsidRDefault="005811C1" w:rsidP="005811C1">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+        <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="9548d305-a992-4117-bb97-1f4a78a2454b" w14:textId="21e5f61e-441b-4f6b-abbc-52736dd0095d" w:rsidTr="00A06E5D"><w:trPr><w:trHeight w:val="558"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="567" w:type="dxa"/></w:tcPr><w:p w14:paraId="90272c1e-1a67-470e-a3d5-055794c6874a" w14:textId="58f9e7df-75d4-4ca0-9587-d939096a8aa2" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>3.1</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="5528" w:type="dxa"/></w:tcPr><w:p w14:paraId="7f19de0e-ef2c-42c0-81b1-0c4853e01fcf" w14:textId="7cb7badc-7de9-45a0-a9f1-ebd33f853e27" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="left"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Ask students to work in pairs or small groups. Assign each group a specific type of user interface element (e.g., widgets, controls, containers). Instruct them to find examples of widgets for their assigned category and prepare a brief presentation about it.</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1134" w:type="dxa"/></w:tcPr><w:p w14:paraId="bb23e619-55b0-4f0a-89b9-fb9caa285c4f" w14:textId="bfc789c5-1c33-401d-ac22-f32acece386e" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>15</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1560" w:type="dxa"/></w:tcPr><w:p w14:paraId="ed742b8f-5736-462a-8567-134f6dd1e479" w14:textId="c614ba06-3c8f-473e-852b-efff2b788a58" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Group Activity</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/></w:tcPr><w:p w14:paraId="733b54f2-f1c2-44d0-b82d-511345739af1" w14:textId="8990353a-8317-4c50-b15c-5161bf0dff6f" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p></w:tc></w:tr><w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="1e0e21a3-6d3f-4c05-aca2-9e07c407b90b" w14:textId="f963b6cf-58e2-4831-84f7-04aba62ec66a" w:rsidTr="00A06E5D"><w:trPr><w:trHeight w:val="558"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="567" w:type="dxa"/></w:tcPr><w:p w14:paraId="35cf1550-0464-458f-96d4-89b47929118b" w14:textId="29b3b67f-78e2-40d4-8a3e-797afa79c292" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>3.2</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="5528" w:type="dxa"/></w:tcPr><w:p w14:paraId="1cadbf9f-9301-4469-8142-6ee8ce919ce7" w14:textId="c9ad0c29-8e6c-43f6-9da7-51969c2ca812" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="left"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Have each group present their examples and explanations to the class. Encourage other students to ask questions and engage in discussions. Provide feedback on the clarity of explanations, relevance of examples, and overall understanding of the topic.</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1134" w:type="dxa"/></w:tcPr><w:p w14:paraId="39c9c5ce-750a-4dc5-9a03-f4419e09a4ec" w14:textId="63e0b448-3c19-4a81-b8cd-d88c119f9fce" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>25</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1560" w:type="dxa"/></w:tcPr><w:p w14:paraId="1bffc05d-956c-4de6-b11f-4f9720372b8a" w14:textId="00b33a91-4f22-4b35-8894-06adcb12f602" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Discussion</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/></w:tcPr><w:p w14:paraId="7dbfed9a-a3bf-4b99-ba8b-ea85bb7c4a34" w14:textId="25a702e3-5926-498e-91a6-fa8679b6f9d5" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p></w:tc></w:tr></w:tbl>
+        <w:p w14:paraId="1F8066AE" w14:textId="328C5480" w:rsidR="00A004CF" w:rsidRDefault="00A004CF" w:rsidP="00E803B5">
+            <w:pPr>
+                <w:tabs>
+                    <w:tab w:val="left" w:pos="3585"/>
+                </w:tabs>
+                <w:spacing w:line="14" w:lineRule="auto"/>
+            </w:pPr>
+            <w:r>
+                <w:tab/>
+            </w:r>
+        </w:p>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblW w:w="0" w:type="auto"/>
+                <w:tblInd w:w="137" w:type="dxa"/>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                </w:tblBorders>
+                <w:tblLayout w:type="fixed"/>
+                <w:tblLook w:val="0000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="0" w:noVBand="0"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="567"/>
+                <w:gridCol w:w="5528"/>
+                <w:gridCol w:w="1134"/>
+                <w:gridCol w:w="1560"/>
+                <w:gridCol w:w="1417"/>
+            </w:tblGrid>
+            <w:tr w:rsidR="000C6D5D" w:rsidRPr="00975115" w14:paraId="00536610" w14:textId="77777777" w:rsidTr="00E803B5">
+                <w:trPr>
+                    <w:trHeight w:val="340"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="7D1C6745" w14:textId="3498E981" w:rsidR="000C6D5D" w:rsidRPr="00975115" w:rsidRDefault="00E803B5" w:rsidP="00E803B5">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>4</w:t>
+                        </w:r>
+                        <w:r w:rsidR="000C6D5D" w:rsidRPr="00975115">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>.0</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="9639" w:type="dxa"/>
+                        <w:gridSpan w:val="4"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="7981B6EC" w14:textId="52235C7C" w:rsidR="000C6D5D" w:rsidRPr="00975115" w:rsidRDefault="000C6D5D" w:rsidP="000C6D5D">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00975115">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Assess Performance</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <!--Placeholder for start of Event 4-->
+            <w:tr w:rsidR="00BC7A76" w:rsidRPr="00B62852" w14:paraId="69820355" w14:textId="77777777" w:rsidTr="00D91210">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="1A7F1DB3" w14:textId="77777777" w:rsidR="00BC7A76" w:rsidRPr="00D91210" w:rsidRDefault="00BC7A76" w:rsidP="00BC7A76">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="5528" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="19A3241D" w14:textId="1E91B677" w:rsidR="00BC7A76" w:rsidRPr="00D91210" w:rsidRDefault="00BC7A76" w:rsidP="00B45EAE">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1134" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="22AD2457" w14:textId="6ADF9631" w:rsidR="00BC7A76" w:rsidRPr="00D91210" w:rsidRDefault="00BC7A76" w:rsidP="00BC7A76">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1560" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="6757E54B" w14:textId="03262ED7" w:rsidR="00BC7A76" w:rsidRPr="00D91210" w:rsidRDefault="00BC7A76" w:rsidP="00BC7A76">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1417" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="FFFFFF" w:themeFill="background1"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="3204496F" w14:textId="77777777" w:rsidR="00BC7A76" w:rsidRPr="00D91210" w:rsidRDefault="00BC7A76" w:rsidP="00BC7A76">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+        <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="d1d8ae06-e05e-4830-b855-2e841c5f08d2" w14:textId="5c1eb650-2c26-464c-874e-fb2e378cc547" w:rsidTr="00A06E5D"><w:trPr><w:trHeight w:val="558"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="567" w:type="dxa"/></w:tcPr><w:p w14:paraId="c1050b72-5624-417a-9c39-2d199d6337df" w14:textId="71022398-212b-4c77-a80e-e708ab65ee51" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>4.1</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="5528" w:type="dxa"/></w:tcPr><w:p w14:paraId="6ac15935-695f-4212-8b69-d18ebc8cfc9c" w14:textId="08f8de2c-bf98-4dbf-9d9e-9783c822e6e4" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="left"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Ask students to individually complete a short quiz. The quiz should assess their understanding of the different types of user interface elements and their associated widgets or controls.</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1134" w:type="dxa"/></w:tcPr><w:p w14:paraId="0a79e0f4-ff20-49ff-a5b8-9d82ba647f8c" w14:textId="6514d33f-0ee0-4312-9f69-10f1d426fa2b" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>10</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1560" w:type="dxa"/></w:tcPr><w:p w14:paraId="1bb0a1e5-14b8-448e-965d-d4ff0cd0b29b" w14:textId="b86ec140-94c3-4da8-a6cf-6b66e77f4f05" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Written Test</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/></w:tcPr><w:p w14:paraId="264e0e74-e7c6-4147-9657-3d1d2b287beb" w14:textId="ad46de67-e5a7-4994-91c5-b19637604736" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p></w:tc></w:tr></w:tbl>
+        <w:p w14:paraId="7BD5D11A" w14:textId="77777777" w:rsidR="00A004CF" w:rsidRDefault="00A004CF" w:rsidP="00A004CF">
+            <w:pPr>
+                <w:spacing w:line="14" w:lineRule="auto"/>
+            </w:pPr>
+        </w:p>
+        <w:tbl>
+            <w:tblPr>
+                <w:tblW w:w="0" w:type="auto"/>
+                <w:tblInd w:w="137" w:type="dxa"/>
+                <w:tblBorders>
+                    <w:top w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:left w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:bottom w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:right w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideH w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                    <w:insideV w:val="single" w:sz="4" w:space="0" w:color="auto"/>
+                </w:tblBorders>
+                <w:tblLayout w:type="fixed"/>
+                <w:tblLook w:val="0000" w:firstRow="0" w:lastRow="0" w:firstColumn="0" w:lastColumn="0" w:noHBand="0" w:noVBand="0"/>
+            </w:tblPr>
+            <w:tblGrid>
+                <w:gridCol w:w="567"/>
+                <w:gridCol w:w="5528"/>
+                <w:gridCol w:w="1134"/>
+                <w:gridCol w:w="1560"/>
+                <w:gridCol w:w="1417"/>
+            </w:tblGrid>
+            <w:tr w:rsidR="00BC7A76" w:rsidRPr="00B62852" w14:paraId="43E3274D" w14:textId="77777777" w:rsidTr="00D91210">
+                <w:trPr>
+                    <w:trHeight w:val="340"/>
+                </w:trPr>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="3BC6D62E" w14:textId="44F9C3F7" w:rsidR="00BC7A76" w:rsidRPr="00B62852" w:rsidRDefault="00E803B5" w:rsidP="00E803B5">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r>
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>5</w:t>
+                        </w:r>
+                        <w:r w:rsidR="00BC7A76" w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>.0</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="9639" w:type="dxa"/>
+                        <w:gridSpan w:val="4"/>
+                        <w:shd w:val="clear" w:color="auto" w:fill="DEEAF6" w:themeFill="accent1" w:themeFillTint="33"/>
+                        <w:vAlign w:val="center"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="561377AE" w14:textId="77777777" w:rsidR="00BC7A76" w:rsidRPr="00B62852" w:rsidRDefault="00BC7A76" w:rsidP="00BC7A76">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                        </w:pPr>
+                        <w:r w:rsidRPr="00B62852">
+                            <w:rPr>
+                                <w:b/>
+                                <w:sz w:val="22"/>
+                                <w:szCs w:val="22"/>
+                            </w:rPr>
+                            <w:t>Enhance Retention &amp; Transfer</w:t>
+                        </w:r>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+            <!--Placeholder for start of Event 5-->
+            <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="3CCA5040" w14:textId="77777777" w:rsidTr="00D91210">
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="567" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="7C678DAF" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00D91210" w:rsidRDefault="005A6BFF" w:rsidP="00AE4681">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="5528" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="2BB3752D" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00D91210" w:rsidRDefault="005A6BFF" w:rsidP="00AE4681">
+                        <w:pPr>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1134" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="1EA309E7" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00D91210" w:rsidRDefault="005A6BFF" w:rsidP="00AE4681">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1560" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="6FBFB27D" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00D91210" w:rsidRDefault="005A6BFF" w:rsidP="00AE4681">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+                <w:tc>
+                    <w:tcPr>
+                        <w:tcW w:w="1417" w:type="dxa"/>
+                    </w:tcPr>
+                    <w:p w14:paraId="282F61DE" w14:textId="77777777" w:rsidR="005A6BFF" w:rsidRPr="00D91210" w:rsidRDefault="005A6BFF" w:rsidP="00AE4681">
+                        <w:pPr>
+                            <w:jc w:val="center"/>
+                            <w:rPr>
+                                <w:sz w:val="2"/>
+                                <w:szCs w:val="2"/>
+                            </w:rPr>
+                        </w:pPr>
+                    </w:p>
+                </w:tc>
+            </w:tr>
+        <w:tr w:rsidR="005A6BFF" w:rsidRPr="00B62852" w14:paraId="7b472032-98df-4438-b971-23dcddc3870f" w14:textId="8c2a6e6a-353b-4920-a36d-fdc60e0bc125" w:rsidTr="00A06E5D"><w:trPr><w:trHeight w:val="558"/></w:trPr><w:tc><w:tcPr><w:tcW w:w="567" w:type="dxa"/></w:tcPr><w:p w14:paraId="21ba35a1-a9d7-4c30-8cad-65b53d13413d" w14:textId="89c92f50-bc4a-48c7-85ef-3908902ed01b" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>5.1</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="5528" w:type="dxa"/></w:tcPr><w:p w14:paraId="a822d056-06df-47d5-8d94-829407b53150" w14:textId="8b2a7302-5acd-4735-949a-48daf3a75f9f" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="left"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Conclude the lesson by reiterating the importance of understanding user interface elements in mobile application design. Provide examples of real-world applications that utilize the different types of user interface elements discussed in class.</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1134" w:type="dxa"/></w:tcPr><w:p w14:paraId="b686466a-5bb7-4479-a6ae-8deaba569f2c" w14:textId="9167631a-e7ca-4a76-8daa-9e2e55bde4e5" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>10</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1560" w:type="dxa"/></w:tcPr><w:p w14:paraId="539245b7-45ed-4b45-8802-3861167b0e51" w14:textId="b94a8e20-19c7-4061-9465-b8e5a894711d" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t>Discussion</w:t></w:r></w:p></w:tc><w:tc><w:tcPr><w:tcW w:w="1000" w:type="dxa"/></w:tcPr><w:p w14:paraId="560d0470-5668-4021-962b-fe05f6048402" w14:textId="2c9124c3-04ce-40dd-b99c-e18e8045a31d" w:rsidR="005A6BFF" w:rsidRPr="00B62852" w:rsidRDefault="00A06E5D" w:rsidP="00AE4681"><w:pPr><w:jc w:val="center"/><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr></w:pPr><w:r><w:rPr><w:sz w:val="22"/><w:szCs w:val="22"/></w:rPr><w:t></w:t></w:r></w:p></w:tc></w:tr></w:tbl>
+        <w:p w14:paraId="38756F7B" w14:textId="77777777" w:rsidR="00C229BE" w:rsidRDefault="00C229BE" w:rsidP="00975115">
+            <w:pPr>
+                <w:rPr>
+                    <w:b/>
+                </w:rPr>
+            </w:pPr>
+        </w:p>
+        <w:sectPr w:rsidR="00C229BE" w:rsidSect="003C0C61">
+            <w:headerReference w:type="default" r:id="rId11"/>
+            <w:footerReference w:type="default" r:id="rId12"/>
+            <w:pgSz w:w="11907" w:h="16839" w:code="9"/>
+            <w:pgMar w:top="720" w:right="720" w:bottom="720" w:left="720" w:header="720" w:footer="720" w:gutter="0"/>
+            <w:cols w:space="720"/>
+            <w:docGrid w:linePitch="360"/>
+        </w:sectPr>
+    </w:body>
+</w:document>

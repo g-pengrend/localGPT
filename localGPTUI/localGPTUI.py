@@ -3,6 +3,7 @@ import os
 import sys
 import tempfile
 import time
+# import json # to debug
 
 import requests
 from flask import Flask, render_template, request, jsonify, session
@@ -31,6 +32,7 @@ def home_page():
             api_url = f"{API_HOST}/dirtree"
             response = requests.get(api_url)
             tree_data = response.json()
+            # print(json.dumps(tree_data, indent=2)) # debugging output
             return jsonify(tree_data)
     
     if request.method == "POST":
@@ -78,7 +80,6 @@ def home_page():
             if selected_folder:
                 # Store the selected folder in session
                 session['selected_folder'] = selected_folder
-                print(f"WHAT IS STORED IN SESSION?: {session.get('selected_folder', '')}")
                 #### I don't know why, but i needed to add some delay otherwise the session gets override (What's a better way?) ####
                 time.sleep(0.1)
                 # Process the selected folder as needed
@@ -95,14 +96,15 @@ def home_page():
         #### I don't know why, but i needed to add some delay otherwise the session gets override (What's a better way?) ####
         time.sleep(0.1)
         selected_folder = session.get('selected_folder', '')
-        print(f"WHAT IS SHOWING HERE??: {selected_folder}")
+        print(f"Debugging: Stored in DB b4 user prompt: {selected_folder}")
         selected_prompt_template = session.get('selected_prompt_template', '')
-        print(f"WHAT IS SHOWING HERE??: {selected_prompt_template}")
+        print(f"Debugging: Stored in prompt_template b4 user prompt: {selected_prompt_template}")
 
         if "user_prompt" in request.form:
             user_prompt = request.form["user_prompt"]
             print(f"User Prompt: {user_prompt}")
-            print(f"WHAT IS SHOWING @ USER PROMPT??: {selected_folder}")
+            print(f"Debugging: selected prompt_template after user key in prompt: {selected_prompt_template}") # debugging
+            print(f"Debugging: selected DB after user key in prompt: {selected_folder}") # debugging
             main_prompt_url = f"{API_HOST}/prompt_route"
             response = requests.post(main_prompt_url, data={"user_prompt": user_prompt})
             print(response.status_code)  # print HTTP response status code for debugging
