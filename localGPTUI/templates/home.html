@@ -739,22 +739,22 @@
           <div id="selectedPromptTemplateDisplay" class="selected-folder" style="margin-left: 10px;">
             <span>Selected Output:</span> <span id="selectedPromptTemplateName">{{ selected_prompt_template }}</span>
           </div>
-          <button
+          <!-- <button
           type="button"
           class="preview_button"
           data-bs-toggle="modal"
           data-bs-target="#preview_modal"
           >
           Preview
-          </button>
+          </button> -->
 
         </div>
 
       <!-- Display selected directory -->
-      <div id="uploadDirectoryDisplay" style="margin-top: 20px; border: 2px solid #000; padding: 10px; border-radius: 5px;">
+      <!-- <div id="uploadDirectoryDisplay" style="margin-top: 20px; border: 2px solid #000; padding: 10px; border-radius: 5px;">
         <span>File Upload Location:</span> <span id="uploadDirectoryName"></span>
       </div>
-    </div>
+    </div> -->
 
 </html>
     <!-- For some reason the script needs to go here to make the the enter key also trigger the generating response modal -->
@@ -899,6 +899,27 @@
             <h5 class="modal-title justify-content-center" id="directoryModalLabel">
               Select a Folder to upload your document to
             </h5>
+          </div>
+          <div class="modal-body margin-left: 5%; text-align: left;">
+            <ul>
+              <li>
+                Select the <span style="background-color: #2b2bb4; color: white">name of the folder</span> you want to upload your file to and Click
+                <span style="background-color: #b42b36; color: white">Upload to Folder</span> if
+                you want to add the documents to that folder
+              </li>
+              <br />
+              <li>
+                Click
+                <span style="background-color: #b42b36; color: white">Create Folder</span>
+                to create a new folder for your documents to be uploaded to, you will have to upload to that new folder later on.
+              </li>
+              <br />
+              <li>
+                Click
+                <span style="background-color: gray; color: white">Back</span>
+                to return to the previous menu.
+              </li>
+            </ul>
           </div>
           <div class="modal-body">
             <div id="directoryList" class="list-group">
@@ -1155,7 +1176,14 @@
               <span style="background-color: gray; color: white">Cancel</span>
               the upload.
               <br />
-              4. There will be a short wait time as the documents get ingested
+              4. When you click on
+              <span style="background-color: #b42b36; color: white">Add</span>, you can add the documents to the existing folders by clicking on the name follwed by clicking on the 
+              <span style="background-color: #b42b36; color: white">Upload to Folder</span>
+              Button, or click on 
+              <span style="background-color: #b42b36; color: white">Create Folder</span>
+              to create a new folder.
+              <br />
+              5. There will be a short wait time as the documents get ingested
               into the vector database as your new knowledge base.
             </p>
             <a
@@ -1175,7 +1203,27 @@
 
             <br />
             <br />
-            <strong style="margin-left: 5%; text-align: left">Searching</strong>
+            <strong style="margin-left: 5%; text-align: left">Using Extensions</strong>
+            <p
+              style="
+                line-height: 1.75;
+                margin-left: 5%;
+                margin-right: 5%;
+                text-align: left;
+              "
+            >
+              1. Before asking a question, there are two drop down menus for you to select which folder to get a response from, and what type of output you prefer.
+              <br />
+              2. Click on 
+              <span style="background-color: #b42b36; color: white">Select a Directory</span> to get the list that you have already ingested earlier.
+              <br />
+              3. Click on 
+              <span style="background-color: #b42b36; color: white">Select Output Type</span> to use the appropriate extension for your use case.
+              <br />
+              4. Once done, you may begin asking a question to generate a response.
+            </p>
+            <br />
+            <strong style="margin-left: 5%; text-align: left">Generating Response</strong>
             <p
               style="
                 line-height: 1.75;
@@ -1193,7 +1241,7 @@
               >
               <br />
               3. Hit enter on your keyboard or click
-              <span style="background-color: #b42b36; color: white">Search</span>
+              <span style="background-color: #b42b36; color: white">Generate</span>
               <br />
               4. Wait while the LLM model consumes the prompt and prepares the
               answer.
