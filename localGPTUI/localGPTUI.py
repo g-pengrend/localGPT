@@ -27,9 +27,18 @@ def home_page():
     
     if request.method == "GET":
         print("GET correct")
-        if request.headers.get('X-Requested-With') == 'fetchDirectoryTree':
+
+        if request.headers.get('X-Requested-With') == 'fetchSourceDocDirectoryTree':
             # Handle AJAX request for directory tree data
-            api_url = f"{API_HOST}/dirtree"
+            api_url = f"{API_HOST}/source_dirtree"
+            response = requests.get(api_url)
+            tree_data = response.json()
+            # print(json.dumps(tree_data, indent=2)) # debugging output
+            return jsonify(tree_data)
+        
+        if request.headers.get('X-Requested-With') == 'fetchDatabaseDirectoryTree':
+            # Handle AJAX request for directory tree data
+            api_url = f"{API_HOST}/database_dirtree"
             response = requests.get(api_url)
             tree_data = response.json()
             # print(json.dumps(tree_data, indent=2)) # debugging output

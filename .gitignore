@@ -178,3 +178,4 @@ check_api_state.ipynb
 extensions/lesson_plan/Lesson_Plan(Template 1)/word/document.xml
 extensions/lesson_plan/outputs/Lesson_plan_1.docx
 extensions/lesson_plan/outputs/Lesson_plan_2.docx
+*.pdf

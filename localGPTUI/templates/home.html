@@ -105,21 +105,38 @@
   <script>
     $(document).ready(function() {
 
-        // Function to fetch directory tree data and populate the dropdown
-        function fetchAndPopulate() {
+        // Function to fetch directory tree data and populate the SOURCE_DIRECTORY
+        function fetchAndPopulate_source() {
+            $.ajax({
+                url: '/',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                  listDirectories(data);
+                },
+                error: function(err) {
+                    console.error('Error fetching directory tree:', err);
+                },
+                headers: {
+                'X-Requested-With': 'fetchSourceDocDirectoryTree'  // Indicate AJAX request
+                }
+            });
+        }
+
+        // Function to fetch directory tree data and populate the DB
+        function fetchAndPopulate_database() {
             $.ajax({
                 url: '/',
                 type: 'GET',
                 dataType: 'json',
                 success: function(data) {
                     populateDropdown(data);
-                    listDirectories(data);
                 },
                 error: function(err) {
                     console.error('Error fetching directory tree:', err);
                 },
                 headers: {
-                'X-Requested-With': 'fetchDirectoryTree'  // Indicate AJAX request
+                'X-Requested-With': 'fetchDatabaseDirectoryTree'  // Indicate AJAX request
                 }
             });
         }
@@ -150,7 +167,7 @@
                         $(this).addClass('active');
 
                         // TESTING ONLY: Update the uploadDirectoryName span with the clicked directory
-                        $('#uploadDirectoryName').text(child.name);
+                        // $('#uploadDirectoryName').text(child.name);
                     });
                 directoryList.append(button);
             });
@@ -189,7 +206,7 @@
 
         // Event listener for the dropdown click event
         $('#directoryDropdown').on('click', function() {
-            fetchAndPopulate(); // Fetch and update the dropdown options
+            fetchAndPopulate_database(); // Fetch and update the dropdown options
         });
 
         // Event listener for dropdown change event
@@ -202,7 +219,7 @@
 
         // Event listener for modal show event
         $('#directoryModal').on('show.bs.modal', function() {
-            fetchAndPopulate(); // Fetch and update the directory list in the modal
+            fetchAndPopulate_source(); // Fetch and update the directory list in the modal
         });
     });
   </script>

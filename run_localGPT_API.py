@@ -116,22 +116,28 @@ def make_tree(path):
 
 app = Flask(__name__)
 
-@app.route('/api/dirtree', methods=["GET"])
-def dirtree_api():
+@app.route('/api/source_dirtree', methods=["GET"])
+def source_dirtree_api():
+    path = os.path.join(os.getcwd(), "SOURCE_DOCUMENTS")
+    print(path)
+    return jsonify(make_tree(path))
+
+@app.route('/api/database_dirtree', methods=["GET"])
+def database_dirtree_api():
     path = os.path.join(os.getcwd(), "DB")
     print(path)
     return jsonify(make_tree(path))
 
 @app.route("/api/delete_source", methods=["GET"])
 def delete_source_route():
-    folder_name = "SOURCE_DOCUMENTS"
+    folder_names = ["SOURCE_DOCUMENTS", "DB"]
+    for names in folder_names:
+        if os.path.exists(names):
+            shutil.rmtree(names)
 
-    if os.path.exists(folder_name):
-        shutil.rmtree(folder_name)
+        os.makedirs(names)
 
-    os.makedirs(folder_name)
-
-    return jsonify({"message": f"Folder '{folder_name}' successfully deleted and recreated."})
+    return jsonify({"message": f"Folder '{folder_names}' successfully deleted and recreated."})
 
 @app.route("/api/save_document/<directory_name>", methods=["GET", "POST"])
 def save_document_route(directory_name):
@@ -194,6 +200,10 @@ def get_current_state():
 @app.route("/api/run_ingest/<directory_name>", methods=["GET"])
 def run_ingest_route(directory_name):
     global RETRIEVER_DICT
+
+    print("Device currently in use: ")
+    print("cuda") if torch.cuda.is_available() else print("cpu")
+
     try:
         persist_directory_path = os.path.join(PERSIST_DIRECTORY, directory_name)
         if os.path.exists(persist_directory_path):
