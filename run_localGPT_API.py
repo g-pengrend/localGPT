@@ -235,7 +235,7 @@ def run_ingest_route(directory_name):
         )
         retriever = DB.as_retriever()
 
-        RETRIEVER_DICT[persist_directory_path] = retriever
+        RETRIEVER_DICT[directory_name] = retriever
 
         # prompt, memory = get_prompt_template(promptTemplate_type="mistral", history=False)
 
