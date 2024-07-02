@@ -6,7 +6,7 @@ import time
 # import json # to debug
 
 import requests
-from flask import Flask, render_template, request, jsonify, session
+from flask import Flask, render_template, request, jsonify, session, g
 from werkzeug.utils import secure_filename
 
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
@@ -17,8 +17,10 @@ app.secret_key = "LeafmanZSecretKey"
 API_HOST = "http://localhost:5110/api"
 
 # Initialize selected_folder and selected_prompt_template
-selected_folder = ""
-selected_prompt_template = ""
+@app.before_request
+def load_selected_values():
+    g.selected_folder = session.get('selected_folder', '')
+    g.selected_prompt_template = session.get('selected_prompt_template', '')
 
 # PAGES #
 @app.route("/", methods=["GET", "POST"])
@@ -51,11 +53,10 @@ def home_page():
             selected_prompt_template = request.form.get("selectedPrompt")
             print(f"Selected Prompt Template received from UI: {selected_prompt_template}")  # Debug print
             if selected_prompt_template:
+                g.selected_prompt_template = selected_prompt_template
                 # Store the selected folder in session
                 session['selected_prompt_template'] = selected_prompt_template
-                #### I don't know why, but i needed to add some delay otherwise the session gets override (What's a better way?) ####
-                time.sleep(0.1)
-                # Process the selected folder as needed
+                # Process the selected prompt template as needed
                 selected_prompt_template_url = f"{API_HOST}/choose_prompt_template/{selected_prompt_template}"
                 response = requests.post(selected_prompt_template_url)
                 print(response.status_code)  # Print HTTP response status code for debugging
@@ -87,10 +88,9 @@ def home_page():
             selected_folder = request.form.get("selectedFolder")
             print(f"Selected database received from UI: {selected_folder}")  # Debug print
             if selected_folder:
+                g.selected_folder = selected_folder
                 # Store the selected folder in session
                 session['selected_folder'] = selected_folder
-                #### I don't know why, but i needed to add some delay otherwise the session gets override (What's a better way?) ####
-                time.sleep(0.1)
                 # Process the selected folder as needed
                 selected_folder_url = f"{API_HOST}/choose_folder/{selected_folder}"
                 response = requests.post(selected_folder_url)
@@ -102,25 +102,18 @@ def home_page():
             else:
                 print("selected_folder parameter is missing in the request.")
 
-        #### I don't know why, but i needed to add some delay otherwise the session gets override (What's a better way?) ####
-        time.sleep(0.1)
-        selected_folder = session.get('selected_folder', '')
-        print(f"Debugging: Stored in DB b4 user prompt: {selected_folder}")
-        selected_prompt_template = session.get('selected_prompt_template', '')
-        print(f"Debugging: Stored in prompt_template b4 user prompt: {selected_prompt_template}")
-
         if "user_prompt" in request.form:
             user_prompt = request.form["user_prompt"]
             print(f"User Prompt: {user_prompt}")
-            print(f"Debugging: selected prompt_template after user key in prompt: {selected_prompt_template}") # debugging
-            print(f"Debugging: selected DB after user key in prompt: {selected_folder}") # debugging
+            print(f"Debugging: selected prompt_template after user key in prompt: {g.selected_prompt_template}") # debugging
+            print(f"Debugging: selected DB after user key in prompt: {g.selected_folder}") # debugging
             main_prompt_url = f"{API_HOST}/prompt_route"
             response = requests.post(main_prompt_url, data={"user_prompt": user_prompt})
             print(response.status_code)  # print HTTP response status code for debugging
             if response.status_code == 200:
                 # print(response.json())  # Print the JSON data from the response
 
-                return render_template("home.html", selected_folder=session.get('selected_folder', ''), selected_prompt_template=session.get('selected_prompt_template', ''), show_response_modal=True, response_dict=response.json())
+                return render_template("home.html", selected_folder=g.selected_folder, selected_prompt_template=g.selected_prompt_template, show_response_modal=True, response_dict=response.json())
         
         elif "documents" in request.files:
             delete_source_url = f"{API_HOST}/delete_source"  # URL of the /api/delete_source endpoint
@@ -151,8 +144,8 @@ def home_page():
     # Display the form for GET request
     return render_template(
         "home.html",
-        selected_folder=selected_folder,
-        selected_prompt_template=selected_prompt_template,
+        selected_folder=g.selected_folder,
+        selected_prompt_template=g.selected_prompt_template,
         show_response_modal=False,
         response_dict={"Prompt": "None", "Answer": "None", "Sources": [("ewf", "wef")]},
     )
