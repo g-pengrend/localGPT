@@ -102,26 +102,111 @@ While answering the question, it is critical that you:
 - Ensure that the "activity" has a minimum of 100 words with detailed examples of what the lecturer should do.
 """
 
-MCQ_1_PROMPT = """
-Create a multiple choice question suitable for Bloom's Taxonomy Level 1 (Remembering). 
+MCQ_PROMPT = """You are a bot to assist lecturers create multiple choice questions. Read the given context before answering questions.
 
-Example formatting:
-QUESTION:
-<Question suitable for a Bloom's Taxonomy Level 1 (Remembering)>
-
-OPTIONS:
-a. <Option 1: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-b. <Option 2: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-c. <Option 3: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-d. <Option 4: Not more than 10 words ending with a full-stop. Do not use "all of the above" as an option.>
-
-FEEDBACK:
-a. <Detailed feedback (including "CORRECT" or "INCORRECT") for Option 1 with examples ending with a full-stop>
-b. <Detailed feedback (including "CORRECT" or "INCORRECT") for Option 2 with examples ending with a full-stop>
-c. <Detailed feedback (including "CORRECT" or "INCORRECT") for Option 3 with examples ending with a full-stop>
-d. <Detailed feedback (including "CORRECT" or "INCORRECT") for Option 4 with examples ending with a full-stop>
+An example of the format is provided below, match the keys and subkeys exactly:
+{{
+  "TAXONOMY_1": {{
+    "QUESTION_1": {{
+      "QUESTION": "<Question suitable for a Bloom's Taxonomy Level 1 (Remembering)>",
+      "OPTIONS": {{
+        "a": "<Option 1: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "b": "<Option 2: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "c": "<Option 3: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "d": "<Option 4: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>"
+      }},
+      "FEEDBACK": {{
+        "a": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 1 with examples ending with a full-stop>",
+        "b": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 2 with examples ending with a full-stop>",
+        "c": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 3 with examples ending with a full-stop>",
+        "d": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 4 with examples ending with a full-stop>"
+      }}
+    }},
+    "QUESTION_2": {{
+      "QUESTION": "<Question suitable for a Bloom's Taxonomy Level 1 (Remembering)>",
+      "OPTIONS": {{
+        "a": "<Option 1: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "b": "<Option 2: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "c": "<Option 3: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "d": "<Option 4: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>"
+      }},
+      "FEEDBACK": {{
+        "a": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 1 with examples ending with a full-stop>",
+        "b": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 2 with examples ending with a full-stop>",
+        "c": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 3 with examples ending with a full-stop>",
+        "d": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 4 with examples ending with a full-stop>"
+      }}
+    }}
+  }},
+  "TAXONOMY_2": {{
+    "QUESTION_1": {{
+      "QUESTION": "<Question suitable for a Bloom's Taxonomy Level 2 (Understanding)>",
+      "OPTIONS": {{
+        "a": "<Option 1: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "b": "<Option 2: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "c": "<Option 3: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "d": "<Option 4: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>"
+      }},
+      "FEEDBACK": {{
+        "a": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 1 with examples ending with a full-stop>",
+        "b": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 2 with examples ending with a full-stop>",
+        "c": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 3 with examples ending with a full-stop>",
+        "d": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 4 with examples ending with a full-stop>"
+      }}
+    }},
+    "QUESTION_2": {{
+      "QUESTION": "<Question suitable for a Bloom's Taxonomy Level 2 (Understanding)>",
+      "OPTIONS": {{
+        "a": "<Option 1: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "b": "<Option 2: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "c": "<Option 3: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "d": "<Option 4: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>"
+      }},
+      "FEEDBACK": {{
+        "a": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 1 with examples ending with a full-stop>",
+        "b": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 2 with examples ending with a full-stop>",
+        "c": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 3 with examples ending with a full-stop>",
+        "d": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 4 with examples ending with a full-stop>"
+      }}
+    }}
+  }},
+  "TAXONOMY_3": {{
+    "QUESTION_1": {{
+      "QUESTION": "<Question suitable for a Bloom's Taxonomy Level 3 (Application)>",
+      "OPTIONS": {{
+        "a": "<Option 1: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "b": "<Option 2: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "c": "<Option 3: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "d": "<Option 4: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>"
+      }},
+      "FEEDBACK": {{
+        "a": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 1 with examples ending with a full-stop>",
+        "b": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 2 with examples ending with a full-stop>",
+        "c": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 3 with examples ending with a full-stop>",
+        "d": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 4 with examples ending with a full-stop>"
+      }}
+    }},
+    "QUESTION_2": {{
+      "QUESTION": "<Question suitable for a Bloom's Taxonomy Level 3 (Application)>",
+      "OPTIONS": {{
+        "a": "<Option 1: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "b": "<Option 2: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "c": "<Option 3: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>",
+        "d": "<Option 4: Not more than 10 words ending with a full-stop. Do not use 'all of the above' as an option.>"
+      }},
+      "FEEDBACK": {{
+        "a": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 1 with examples ending with a full-stop>",
+        "b": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 2 with examples ending with a full-stop>",
+        "c": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 3 with examples ending with a full-stop>",
+        "d": "<Detailed feedback (including 'CORRECT' or 'INCORRECT') for Option 4 with examples ending with a full-stop>"
+      }}
+    }}
+  }}
+}}
 
 While answering the question, it is critical that you:
+- Strictly follow the JSON formatting provided.
+- Strictly ensure all the keys of the JSON have the exact wording as in the example.
 - Strictly provide only 4 options, around 10 words, and ending with a full-stop. Do not use "all of the above" as an option.
 - Each option should not be related to each other.
 - Strictly only have 1 correct answer.
@@ -132,8 +217,8 @@ While answering the question, it is critical that you:
 def get_prompt_template(query_type, promptTemplate_type=None, history=False):
     if query_type == "lesson_plan":
         system_prompt = LESSON_PLAN_PROMPT
-    elif query_type == "mcq_1":
-        system_prompt = MCQ_1_PROMPT
+    elif query_type == "mcq":
+        system_prompt = MCQ_PROMPT
     else:
         system_prompt = DEFAULT_PROMPT
     
