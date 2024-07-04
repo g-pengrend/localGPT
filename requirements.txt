@@ -32,3 +32,6 @@ Streamlit-extras
 
 # Excel File Manipulation
 openpyxl
+
+# Debugging and Info
+colorama
