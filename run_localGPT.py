@@ -346,7 +346,7 @@ While answering the question, it is critical that you:
             subprocess.run(["python", "./run_llm_to_xml.py", answer])
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s", level=logging.INFO
-    )
+    # logging.basicConfig(
+    #     format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s", level=logging.INFO
+    # )
     main()

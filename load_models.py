@@ -11,6 +11,12 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, LlamaForCausalLM, 
 from langchain.callbacks.streaming_stdout import StreamingStdOutCallbackHandler
 from langchain.callbacks.manager import CallbackManager
 
+from utils import (
+    success,
+    warning,
+    info,
+    error
+)
 
 from constants import CONTEXT_WINDOW_SIZE, MAX_NEW_TOKENS, MODELS_PATH, N_BATCH, N_GPU_LAYERS
 
@@ -61,7 +67,8 @@ def load_quantized_model_gguf_ggml(model_id, model_basename, device_type, loggin
         return LlamaCpp(callback_manager=callback_manager, **kwargs)
     except TypeError:
         if "ggml" in model_basename:
-            logging.INFO("If you were using GGML model, LLAMA-CPP Dropped Support, Use GGUF Instead")
+            # logging.INFO("If you were using GGML model, LLAMA-CPP Dropped Support, Use GGUF Instead")
+            warning(message = "If you were using GGML model, LLAMA-CPP Dropped Support, Use GGUF Instead")
         return None
 
 
@@ -91,7 +98,8 @@ def load_quantized_model_qptq(model_id, model_basename, device_type, logging):
     """
 
     if sys.platform == "darwin":
-        logging.INFO("GPTQ models will NOT work on Mac devices. Please choose a different model.")
+        # logging.INFO("GPTQ models will NOT work on Mac devices. Please choose a different model.")
+        warning(message ="GPTQ models will NOT work on Mac devices. Please choose a different model.")
         return None, None
 
     # The code supports all huggingface models that ends with GPTQ and have some variation
@@ -192,7 +200,8 @@ def load_quantized_model_awq(model_id, logging):
     """
 
     if sys.platform == "darwin":
-        logging.INFO("AWQ models will NOT work on Mac devices. Please choose a different model.")
+        # logging.INFO("AWQ models will NOT work on Mac devices. Please choose a different model.")
+        warning(message = "AWQ models will NOT work on Mac devices. Please choose a different model.")
         return None, None
 
     # The code supports all huggingface models that ends with AWQ.

@@ -211,7 +211,7 @@ def main(device_type, select_directory, db_directory):
 
 
 if __name__ == "__main__":
-    logging.basicConfig(
-        format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s", level=logging.INFO
-    )
+    # logging.basicConfig(
+    #     format="%(asctime)s - %(levelname)s - %(filename)s:%(lineno)s - %(message)s", level=logging.INFO
+    # )
     main()
