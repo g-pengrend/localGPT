@@ -131,21 +131,11 @@ def database_dirtree_api():
 @app.route("/api/delete_source", methods=["GET"])
 def delete_source_route():
     folder_names = ["SOURCE_DOCUMENTS", "DB"]
-<<<<<<< Updated upstream
-    for names in folder_names:
-        if os.path.exists(names):
-            shutil.rmtree(names)
-
-        os.makedirs(names)
-=======
-
     for folder_name in folder_names:
         if os.path.exists(folder_name):
             shutil.rmtree(folder_name)
-        os.makedirs(folder_name)
 
-    return jsonify({"message": "Folders successfully deleted."})
->>>>>>> Stashed changes
+        os.makedirs(folder_name)
 
     return jsonify({"message": f"Folder '{folder_names}' successfully deleted and recreated."})
 
