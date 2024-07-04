@@ -131,13 +131,6 @@ def database_dirtree_api():
 @app.route("/api/delete_source", methods=["GET"])
 def delete_source_route():
     folder_names = ["SOURCE_DOCUMENTS", "DB"]
-<<<<<<< Updated upstream
-    for names in folder_names:
-        if os.path.exists(names):
-            shutil.rmtree(names)
-
-        os.makedirs(names)
-=======
 
     for folder_name in folder_names:
         if os.path.exists(folder_name):
@@ -145,7 +138,6 @@ def delete_source_route():
         os.makedirs(folder_name)
 
     return jsonify({"message": "Folders successfully deleted."})
->>>>>>> Stashed changes
 
     return jsonify({"message": f"Folder '{folder_names}' successfully deleted and recreated."})
 
@@ -212,7 +204,7 @@ def run_ingest_route(directory_name):
     global RETRIEVER_DICT
 
     print("Device currently in use: ")
-    print("cuda") if torch.cuda.is_available() else print("cpu")
+    print(DEVICE_TYPE)
 
     try:
         persist_directory_path = os.path.join(PERSIST_DIRECTORY, directory_name)

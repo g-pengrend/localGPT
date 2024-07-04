@@ -17,6 +17,11 @@ SOURCE_DIRECTORY = os.path.join(ROOT_DIRECTORY, "SOURCE_DOCUMENTS")
 
 # Define a function to check and retrieve subdirectories
 def get_subdirectories(source_dir):
+    # Check if the folder exists
+    if not os.path.exists(SOURCE_DIRECTORY):
+        # If the folder does not exist, create it
+        os.makedirs(SOURCE_DIRECTORY)
+
     sub_dirs = [os.path.join(source_dir, folder) for folder in os.listdir(source_dir) if os.path.isdir(os.path.join(source_dir, folder))]
     return sub_dirs if sub_dirs else [source_dir]  # Return the source directory itself if no subdirectories found
 
