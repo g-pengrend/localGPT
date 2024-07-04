@@ -167,3 +167,4 @@ cython_debug/
 #MacOS
 SOURCE_DOCUMENTS
 DB
+*.DS_Store
