@@ -123,7 +123,7 @@ python localGPTUI/localGPTUI.py
 
 ## Using the Public URL
 
-### Install Chocolatey (Skip if installed)
+### Windows: Install Chocolatey and ngrok (Skip if installed)
 1. Open a new Windows Powershell (Adminsitrator) window.
 2. Run the following:
 ```powershell
@@ -132,6 +132,21 @@ Set-ExecutionPolicy AllSigned
 3. Run the following:
 ```powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+4. Run the following:
+```powershell
+choco install ngrok
+```
+
+### Mac: Install Homebrew and ngrok (Skip if installed)
+1. Open a new terminal.
+2. Run the following:
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+3. Run the following:
+```bash
+brew install ngrok/ngrok/ngrok
 ```
 
 ### Run ngrok
