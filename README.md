@@ -57,7 +57,7 @@ conda activate localGPT
 To set up your environment to run the code, first install all requirements:
 
 ```shell
-pip install -r requirements.txt
+python -m pip install -r requirements.txt
 ```
 
 ***Installing LLAMA-CPP :***
@@ -68,27 +68,36 @@ LocalGPT uses [LlamaCpp-Python](https://github.com/abetlen/llama-cpp-python) for
 If you want to use BLAS or Metal with [llama-cpp](https://github.com/abetlen/llama-cpp-python#installation-with-openblas--cublas--clblast--metal) you can set appropriate flags:
 
 For `NVIDIA` GPUs support, use `cuBLAS`
-
-```shell
-# Example: cuBLAS
-set CMAKE_ARGS="-DLLAMA_CUBLAS=on" 
-set FORCE_CMAKE=1 
-set LLAMA_CUBLAS=1
-```
+>
+> ```shell
+> # Example: cuBLAS
+> set CMAKE_ARGS="-DLLAMA_CUBLAS=on" 
+> set FORCE_CMAKE=1 
+> set LLAMA_CUBLAS=1
+> ```
+>
+> **NOTE:** You can verify that the environment variables have been set correctly by using the following commands:
+> ```cmd
+> echo %CMAKE_ARGS%
+> 
+> echo %FORCE_CMAKE%
+> ```
 
 For Apple Metal (`M1/M2`) support, use
-
-```shell
-# Example: METAL
-export CMAKE_ARGS="-DLLAMA_METAL=on"
-export FORCE_CMAKE=1
-```
-
+>
+> ```shell
+> # Example: METAL
+> export CMAKE_ARGS="-DLLAMA_METAL=on"
+> export FORCE_CMAKE=1
+> ```
+>
 > **NOTE:** You can verify that the environment variables have been set correctly by using the following commands:
 > 
+> ```bash
 > echo $CMAKE_ARGS
 > 
 > echo $FORCE_CMAKE
+> ```
 
 For both `NVIDIA` and `M1/M2`, install the following packages:
 
@@ -99,6 +108,38 @@ python -m pip install torch torchvision torchaudio --index-url https://download.
 ```
 
 For more details, please refer to [llama-cpp](https://github.com/abetlen/llama-cpp-python#installation-with-openblas--cublas--clblast--metal)
+
+## Using the UI
+
+1. Open 2 different terminal windows.
+2. Terminal A:
+```bash
+python run_localGPT_API.py
+```
+3. Terminal B:
+```bash
+python localGPTUI/localGPTUI.py
+```
+
+## Using the Public URL
+
+### Install Chocolatey (Skip if installed)
+1. Open a new Windows Powershell (Adminsitrator) window.
+2. Run the following:
+```powershell
+Set-ExecutionPolicy AllSigned
+```
+3. Run the following:
+```powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+### Run ngrok
+1. Open a new Windows Powershell window. Keep the previous 2 terminal running in the background.
+2. Run the following:
+```shell
+ngrok http localhost:5111
+```
 
 ## Docker 🐳
 

@@ -31,6 +31,11 @@ SUB_DIRECTORIES = get_subdirectories(SOURCE_DIRECTORY)
 PERSIST_DIRECTORY = os.path.join(ROOT_DIRECTORY, "DB")
 
 # Get a list of all child directories in PERSIST_DIRECTORY
+# Check if the folder exists
+if not os.path.exists(PERSIST_DIRECTORY):
+    # If the folder does not exist, create it
+    os.makedirs(PERSIST_DIRECTORY)
+
 PERSIST_DIRECTORIES = [os.path.join(PERSIST_DIRECTORY, d) for d in os.listdir(PERSIST_DIRECTORY) if os.path.isdir(os.path.join(PERSIST_DIRECTORY, d))]
 
 # Create a dictionary to map directory names to their full paths
