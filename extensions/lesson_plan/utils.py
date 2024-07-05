@@ -4,6 +4,24 @@ import uuid
 import os
 import zipfile
 import os
+import colorama
+
+def success(message: str) -> None:
+    print(colorama.Back.GREEN + colorama.Fore.WHITE + message + colorama.Style.RESET_ALL)
+    return None
+
+def info(message: str) -> None:
+    print(colorama.Back.CYAN + colorama.Fore.WHITE + message + colorama.Style.RESET_ALL)
+    return None
+
+def warning(message: str) -> None:
+    print(colorama.Back.YELLOW + colorama.Fore.BLACK + message + colorama.Style.RESET_ALL)
+    return None
+
+def error(message: str) -> None:
+    print(colorama.Back.RED + colorama.Fore.WHITE + message + colorama.Style.RESET_ALL)
+    sys.exit(1)
+    return None
 
 class LessonPlanExtractor:
     def __init__(self, data):
@@ -240,6 +258,11 @@ def recreate_docx(source_folder, output_filename):
     base, extension = os.path.splitext(output_filename)
     counter = 1
     new_output_filename = output_filename
+
+    # Check if the output folder exists, if not, create it
+    if not os.path.exists("./extensions/lesson_plan/outputs"):
+        warning(message=f"Folder './extensions/lesson_plan/outputs' does not exist. Creating the folder.")
+        os.makedirs("./extensions/lesson_plan/outputs")
 
     while os.path.exists(new_output_filename):
         new_output_filename = f"{base}_{counter}{extension}"
