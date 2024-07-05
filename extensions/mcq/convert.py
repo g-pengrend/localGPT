@@ -1,5 +1,6 @@
 import sys
 import json
+import subprocess
 
 from utils import (
     success,
@@ -30,7 +31,7 @@ def main() -> None:
     
     # Check if the output folder exists, if not, create it
     if not os.path.exists(output_folder):
-        info(message=f"Folder '{output_folder}' does not exist. Creating the folder.")
+        warning(message=f"Folder '{output_folder}' does not exist. Creating the folder.")
         os.makedirs(output_folder)
 
     base_filename: str = "mcq_output"
@@ -49,6 +50,9 @@ def main() -> None:
         
         # Process each line and add appropriate content to the document
         for line in lines:
+            if "Bot: #" in line:
+                line = line.split('Bot: ')[-1]
+
             if line.startswith('# '):
                 doc.add_heading(line[2:], level=1)
             elif line.startswith('## '):
@@ -61,6 +65,9 @@ def main() -> None:
         # Save the document to the output path
         doc.save(output_path)
         success(message=f"Answer successfully written to {output_path}")
+
+        # Open the document using the default application
+        subprocess.run(["start", output_path], shell=True)
     except Exception as e:
         error(message=f"Failed to write answer to docx file: {str(e)}")
 
