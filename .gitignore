@@ -165,19 +165,11 @@ cython_debug/
 .idea/
 
 #MacOS
-.DS_Store
-SOURCE_DOCUMENTS/.DS_Store
-SOURCE_DOCUMENTS/ORCA/Orca_paper.pdf
-SOURCE_DOCUMENTS/SS (MAP).docx
-SOURCE_DOCUMENTS/SS_MAP/SS (MAP).docx
-SOURCE_DOCUMENTS/SS (MAP).docx
-SOURCE_DOCUMENTS/SS (MAP).docx
-SOURCE_DOCUMENTS/SS (MAP).docx
-SOURCE_DOCUMENTS/TEST/L23NAIMachineLearning.pdf
+*.DS_Store
+SOURCE_DOCUMENTS/
+extensions/lesson_plan/outputs/
+extensions/mcq/outputs/
 check_api_state.ipynb
-extensions/lesson_plan/Lesson_Plan(Template 1)/word/document.xml
-extensions/lesson_plan/outputs/Lesson_plan_1.docx
-extensions/lesson_plan/outputs/Lesson_plan_2.docx
 *.pdf
 *.docx
 *.docx
