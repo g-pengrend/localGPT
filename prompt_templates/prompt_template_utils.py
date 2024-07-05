@@ -92,7 +92,8 @@ An example of the format is provided below, match the keys and subkeys exactly:
 }}
 
 While answering the question, it is critical that you:
-- Strictly follow the JSON formatting provided.
+- Strictly in English.
+- Strictly follow the JSON formatting provided. Do not generate any other text.
 - Strictly ensure all the keys of the JSON have the exact wording as in the example.
 - There can be only up to two learning outcomes.
 - There can be only up to two professional attributes 
@@ -148,8 +149,15 @@ Example formatting:
 - d. <Detailed feedback (including "CORRECT" or "INCORRECT") for Option 4 with examples ending with a full-stop>
 
 While answering the question, it is critical that you:
-- Strictly provide only 4 options, around 10 words, and ending with a full-stop. Do not use "all of the above" as an option.
+- Strictly in English.
+- Do not start with "Bot: ". Strictly start with "# TAXONOMY 1".
+- Taxonomy is always Header 1.
+- Question is always Header 2.
+- Options are always Header 3.
+- Feedback for Question is always Header 3.
+- Strictly provide only 4 options, around 10 words, and ending with a full-stop. Do not use "all of the above" as an option. Do not generate any other text.
 - Each option should not be related to each other.
+- There MUST HAVE 1 correct answer.
 - Strictly only have 1 correct answer.
 - Give detailed feedback (including "CORRECT" or "INCORRECT") with examples for each option.
 - Strictly follow the formatting provided.
