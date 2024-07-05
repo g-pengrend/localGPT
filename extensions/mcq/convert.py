@@ -26,7 +26,7 @@ def main() -> None:
     import os
     from docx import Document
 
-    output_folder: str = "mcq/outputs"
+    output_folder: str = "extensions/mcq/outputs"
     
     # Check if the output folder exists, if not, create it
     if not os.path.exists(output_folder):
