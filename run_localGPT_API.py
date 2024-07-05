@@ -450,9 +450,13 @@ def prompt_route() -> Tuple[Response, int]:
     # Retrieve the user prompt from the form data
     user_prompt: str = request.form.get("user_prompt")
 
+    # Modify the user prompt if the selected template is "Lesson Plan"
+    if PROMPT_TEMPLATE_SELECTED == "Lesson Plan":
+        user_prompt = f'Create a lesson plan on the following topic: {user_prompt}. Ensure that there are at least 2 activities per section. Be verbose on the content and provide examples.'
+
     # Modify the user prompt if the selected template is "Multiple Choice Question"
     if PROMPT_TEMPLATE_SELECTED == "Multiple Choice Question":
-        subprocess.run(["export", "TOKENIZERS_PARALLELISM=false"])
+        # subprocess.run(["export", "TOKENIZERS_PARALLELISM=false"])
         user_prompt = f'Create 3 multiple choice questions, 1 per taxonomy level, on the following topic: {user_prompt}. There is strictly only one correct answer per question.'
 
     # Return an error response if no user prompt is received
@@ -509,11 +513,11 @@ def prompt_route() -> Tuple[Response, int]:
         }
 
         # Include source documents in the response if available
-        if docs:
-            prompt_response_dict["Sources"] = [
-                (os.path.basename(str(document.metadata["source"])), str(document.page_content))
-                for document in docs
-            ]
+        # if docs:
+        #     prompt_response_dict["Sources"] = [
+        #         (os.path.basename(str(document.metadata["source"])), str(document.page_content))
+        #         for document in docs
+        #     ]
 
         # Run additional scripts based on the selected prompt template
         if PROMPT_TEMPLATE_SELECTED == "Lesson Plan":
