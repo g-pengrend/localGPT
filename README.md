@@ -48,8 +48,8 @@ git clone https://github.com/PromtEngineer/localGPT.git
 2. 🐍 Install [conda](https://www.anaconda.com/download) for virtual environment management. Create and activate a new virtual environment.
 
 ```shell
-conda create -n localGPT python=3.10.0
-conda activate localGPT
+conda create -n eLITE python=3.10.0 -y
+conda activate eLITE
 ```
 
 3. 🛠️ Install the dependencies using pip
@@ -71,23 +71,23 @@ For `NVIDIA` GPUs support, use `cuBLAS`
 >
 > ```shell
 > # Example: cuBLAS
-> set CMAKE_ARGS="-DLLAMA_CUBLAS=on" 
-> set FORCE_CMAKE=1 
+> set "CMAKE_ARGS=-DLLAMA_CUBLAS=on"
+> set FORCE_CMAKE=1
 > set LLAMA_CUBLAS=1
 > ```
 >
 > **NOTE:** You can verify that the environment variables have been set correctly by using the following commands:
 > ```cmd
 > echo %CMAKE_ARGS%
-> 
 > echo %FORCE_CMAKE%
+> echo %LLAMA_CUBLAS%
 > ```
 
 For Apple Metal (`M1/M2`) support, use
 >
 > ```shell
 > # Example: METAL
-> export CMAKE_ARGS="-DLLAMA_METAL=on"
+> export "CMAKE_ARGS=-DLLAMA_METAL=on"
 > export FORCE_CMAKE=1
 > ```
 >
@@ -95,16 +95,15 @@ For Apple Metal (`M1/M2`) support, use
 > 
 > ```bash
 > echo $CMAKE_ARGS
-> 
 > echo $FORCE_CMAKE
 > ```
 
 For both `NVIDIA` and `M1/M2`, install the following packages:
 
 ```shell
-python -m pip install llama-cpp-python==0.1.83 --no-cache-dir
+python -m pip install --no-cache-dir llama-cpp-python==0.1.83
 
-python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
+# python -m pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 ```
 
 For more details, please refer to [llama-cpp](https://github.com/abetlen/llama-cpp-python#installation-with-openblas--cublas--clblast--metal)
@@ -121,36 +120,8 @@ python run_localGPT_API.py
 python localGPTUI/localGPTUI.py
 ```
 
-## Using the Public URL
-
-### Windows: Install Chocolatey and ngrok (Skip if installed)
-1. Open a new Windows Powershell (Adminsitrator) window.
-2. Run the following:
-```powershell
-Set-ExecutionPolicy AllSigned
-```
-3. Run the following:
-```powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-```
-4. Run the following:
-```powershell
-choco install ngrok
-```
-
-### Mac: Install Homebrew and ngrok (Skip if installed)
-1. Open a new terminal.
-2. Run the following:
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-3. Run the following:
-```bash
-brew install ngrok/ngrok/ngrok
-```
-
 ### Run ngrok
-1. Open a new Windows Powershell window. Keep the previous 2 terminal running in the background.
+1. Open a new terminal. Keep the previous 2 terminal running in the background.
 2. Run the following:
 ```shell
 ngrok http localhost:5111
