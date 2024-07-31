@@ -26,6 +26,9 @@ flask
 requests
 # bitsandbytes --prefer-binary --extra-index-url=https://jllllll.github.io/bitsandbytes-windows-webui # issue of bitsandbytes solved with this for HF models
 
+# online hosting related
+pyngrok
+
 # Streamlit related
 streamlit
 Streamlit-extras
