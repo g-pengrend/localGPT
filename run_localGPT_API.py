@@ -459,6 +459,24 @@ def prompt_route() -> Tuple[Response, int]:
         # subprocess.run(["export", "TOKENIZERS_PARALLELISM=false"])
         user_prompt = f'Create 3 multiple choice questions, 1 per taxonomy level, on the following topic: {user_prompt}. There is strictly only one correct answer per question.'
 
+    # Modify the user prompt if the selected template is "Content Generation"
+    if PROMPT_TEMPLATE_SELECTED == "Content Generation":
+        user_prompt = f"""Write an in-depth article of at least 5,000 words on the topic of {user_prompt}, providing a comprehensive analysis that covers the background and history, current trends, key players, challenges, and future prospects. Begin with a compelling introduction that explains the relevance and importance of the topic. Delve into its origins and development, highlighting key milestones and influential figures with specific examples. Analyze the current state of the topic, discussing significant trends, technological advancements, and recent changes, supported by relevant data and case studies. Explore the roles of major contributors, organizations, or entities, illustrating their impact with real-world examples. Address the challenges, controversies, and debates surrounding the topic, elaborating on different perspectives. Conclude with a forward-looking analysis of potential future trends, innovations, and emerging ideas, providing concrete examples where possible. Throughout, ensure that each section is detailed, well-supported by examples, and written in an engaging, informative tone for a well-read audience.
+
+Format the article in Markdown using the following structure:
+
+Title: Use a level 1 header (#) for the title.
+Introduction: Start with a level 2 header (## Introduction) and write an engaging overview.
+Sections: Each major section should begin with a level 2 header (e.g., ## Background and History), with sub-sections under level 3 headers (e.g., ### Key Milestones).
+Bullet Points: Use bullet points (-) or numbered lists (1., 2., etc.) where appropriate to break down complex information.
+Blockquotes: Use blockquotes (>) to highlight significant quotes or key insights.
+Bold/Italics: Use bold (**bold**) and italics (*italics*) for emphasis as needed.
+Code Blocks: If applicable, include code snippets or data in fenced code blocks (```).
+Links and References: Use markdown for hyperlinks ([text](url)) and cite any sources or references appropriately.
+Images: If including images, use the markdown syntax for embedding images (![alt text](image_url)).
+
+Ensure the article is meticulously organized, flows logically from one section to the next, and is fully elaborated with examples, data, and expert opinions where relevant."""
+
     # Return an error response if no user prompt is received
     if not user_prompt:
         return "No user prompt received", 400
@@ -524,6 +542,18 @@ def prompt_route() -> Tuple[Response, int]:
             subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer])
         elif PROMPT_TEMPLATE_SELECTED == "Multiple Choice Question":
             subprocess.run(["python", "./extensions/mcq/convert.py", answer])
+        elif PROMPT_TEMPLATE_SELECTED == "Content Generation":
+            if docs:
+                prompt_response_dict["Sources"] = [
+                    (os.path.basename(str(document.metadata["source"])), str(document.page_content))
+                    for document in docs
+                ]
+                sources_string = "\n".join([
+                    f"{os.path.basename(str(document.metadata['source']))}: {str(document.page_content).encode('ascii', 'xmlcharrefreplace').decode()}"
+                    for document in docs
+                ]).encode('ascii', 'ignore').decode()
+                print(sources_string)
+            subprocess.run(["python", "./extensions/content_generation/convert.py", answer, sources_string])
 
         # Return the JSON response along with the HTTP status code
         return jsonify(prompt_response_dict), 200
