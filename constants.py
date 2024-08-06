@@ -87,8 +87,8 @@ DOCUMENT_MAP = {
 ####
 #### OTHER EMBEDDING MODEL OPTIONS
 ####
-EMBEDDING_MODEL_NAME = "srikanthmalla/hkunlp-instructor-xl"
-# EMBEDDING_MODEL_NAME = "hkunlp/instructor-xl" # Uses 5 GB of VRAM (Most Accurate of all models)
+# EMBEDDING_MODEL_NAME = "srikanthmalla/hkunlp-instructor-xl"
+EMBEDDING_MODEL_NAME = "hkunlp/instructor-xl" # Uses 5 GB of VRAM (Most Accurate of all models)
 # EMBEDDING_MODEL_NAME = "intfloat/e5-large-v2" # Uses 1.5 GB of VRAM (A little less accurate than instructor-large)
 # EMBEDDING_MODEL_NAME = "intfloat/e5-base-v2" # Uses 0.5 GB of VRAM (A good model for lower VRAM GPUs)
 # EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2" # Uses 0.2 GB of VRAM (Less accurate but fastest - only requires 150mb of vram)
@@ -127,8 +127,8 @@ EMBEDDING_MODEL_NAME = "srikanthmalla/hkunlp-instructor-xl"
 # MODEL_ID = "TheBloke/Llama-2-7b-Chat-GGUF"
 # MODEL_BASENAME = "llama-2-7b-chat.Q4_K_M.gguf"
 
-MODEL_ID = "TheBloke/CapybaraHermes-2.5-Mistral-7B-GGUF"
-MODEL_BASENAME = "capybarahermes-2.5-mistral-7b.Q5_K_M.gguf"
+# MODEL_ID = "TheBloke/CapybaraHermes-2.5-Mistral-7B-GGUF"
+# MODEL_BASENAME = "capybarahermes-2.5-mistral-7b.Q5_K_M.gguf"
 
 # MODEL_ID = "QuantFactory/Meta-Llama-3-8B-Instruct-GGUF"
 # MODEL_BASENAME = "Meta-Llama-3-8B-Instruct.Q4_K_M.gguf"
@@ -143,6 +143,9 @@ MODEL_BASENAME = "capybarahermes-2.5-mistral-7b.Q5_K_M.gguf"
 
 # MODEL_ID = "TheBloke/Mistral-7B-Instruct-v0.1-GGUF"
 # MODEL_BASENAME = "mistral-7b-instruct-v0.1.Q8_0.gguf"
+
+MODEL_ID = "QuantFactory/Mistral-Nemo-Instruct-2407-GGUF"
+MODEL_BASENAME = "Mistral-Nemo-Instruct-2407.Q8_0.gguf"
 
 # MODEL_ID = "TheBloke/Llama-2-70b-Chat-GGUF"
 # MODEL_BASENAME = "llama-2-70b-chat.Q4_K_M.gguf"
