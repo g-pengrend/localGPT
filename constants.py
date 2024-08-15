@@ -25,6 +25,22 @@ def get_subdirectories(source_dir):
     sub_dirs = [os.path.join(source_dir, folder) for folder in os.listdir(source_dir) if os.path.isdir(os.path.join(source_dir, folder))]
     return sub_dirs if sub_dirs else [source_dir]  # Return the source directory itself if no subdirectories found
 
+# Function to create corresponding directories in the persist directory
+def create_persist_directories(subdirectories, persist_dir):
+    # Check if the persist directory exists
+    if not os.path.exists(persist_dir):
+        # If the persist directory does not exist, create it
+        os.makedirs(persist_dir)
+    
+    # Create subdirectories in the persist directory
+    for sub_dir in subdirectories:
+        # Extract the folder name from the path
+        folder_name = os.path.basename(sub_dir)
+        # Define the path for the new directory in the persist directory
+        persist_sub_dir = os.path.join(persist_dir, folder_name)
+        # Check if the subdirectory exists, and create it if it does not
+        if not os.path.exists(persist_sub_dir):
+            os.makedirs(persist_sub_dir)
 # Example usage
 SUB_DIRECTORIES = get_subdirectories(SOURCE_DIRECTORY)
 
@@ -35,6 +51,8 @@ PERSIST_DIRECTORY = os.path.join(ROOT_DIRECTORY, "DB")
 if not os.path.exists(PERSIST_DIRECTORY):
     # If the folder does not exist, create it
     os.makedirs(PERSIST_DIRECTORY)
+
+create_persist_directories(SUB_DIRECTORIES, PERSIST_DIRECTORY)
 
 PERSIST_DIRECTORIES = [os.path.join(PERSIST_DIRECTORY, d) for d in os.listdir(PERSIST_DIRECTORY) if os.path.isdir(os.path.join(PERSIST_DIRECTORY, d))]
 
@@ -53,7 +71,7 @@ CHROMA_SETTINGS = Settings(
 )
 
 # Context Window and Max New Tokens
-CONTEXT_WINDOW_SIZE = 8096
+CONTEXT_WINDOW_SIZE = 4096
 MAX_NEW_TOKENS = CONTEXT_WINDOW_SIZE  # int(CONTEXT_WINDOW_SIZE/4)
 
 #### If you get a "not enough space in the buffer" error, you should reduce the values below, start with half of the original values and keep halving the value until the error stops appearing
@@ -87,6 +105,7 @@ DOCUMENT_MAP = {
 ####
 #### OTHER EMBEDDING MODEL OPTIONS
 ####
+# EMBEDDING_MODEL_NAME = "dunzhang/stella_en_1.5B_v5"
 # EMBEDDING_MODEL_NAME = "srikanthmalla/hkunlp-instructor-xl"
 EMBEDDING_MODEL_NAME = "hkunlp/instructor-xl" # Uses 5 GB of VRAM (Most Accurate of all models)
 # EMBEDDING_MODEL_NAME = "intfloat/e5-large-v2" # Uses 1.5 GB of VRAM (A little less accurate than instructor-large)
@@ -127,8 +146,8 @@ EMBEDDING_MODEL_NAME = "hkunlp/instructor-xl" # Uses 5 GB of VRAM (Most Accurate
 # MODEL_ID = "TheBloke/Llama-2-7b-Chat-GGUF"
 # MODEL_BASENAME = "llama-2-7b-chat.Q4_K_M.gguf"
 
-# MODEL_ID = "TheBloke/CapybaraHermes-2.5-Mistral-7B-GGUF"
-# MODEL_BASENAME = "capybarahermes-2.5-mistral-7b.Q5_K_M.gguf"
+MODEL_ID = "TheBloke/CapybaraHermes-2.5-Mistral-7B-GGUF"
+MODEL_BASENAME = "capybarahermes-2.5-mistral-7b.Q5_K_M.gguf"
 
 # MODEL_ID = "QuantFactory/Meta-Llama-3-8B-Instruct-GGUF"
 # MODEL_BASENAME = "Meta-Llama-3-8B-Instruct.Q4_K_M.gguf"
@@ -144,8 +163,8 @@ EMBEDDING_MODEL_NAME = "hkunlp/instructor-xl" # Uses 5 GB of VRAM (Most Accurate
 # MODEL_ID = "TheBloke/Mistral-7B-Instruct-v0.1-GGUF"
 # MODEL_BASENAME = "mistral-7b-instruct-v0.1.Q8_0.gguf"
 
-MODEL_ID = "QuantFactory/Mistral-Nemo-Instruct-2407-GGUF"
-MODEL_BASENAME = "Mistral-Nemo-Instruct-2407.Q8_0.gguf"
+# MODEL_ID = "QuantFactory/Mistral-Nemo-Instruct-2407-GGUF"
+# MODEL_BASENAME = "Mistral-Nemo-Instruct-2407.Q8_0.gguf"
 
 # MODEL_ID = "TheBloke/Llama-2-70b-Chat-GGUF"
 # MODEL_BASENAME = "llama-2-70b-chat.Q4_K_M.gguf"
