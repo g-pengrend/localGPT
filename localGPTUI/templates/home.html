@@ -766,7 +766,6 @@
           </div>
         </div>
       </div>
-
       <div style="margin-top: 20px;"></div>
         <!-- Dropdown for Directory Selection-->
         <div class="dropdown" style="display: flex; align-items: center;">
@@ -796,24 +795,13 @@
           <div id="selectedPromptTemplateDisplay" class="selected-folder" style="margin-left: 10px;">
             <span>Selected Output:</span> <span id="selectedPromptTemplateName">{{ selected_prompt_template }}</span>
           </div>
-          <!-- Display the download button if content is generated -->
-          <!-- {% if output_filename %}
-          <div id="downloadButtonContainer" style="margin-top: 20px;">
-            <button type="button" class="btn btn-success" onclick="showPasswordModal()">Download</button>
-          </div>
-          {% endif %} -->
-          
-          <!-- Direct download button -->
-          <!-- {% if output_filename %}
-          <div id="downloadButtonContainer" style="margin-top: 20px;">
-              <a href="localhost:5110/api/download/{{ output_filename }}" class="btn btn-success">Download</a>
-          </div>
-          {% endif %} -->
-          <div id="downloadButtonContainer" style="margin-top: 20px;">
-            <a href="localhost:5110/api/download/test.txt" class="btn btn-success">Download</a>
-          </div>
         </div>
-
+        <!-- Direct download button -->
+        {% if output_filename %}
+        <div id="downloadButtonContainer" style="margin-top: 20px;">
+            <a href="/api/download/{{ output_filename }}" class="btn btn-success">Download Document</a>
+        </div>
+        {% endif %}
       <!-- Display selected directory -->
       <!-- <div id="uploadDirectoryDisplay" style="margin-top: 20px; border: 2px solid #000; padding: 10px; border-radius: 5px;">
         <span>File Upload Location:</span> <span id="uploadDirectoryName"></span>

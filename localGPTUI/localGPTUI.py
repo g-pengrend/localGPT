@@ -8,7 +8,7 @@ import io
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import requests
-from flask import Flask, render_template, request, jsonify, session, g, redirect, url_for, send_file
+from flask import Flask, render_template, request, jsonify, session, g, Response
 from werkzeug.utils import secure_filename
 from extensions.lesson_plan.utils import recreate_docx
 
@@ -32,6 +32,20 @@ def load_selected_values():
     g.selected_folder = session.get('selected_folder', '')
     g.selected_prompt_template = session.get('selected_prompt_template', '')
 
+# Proxy API requests from UI to API on localhost:5110
+@app.route("/api/download/<filename>", methods=["GET"])
+def proxy_download(filename):
+    api_url = f"{API_HOST}/download/{filename}"
+    
+    # Forward the request to the API
+    response = requests.get(api_url, stream=True)
+
+    # Return the response from the API to the user
+    if response.status_code == 200:
+        return Response(response.content, headers=dict(response.headers))
+    else:
+        return Response(response.content, status=response.status_code)
+    
 # PAGES #
 @app.route("/", methods=["GET", "POST"])
 def home_page():
@@ -151,9 +165,8 @@ def home_page():
                 response_json = response.json()
                 output_filename = new_output_filename if new_output_filename else ""
                 output_filename = os.path.basename(output_filename)
-                output_filename = "test.txt" # hard coded to test
                 
-                return render_template("home.html", selected_folder=g.selected_folder, selected_prompt_template=g.selected_prompt_template, output_filename=output_filename if output_filename else None, show_response_modal=True, response_dict=response_json)
+                return render_template("home.html", selected_folder=g.selected_folder, selected_prompt_template=g.selected_prompt_template, output_filename=output_filename, show_response_modal=True, response_dict=response_json)
         
         elif "documents" in request.files:
             delete_source_url = f"{API_HOST}/delete_source"  # URL of the /api/delete_source endpoint

@@ -500,11 +500,11 @@ Ensure the article is meticulously organized, flows logically from one section t
 
         # Run additional scripts based on the selected prompt template
         if PROMPT_TEMPLATE_SELECTED == "Lesson Plan":
-            subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer], capture_output=True, text=True)
+            subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer])
             output_directory = "./extensions/lesson_plan/outputs"
             output_filename = get_latest_file(output_directory)
         elif PROMPT_TEMPLATE_SELECTED == "Multiple Choice Question":
-            subprocess.run(["python", "./extensions/mcq/convert.py", answer], capture_output=True, text=True)
+            subprocess.run(["python", "./extensions/mcq/convert.py", answer])
         elif PROMPT_TEMPLATE_SELECTED == "Content Generation":
             if docs:
                 prompt_response_dict["Sources"] = [
@@ -516,7 +516,7 @@ Ensure the article is meticulously organized, flows logically from one section t
                     for document in docs
                 ]).encode('ascii', 'ignore').decode()
                 print(sources_string)
-            subprocess.run(["python", "./extensions/content_generation/convert.py", answer, sources_string], capture_output=True, text=True)
+            subprocess.run(["python", "./extensions/content_generation/convert.py", answer, sources_string])
         if output_filename:
             prompt_response_dict["output_filename"] = output_filename        
         # Return the JSON response along with the HTTP status code
@@ -548,21 +548,16 @@ def download_file(filename):
     #     return jsonify({"error": "You are not authorized to download this file"}), 403
 
     # Securely serve the file using send_file
-    file_path = os.path.join(BASE_DIR, filename)
+    LP_OUT_PATH = os.path.join(BASE_DIR, "./extensions/lesson_plan/outputs")
+    DL_FILE_PATH = os.path.join(LP_OUT_PATH, filename)
     # rel_path = f"./extensions/lesson_plan/outputs/{filename}"  # Make sure this path is correct
     # file_path = os.path.join(BASE_DIR, rel_path)
-    print(f"Looking for file at: {file_path}")
-
+    print(f"Looking for file at: {DL_FILE_PATH}")
     # Check if the file exists
-    if os.path.exists(file_path):
-        # If the file is a .docx, specify the MIME type explicitly
-        if filename.endswith(".docx"):
-            return send_file(file_path, as_attachment=True, mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
-        else:
-            # Default for other file types
-            return send_file(file_path, as_attachment=True)
+    if os.path.exists(DL_FILE_PATH):
+        return send_file(DL_FILE_PATH, as_attachment=True)
     else:
-        print(f"File not found: {file_path}")
+        print(f"File not found: {DL_FILE_PATH}")
         return abort(404)  # Return 404 if file not found
 
 #DEBUGGER
