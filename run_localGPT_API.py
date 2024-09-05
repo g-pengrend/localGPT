@@ -539,23 +539,31 @@ def verify_password(filename):
 @app.route("/api/download/<filename>", methods=["GET"])
 def download_file(filename):
     # Log the filename and session info
-    info(message=f"Attempting to download file: {filename}")
-    info(message=f"Session authenticated: {session.get('authenticated')}")
+    print(f"Attempting to download file: {filename}")
+    # info(message=f"Session authenticated: {session.get('authenticated')}")
 
+    # DISABLE FIRST
     # Check if the user is authenticated
-    if not session.get('authenticated'):
-        return jsonify({"error": "You are not authorized to download this file"}), 403
+    # if not session.get('authenticated'):
+    #     return jsonify({"error": "You are not authorized to download this file"}), 403
 
     # Securely serve the file using send_file
-    rel_path = f"./extensions/lesson_plan/outputs/{filename}"  # Make sure this path is correct
-    file_path = os.path.join(BASE_DIR, rel_path)
-    info(message=f"Looking for file at: {file_path}")
+    file_path = os.path.join(BASE_DIR, filename)
+    # rel_path = f"./extensions/lesson_plan/outputs/{filename}"  # Make sure this path is correct
+    # file_path = os.path.join(BASE_DIR, rel_path)
+    print(f"Looking for file at: {file_path}")
 
+    # Check if the file exists
     if os.path.exists(file_path):
-        return send_file(file_path, as_attachment=True)
+        # If the file is a .docx, specify the MIME type explicitly
+        if filename.endswith(".docx"):
+            return send_file(file_path, as_attachment=True, mimetype="application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        else:
+            # Default for other file types
+            return send_file(file_path, as_attachment=True)
     else:
-        info(message=f"File not found: {file_path}")
-        return abort(404)  # File not found
+        print(f"File not found: {file_path}")
+        return abort(404)  # Return 404 if file not found
 
 #DEBUGGER
 @app.route("/api/get_current_state", methods=["GET"])
@@ -572,26 +580,10 @@ def get_current_state() -> jsonify:
     """
     global DB_SELECTED, PROMPT_TEMPLATE_SELECTED
 
-    # Get the filename from the query parameter
-    filename = request.args.get('filename')
-
-    if filename:
-        absolute_path = os.path.abspath(f"./extensions/lesson_plan/outputs/{filename}")
-        # file_path = f"./extensions/lesson_plan/outputs/{filename}"
-        # Check if the file exists
-        file_exists = os.path.exists(absolute_path)
-    else:
-        # file_path = None
-        absolute_path = None
-        file_exists = False
-
     # Create a dictionary to hold the current state
     current_state = {
         "DEBUGGING: DB_SELECTED": DB_SELECTED,
         "DEBUGGING: PROMPT_TEMPLATE_SELECTED": PROMPT_TEMPLATE_SELECTED,
-        # "DEBUGGING: file_path": file_path,
-        "DEBUGGING: absolute_path": absolute_path,
-        "DEBUGGING: file_exists": file_exists,
     }
 
     # Print the current state for debugging purposes

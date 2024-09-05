@@ -797,11 +797,21 @@
             <span>Selected Output:</span> <span id="selectedPromptTemplateName">{{ selected_prompt_template }}</span>
           </div>
           <!-- Display the download button if content is generated -->
-          {% if output_filename %}
+          <!-- {% if output_filename %}
           <div id="downloadButtonContainer" style="margin-top: 20px;">
             <button type="button" class="btn btn-success" onclick="showPasswordModal()">Download</button>
           </div>
-          {% endif %}
+          {% endif %} -->
+          
+          <!-- Direct download button -->
+          <!-- {% if output_filename %}
+          <div id="downloadButtonContainer" style="margin-top: 20px;">
+              <a href="localhost:5110/api/download/{{ output_filename }}" class="btn btn-success">Download</a>
+          </div>
+          {% endif %} -->
+          <div id="downloadButtonContainer" style="margin-top: 20px;">
+            <a href="localhost:5110/api/download/test.txt" class="btn btn-success">Download</a>
+          </div>
         </div>
 
       <!-- Display selected directory -->

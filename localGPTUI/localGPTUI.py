@@ -3,11 +3,12 @@ import os
 import sys
 import tempfile
 import time
+import io
 # import json # to debug
 sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import requests
-from flask import Flask, render_template, request, jsonify, session, g, redirect, url_for
+from flask import Flask, render_template, request, jsonify, session, g, redirect, url_for, send_file
 from werkzeug.utils import secure_filename
 from extensions.lesson_plan.utils import recreate_docx
 
@@ -148,9 +149,11 @@ def home_page():
 
             if response.status_code == 200:
                 response_json = response.json()
-                output_filename = response_json.get("output_filename", "")
-
-                return render_template("home.html", selected_folder=g.selected_folder, selected_prompt_template=g.selected_prompt_template, output_filename=new_output_filename if output_filename else None, show_response_modal=True, response_dict=response_json)
+                output_filename = new_output_filename if new_output_filename else ""
+                output_filename = os.path.basename(output_filename)
+                output_filename = "test.txt" # hard coded to test
+                
+                return render_template("home.html", selected_folder=g.selected_folder, selected_prompt_template=g.selected_prompt_template, output_filename=output_filename if output_filename else None, show_response_modal=True, response_dict=response_json)
         
         elif "documents" in request.files:
             delete_source_url = f"{API_HOST}/delete_source"  # URL of the /api/delete_source endpoint
