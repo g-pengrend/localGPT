@@ -4,18 +4,27 @@ import sys
 import tempfile
 import time
 # import json # to debug
+sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
 
 import requests
-from flask import Flask, render_template, request, jsonify, session, g
+from flask import Flask, render_template, request, jsonify, session, g, redirect, url_for
 from werkzeug.utils import secure_filename
-
-sys.path.append(os.path.join(os.path.dirname(__file__), ".."))
+from extensions.lesson_plan.utils import recreate_docx
 
 app = Flask(__name__)
 app.secret_key = "LeafmanZSecretKey"
 
 API_HOST = "http://localhost:5110/api"
 
+def get_latest_file(directory):
+    try:
+        files = os.listdir(directory)
+        paths = [os.path.join(directory, file) for file in files if os.path.isfile(os.path.join(directory, file))]
+        latest_file = max(paths, key=os.path.getmtime)  # Get the most recently modified file
+        return latest_file
+    except ValueError:
+        return None  # No files found in directory
+    
 # Initialize selected_folder and selected_prompt_template
 @app.before_request
 def load_selected_values():
@@ -101,7 +110,30 @@ def home_page():
                     return jsonify({"message": f"Folder '{selected_folder}' facing some issue."}), 400
             else:
                 print("selected_folder parameter is missing in the request.")
-
+        
+        if "password" in request.form:
+            # Handle password verification
+            password = request.form["password"]
+            filename = request.form["filename"]  # filename from the front-end
+            # Verify password with API
+            verify_url = f"{API_HOST}/verify_password/{filename}"
+            response = requests.post(verify_url, data={"password": password})
+            
+            if response.status_code == 200 and response.json().get("message") == "Password correct":
+                # Password is correct, allow download
+                download_url = f"{API_HOST}/download/{filename}"
+                file_response = requests.get(download_url)
+                if file_response.status_code == 200:
+                    return file_response.content, 200, {
+                        'Content-Disposition': f'attachment; filename={filename}',
+                        'Content-Type': 'application/octet-stream'
+                    }
+                else:
+                    return jsonify({"error": "File not found."}), 404
+            else:
+                # Invalid password
+                return jsonify({"error": "Invalid password."}), 401
+            
         if "user_prompt" in request.form:
             user_prompt = request.form["user_prompt"]
             print(f"User Prompt: {user_prompt}")
@@ -110,10 +142,15 @@ def home_page():
             main_prompt_url = f"{API_HOST}/prompt_route"
             response = requests.post(main_prompt_url, data={"user_prompt": user_prompt})
             print(response.status_code)  # print HTTP response status code for debugging
-            if response.status_code == 200:
-                # print(response.json())  # Print the JSON data from the response
 
-                return render_template("home.html", selected_folder=g.selected_folder, selected_prompt_template=g.selected_prompt_template, show_response_modal=True, response_dict=response.json())
+            output_directory = "../extensions/lesson_plan/outputs"
+            new_output_filename = get_latest_file(output_directory) 
+
+            if response.status_code == 200:
+                response_json = response.json()
+                output_filename = response_json.get("output_filename", "")
+
+                return render_template("home.html", selected_folder=g.selected_folder, selected_prompt_template=g.selected_prompt_template, output_filename=new_output_filename if output_filename else None, show_response_modal=True, response_dict=response_json)
         
         elif "documents" in request.files:
             delete_source_url = f"{API_HOST}/delete_source"  # URL of the /api/delete_source endpoint

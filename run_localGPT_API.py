@@ -10,7 +10,7 @@ from typing import Tuple
 
 # Third-party library imports
 import torch
-from flask import Flask, jsonify, request, Response
+from flask import Flask, jsonify, request, Response, abort, send_file, session
 from werkzeug.utils import secure_filename
 from langchain.chains import RetrievalQA, LLMChain
 from langchain.embeddings import HuggingFaceInstructEmbeddings
@@ -40,6 +40,21 @@ from constants import (
     SOURCE_DIRECTORY,
 )
 
+def get_latest_file(directory):
+    try:
+        files = os.listdir(directory)
+        paths = [os.path.join(directory, file) for file in files if os.path.isfile(os.path.join(directory, file))]
+        latest_file = max(paths, key=os.path.getmtime)  # Get the most recently modified file
+        return latest_file
+    except ValueError:
+        return None  # No files found in directory
+    
+app = Flask(__name__)
+app.secret_key = "LeafmanZSecretKey"
+
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+DOWNLOAD_PASSWORD = "12345"
+
 # Initialize a lock for handling API requests
 request_lock = Lock()
 
@@ -60,28 +75,6 @@ logging.info(f"Display Source Documents set to: {SHOW_SOURCES}")
 
 # Initialize embeddings using HuggingFaceInstructEmbeddings
 EMBEDDINGS = HuggingFaceInstructEmbeddings(model_name=EMBEDDING_MODEL_NAME, model_kwargs={"device": DEVICE_TYPE})
-
-# Uncomment the following lines if you used HuggingFaceEmbeddings in the ingest.py
-# EMBEDDINGS = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL_NAME)
-# if os.path.exists(PERSIST_DIRECTORY):
-#     try:
-#         shutil.rmtree(PERSIST_DIRECTORY)
-#     except OSError as e:
-#         print(f"Error: {e.filename} - {e.strerror}.")
-# else:
-#     print("The directory does not exist")
-
-# Run the ingest.py script to process documents
-# run_langest_commands = ["python", "ingest.py"]
-# if DEVICE_TYPE == "cpu":
-#     run_langest_commands.append("--device_type")
-#     run_langest_commands.append(DEVICE_TYPE)
-
-# result = subprocess.run(run_langest_commands, capture_output=True)
-# if result.returncode != 0:
-#     raise FileNotFoundError(
-#         "No files were found inside SOURCE_DOCUMENTS, please put a starter file inside before starting the API!"
-#     )
 
 # Initialize retriever dictionary and debugging variables
 RETRIEVER_DICT: dict = {}
@@ -104,17 +97,6 @@ for dir_name, dir_path in DATABASE_MAPPING.items():
     
     # Store the retriever in the dictionary
     RETRIEVER_DICT[dir_name] = retriever
-
-    # Uncomment the following lines to initialize RetrievalQA
-    # QA = RetrievalQA.from_chain_type(
-    #     llm=LLM,
-    #     chain_type="stuff",
-    #     retriever=RETRIEVER,
-    #     return_source_documents=SHOW_SOURCES,
-    #     chain_type_kwargs={
-    #         "prompt": prompt,
-    #     },
-    # )
 
 # Sleep for a short duration to ensure all processes are ready
 time.sleep(0.2)
@@ -348,28 +330,6 @@ def chosen_folder(selected_folder: str) -> str:
     # Return the name of the selected database
     return DB_SELECTED
 
-@app.route("/api/get_current_state", methods=["GET"])
-def get_current_state() -> jsonify:
-    """
-    Endpoint to get the current state of the selected database and prompt template.
-
-    Returns:
-        jsonify: A JSON object containing the current state of the selected database and prompt template.
-    """
-    global DB_SELECTED, PROMPT_TEMPLATE_SELECTED
-
-    # Create a dictionary to hold the current state
-    current_state = {
-        "DEBUGGING: DB_SELECTED": DB_SELECTED,
-        "DEBUGGING: PROMPT_TEMPLATE_SELECTED": PROMPT_TEMPLATE_SELECTED
-    }
-
-    # Print the current state for debugging purposes
-    print(f"Current state: {current_state}")  # Debug print
-
-    # Return the current state as a JSON response
-    return jsonify(current_state)
-
 @app.route("/api/run_ingest/<directory_name>", methods=["GET"])
 def run_ingest_route(directory_name: str) -> Tuple[str, int]:
     """
@@ -530,6 +490,7 @@ Ensure the article is meticulously organized, flows logically from one section t
             "Answer": answer,
         }
 
+        output_filename = None
         # Include source documents in the response if available
         # if docs:
         #     prompt_response_dict["Sources"] = [
@@ -539,9 +500,11 @@ Ensure the article is meticulously organized, flows logically from one section t
 
         # Run additional scripts based on the selected prompt template
         if PROMPT_TEMPLATE_SELECTED == "Lesson Plan":
-            subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer])
+            subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer], capture_output=True, text=True)
+            output_directory = "./extensions/lesson_plan/outputs"
+            output_filename = get_latest_file(output_directory)
         elif PROMPT_TEMPLATE_SELECTED == "Multiple Choice Question":
-            subprocess.run(["python", "./extensions/mcq/convert.py", answer])
+            subprocess.run(["python", "./extensions/mcq/convert.py", answer], capture_output=True, text=True)
         elif PROMPT_TEMPLATE_SELECTED == "Content Generation":
             if docs:
                 prompt_response_dict["Sources"] = [
@@ -553,11 +516,89 @@ Ensure the article is meticulously organized, flows logically from one section t
                     for document in docs
                 ]).encode('ascii', 'ignore').decode()
                 print(sources_string)
-            subprocess.run(["python", "./extensions/content_generation/convert.py", answer, sources_string])
-
+            subprocess.run(["python", "./extensions/content_generation/convert.py", answer, sources_string], capture_output=True, text=True)
+        if output_filename:
+            prompt_response_dict["output_filename"] = output_filename        
         # Return the JSON response along with the HTTP status code
         return jsonify(prompt_response_dict), 200
 
+# Password verification endpoint
+@app.route("/api/verify_password/<filename>", methods=["POST"])
+def verify_password(filename):
+    entered_password = request.form.get("password")
+
+    if entered_password == DOWNLOAD_PASSWORD:
+        # If the password is correct, store that in the session
+        session['authenticated'] = True
+        return jsonify({"message": "Password correct, you can now download the file."})
+    else:
+        # Return an error message if the password is wrong
+        return jsonify({"error": "Invalid password"}), 401
+
+# File download endpoint
+@app.route("/api/download/<filename>", methods=["GET"])
+def download_file(filename):
+    # Log the filename and session info
+    info(message=f"Attempting to download file: {filename}")
+    info(message=f"Session authenticated: {session.get('authenticated')}")
+
+    # Check if the user is authenticated
+    if not session.get('authenticated'):
+        return jsonify({"error": "You are not authorized to download this file"}), 403
+
+    # Securely serve the file using send_file
+    rel_path = f"./extensions/lesson_plan/outputs/{filename}"  # Make sure this path is correct
+    file_path = os.path.join(BASE_DIR, rel_path)
+    info(message=f"Looking for file at: {file_path}")
+
+    if os.path.exists(file_path):
+        return send_file(file_path, as_attachment=True)
+    else:
+        info(message=f"File not found: {file_path}")
+        return abort(404)  # File not found
+
+#DEBUGGER
+@app.route("/api/get_current_state", methods=["GET"])
+def get_current_state() -> jsonify:
+    """
+    Endpoint to get the current state of the selected database and prompt template,
+    as well as check the existence of the generated file.
+
+    Optionally, accepts a 'filename' query parameter to check for the file existence.
+
+    Returns:
+        jsonify: A JSON object containing the current state of the selected database,
+        prompt template, and file existence.
+    """
+    global DB_SELECTED, PROMPT_TEMPLATE_SELECTED
+
+    # Get the filename from the query parameter
+    filename = request.args.get('filename')
+
+    if filename:
+        absolute_path = os.path.abspath(f"./extensions/lesson_plan/outputs/{filename}")
+        # file_path = f"./extensions/lesson_plan/outputs/{filename}"
+        # Check if the file exists
+        file_exists = os.path.exists(absolute_path)
+    else:
+        # file_path = None
+        absolute_path = None
+        file_exists = False
+
+    # Create a dictionary to hold the current state
+    current_state = {
+        "DEBUGGING: DB_SELECTED": DB_SELECTED,
+        "DEBUGGING: PROMPT_TEMPLATE_SELECTED": PROMPT_TEMPLATE_SELECTED,
+        # "DEBUGGING: file_path": file_path,
+        "DEBUGGING: absolute_path": absolute_path,
+        "DEBUGGING: file_exists": file_exists,
+    }
+
+    # Print the current state for debugging purposes
+    print(f"Current state: {current_state}")  # Debug print
+
+    # Return the current state as a JSON response
+    return jsonify(current_state)
 
 def parse_arguments() -> argparse.Namespace:
     """

@@ -1,3 +1,4 @@
+import os
 from lxml import etree
 
 SOURCE_FOLDER = './extensions/lesson_plan/Lesson_plan(Template 1)'
@@ -41,7 +42,8 @@ NAMESPACES = {
 }
 
 # Load the XML document
-TREE = etree.parse('./extensions/lesson_plan/document.xml')
+xml_file_path = os.path.abspath(os.path.join(os.path.dirname(__file__), 'document.xml'))
+TREE = etree.parse(xml_file_path)
 ROOT = TREE.getroot()
 
 # Find the placeholders
