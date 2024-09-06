@@ -19,12 +19,22 @@ API_HOST = "http://localhost:5110/api"
 
 def get_latest_file(directory):
     try:
-        files = os.listdir(directory)
-        paths = [os.path.join(directory, file) for file in files if os.path.isfile(os.path.join(directory, file))]
-        latest_file = max(paths, key=os.path.getmtime)  # Get the most recently modified file
+        # Walk through all directories and subdirectories
+        docx_files = []
+        for root, dirs, files in os.walk(directory):
+            for file in files:
+                if file.endswith(".docx"):  # Only consider .docx files
+                    full_path = os.path.join(root, file)
+                    docx_files.append(full_path)
+        
+        if not docx_files:
+            return None  # No .docx files found
+
+        # Get the most recently modified .docx file
+        latest_file = max(docx_files, key=os.path.getmtime)
         return latest_file
     except ValueError:
-        return None  # No files found in directory
+        return None  # Handle the case where no files are found
     
 # Initialize selected_folder and selected_prompt_template
 @app.before_request
@@ -158,8 +168,10 @@ def home_page():
             response = requests.post(main_prompt_url, data={"user_prompt": user_prompt})
             print(response.status_code)  # print HTTP response status code for debugging
 
-            output_directory = "../extensions/lesson_plan/outputs"
-            new_output_filename = get_latest_file(output_directory) 
+            new_output_filename = ""
+            if g.selected_prompt_template != "Question Answer":
+                output_directory = "../extensions"
+                new_output_filename = get_latest_file(output_directory) 
 
             if response.status_code == 200:
                 response_json = response.json()

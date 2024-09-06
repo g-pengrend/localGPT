@@ -39,15 +39,6 @@ from constants import (
     MODEL_BASENAME,
     SOURCE_DIRECTORY,
 )
-
-def get_latest_file(directory):
-    try:
-        files = os.listdir(directory)
-        paths = [os.path.join(directory, file) for file in files if os.path.isfile(os.path.join(directory, file))]
-        latest_file = max(paths, key=os.path.getmtime)  # Get the most recently modified file
-        return latest_file
-    except ValueError:
-        return None  # No files found in directory
     
 app = Flask(__name__)
 app.secret_key = "LeafmanZSecretKey"
@@ -406,6 +397,7 @@ def prompt_route() -> Tuple[Response, int]:
         Tuple[Response, int]: JSON response containing the prompt, answer, and sources (if any), along with the HTTP status code.
     """
     global request_lock  # Make sure to use the global lock instance
+    global OUT_DIR
 
     # Retrieve the user prompt from the form data
     user_prompt: str = request.form.get("user_prompt")
@@ -490,7 +482,6 @@ Ensure the article is meticulously organized, flows logically from one section t
             "Answer": answer,
         }
 
-        output_filename = None
         # Include source documents in the response if available
         # if docs:
         #     prompt_response_dict["Sources"] = [
@@ -498,13 +489,14 @@ Ensure the article is meticulously organized, flows logically from one section t
         #         for document in docs
         #     ]
 
+        OUT_DIR = None
         # Run additional scripts based on the selected prompt template
         if PROMPT_TEMPLATE_SELECTED == "Lesson Plan":
             subprocess.run(["python", "./extensions/lesson_plan/run_llm_to_xml.py", answer])
-            output_directory = "./extensions/lesson_plan/outputs"
-            output_filename = get_latest_file(output_directory)
+            OUT_DIR = "./extensions/lesson_plan/outputs"
         elif PROMPT_TEMPLATE_SELECTED == "Multiple Choice Question":
             subprocess.run(["python", "./extensions/mcq/convert.py", answer])
+            OUT_DIR = "./extensions/mcq/outputs"
         elif PROMPT_TEMPLATE_SELECTED == "Content Generation":
             if docs:
                 prompt_response_dict["Sources"] = [
@@ -517,8 +509,7 @@ Ensure the article is meticulously organized, flows logically from one section t
                 ]).encode('ascii', 'ignore').decode()
                 print(sources_string)
             subprocess.run(["python", "./extensions/content_generation/convert.py", answer, sources_string])
-        if output_filename:
-            prompt_response_dict["output_filename"] = output_filename        
+            OUT_DIR = "./extensions/content_generation/outputs"
         # Return the JSON response along with the HTTP status code
         return jsonify(prompt_response_dict), 200
 
@@ -538,6 +529,11 @@ def verify_password(filename):
 # File download endpoint
 @app.route("/api/download/<filename>", methods=["GET"])
 def download_file(filename):
+    global OUT_DIR
+
+    if not OUT_DIR:
+        return jsonify({"error": "Output directory not found"}), 400
+    
     # Log the filename and session info
     print(f"Attempting to download file: {filename}")
     # info(message=f"Session authenticated: {session.get('authenticated')}")
@@ -548,8 +544,8 @@ def download_file(filename):
     #     return jsonify({"error": "You are not authorized to download this file"}), 403
 
     # Securely serve the file using send_file
-    LP_OUT_PATH = os.path.join(BASE_DIR, "./extensions/lesson_plan/outputs")
-    DL_FILE_PATH = os.path.join(LP_OUT_PATH, filename)
+    OUT_PATH = os.path.join(BASE_DIR, OUT_DIR)
+    DL_FILE_PATH = os.path.join(OUT_PATH, filename)
     # rel_path = f"./extensions/lesson_plan/outputs/{filename}"  # Make sure this path is correct
     # file_path = os.path.join(BASE_DIR, rel_path)
     print(f"Looking for file at: {DL_FILE_PATH}")
